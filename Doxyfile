@@ -773,7 +773,9 @@ WARN_LOGFILE           =
 #                         ../../src/
 #INPUT                  = ../../include/hip/hcc_detail/hip_runtime_api.h
 
-INPUT                  = Inputs/hip_runtime_api.h
+INPUT                  = Inputs/hip_runtime_api.h \
+			 Inputs/include/ \
+			 Inputs/src/ 
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
