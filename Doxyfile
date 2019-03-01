@@ -802,7 +802,8 @@ FILE_PATTERNS          = *.h *.cpp
 # be searched for input files as well.
 # The default value is: NO.
 
-RECURSIVE              = YES
+#YES -> NO for rocblas_handle to come along with Enums 
+RECURSIVE              = NO
 
 # The EXCLUDE tag can be used to specify files and/or directories that should be
 # excluded from the INPUT source files. This way you can easily exclude a
