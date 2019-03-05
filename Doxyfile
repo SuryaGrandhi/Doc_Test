@@ -777,7 +777,7 @@ WARN_LOGFILE           =
 INPUT                  = Inputs/hip_runtime_api.h \
 			 Inputs/include/ \
 			 Inputs/src/ \
-			 Inputs/rocALUTION
+			 Inputs/rocALUTION/
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
