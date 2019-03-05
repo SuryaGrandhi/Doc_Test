@@ -47,7 +47,7 @@ Solid Compilation Foundation and Language Support
 The frontiers of what you can accomplish with ROCm are vast and uncharted. We look forward to working with you to improve the platform so you can use it more effectively in your own projects. Our efforts have opened the door to unique heterogeneous-computing applications that explore what this growing technology can do.
 
 .. toctree::
-   :maxdepth: 6
+   :maxdepth: 9
    :hidden:
    
    ROCm
