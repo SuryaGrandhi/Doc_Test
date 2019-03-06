@@ -59,7 +59,11 @@ PROJECT_LOGO           = ./rocm.jpg
 # left blank the current directory will be used.
 
 #Commented so that no extra things are generated.
+<<<<<<< HEAD
 #OUTPUT_DIRECTORY       = ROCm_Libraries/rocBLAS/
+=======
+#OUTPUT_DIRECTORY       = 
+>>>>>>> 8d4a6a4b1a7106ee5a9aecbc35e3e73cd60af4ee
 
 # If the CREATE_SUBDIRS tag is set to YES then doxygen will create 4096 sub-
 # directories (in 2 levels) under the output directory of each output format and
