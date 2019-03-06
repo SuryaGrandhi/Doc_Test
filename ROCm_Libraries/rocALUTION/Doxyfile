@@ -59,7 +59,7 @@ PROJECT_LOGO           = ./rocm.jpg
 # left blank the current directory will be used.
 
 #Commented it so that no extra things get generated.
-OUTPUT_DIRECTORY       = ROCm_Libraries/rocALUTION/
+#OUTPUT_DIRECTORY       = ROCm_Libraries/rocALUTION/
 
 # If the CREATE_SUBDIRS tag is set to YES then doxygen will create 4096 sub-
 # directories (in 2 levels) under the output directory of each output format and
@@ -1929,7 +1929,7 @@ GENERATE_XML           = YES
 # The default directory is: xml.
 # This tag requires that the tag GENERATE_XML is set to YES.
 
-XML_OUTPUT             = xml
+XML_OUTPUT             = rocALUTIONxml
 
 # If the XML_PROGRAMLISTING tag is set to YES, doxygen will dump the program
 # listings (including syntax highlighting and cross-referencing information) to

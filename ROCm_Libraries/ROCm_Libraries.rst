@@ -195,6 +195,8 @@ Definitions
 rocblas_int
 ^^^^^^^^^^^^^^^^^^
 .. doxygentypedef:: rocblas_int
+   :project: rocBLAS
+
 
 rocblas_long
 ^^^^^^^^^^^^^^^^^^
@@ -2489,6 +2491,8 @@ This section provides details of the library API
 Host Utility Functions
 **********************
 .. doxygenfunction:: rocalution::allocate_host
+   :project: rocALUTION
+
 .. doxygenfunction:: rocalution::free_host
 .. doxygenfunction:: rocalution::set_to_zero_host
 .. doxygenfunction:: rocalution::rocalution_time
