@@ -195,8 +195,6 @@ Definitions
 rocblas_int
 ^^^^^^^^^^^^^^^^^^
 .. doxygentypedef:: rocblas_int
-   :project: rocBLAS
-
 
 rocblas_long
 ^^^^^^^^^^^^^^^^^^
@@ -221,6 +219,7 @@ rocblas_half_complex
 rocblas_handle
 ^^^^^^^^^^^^^^^^^^
 .. doxygentypedef:: rocblas_handle
+
 
 Enums
 ------
@@ -2494,56 +2493,69 @@ Host Utility Functions
    :project: rocALUTION
 
 .. doxygenfunction:: rocalution::free_host
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::set_to_zero_host
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::rocalution_time
+   :project: rocALUTION
 
 Backend Manager
 ***************
 .. doxygenfunction:: rocalution::init_rocalution
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::stop_rocalution
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::set_device_rocalution
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::set_omp_threads_rocalution
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::set_omp_affinity_rocalution
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::set_omp_threshold_rocalution
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::info_rocalution(void)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::info_rocalution(const struct Rocalution_Backend_Descriptor)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::disable_accelerator_rocalution
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::_rocalution_sync
+   :project: rocALUTION
 
 Base Rocalution
 ***************
-.. doxygenclass:: rocalution::BaseRocalution
-.. doxygenfunction:: rocalution::BaseRocalution::MoveToAccelerator
-.. doxygenfunction:: rocalution::BaseRocalution::MoveToHost
-.. doxygenfunction:: rocalution::BaseRocalution::MoveToAcceleratorAsync
-.. doxygenfunction:: rocalution::BaseRocalution::MoveToHostAsync
-.. doxygenfunction:: rocalution::BaseRocalution::Sync
-.. doxygenfunction:: rocalution::BaseRocalution::CloneBackend(const BaseRocalution<ValueType>&)
-.. doxygenfunction:: rocalution::BaseRocalution::Info
-.. doxygenfunction:: rocalution::BaseRocalution::Clear
+.. doxygenclass:: rocalution::BaseRocalution   :project: rocALUTION
+.. doxygenfunction:: rocalution::BaseRocalution::MoveToAccelerator   :project: rocALUTION
+.. doxygenfunction:: rocalution::BaseRocalution::MoveToHost   :project: rocALUTION
+.. doxygenfunction:: rocalution::BaseRocalution::MoveToAcceleratorAsync   :project: rocALUTION
+.. doxygenfunction:: rocalution::BaseRocalution::MoveToHostAsync   :project: rocALUTION
+.. doxygenfunction:: rocalution::BaseRocalution::Sync   :project: rocALUTION
+.. doxygenfunction:: rocalution::BaseRocalution::CloneBackend(const BaseRocalution<ValueType>&)   :project: rocALUTION
+.. doxygenfunction:: rocalution::BaseRocalution::Info   :project: rocALUTION
+.. doxygenfunction:: rocalution::BaseRocalution::Clear   :project: rocALUTION
 
 Operator
 ********
-.. doxygenclass:: rocalution::Operator
-.. doxygenfunction:: rocalution::Operator::GetM
-.. doxygenfunction:: rocalution::Operator::GetN
-.. doxygenfunction:: rocalution::Operator::GetNnz
-.. doxygenfunction:: rocalution::Operator::GetLocalM
-.. doxygenfunction:: rocalution::Operator::GetLocalN
-.. doxygenfunction:: rocalution::Operator::GetLocalNnz
-.. doxygenfunction:: rocalution::Operator::GetGhostM
-.. doxygenfunction:: rocalution::Operator::GetGhostN
-.. doxygenfunction:: rocalution::Operator::GetGhostNnz
-.. doxygenfunction:: rocalution::Operator::Apply(const LocalVector<ValueType>&, LocalVector<ValueType> *) const
-.. doxygenfunction:: rocalution::Operator::ApplyAdd(const LocalVector<ValueType>&, ValueType, LocalVector<ValueType> *) const
-.. doxygenfunction:: rocalution::Operator::Apply(const GlobalVector<ValueType>&, GlobalVector<ValueType> *) const
-.. doxygenfunction:: rocalution::Operator::ApplyAdd(const GlobalVector<ValueType>&, ValueType, GlobalVector<ValueType> *) const
+.. doxygenclass:: rocalution::Operator   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::GetM   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::GetN   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::GetNnz   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::GetLocalM   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::GetLocalN   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::GetLocalNnz   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::GetGhostM   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::GetGhostN   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::GetGhostNnz   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::Apply(const LocalVector<ValueType>&, LocalVector<ValueType> *) const   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::ApplyAdd(const LocalVector<ValueType>&, ValueType, LocalVector<ValueType> *) const   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::Apply(const GlobalVector<ValueType>&, GlobalVector<ValueType> *) const   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::ApplyAdd(const GlobalVector<ValueType>&, ValueType, GlobalVector<ValueType> *) const   :project: rocALUTION
 
 Vector
 ******
-.. doxygenclass:: rocalution::Vector
-.. doxygenfunction:: rocalution::Vector::GetSize
-.. doxygenfunction:: rocalution::Vector::GetLocalSize
+.. doxygenclass:: rocalution::Vector   :project: rocALUTION
+.. doxygenfunction:: rocalution::Vector::GetSize   :project: rocALUTION
+.. doxygenfunction:: rocalution::Vector::GetLocalSize   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::GetGhostSize
 .. doxygenfunction:: rocalution::Vector::Check
 .. doxygenfunction:: rocalution::Vector::Zeros
@@ -2571,8 +2583,8 @@ Vector
 .. doxygenfunction:: rocalution::Vector::ScaleAddScale(ValueType, const GlobalVector<ValueType>&, ValueType)
 .. doxygenfunction:: rocalution::Vector::ScaleAddScale(ValueType, const LocalVector<ValueType>&, ValueType, int, int, int)
 .. doxygenfunction:: rocalution::Vector::ScaleAddScale(ValueType, const GlobalVector<ValueType>&, ValueType, int, int, int)
-.. doxygenfunction:: rocalution::Vector::ScaleAdd2(ValueType, const LocalVector<ValueType>&, ValueType, const LocalVector<ValueType>&, ValueType)
-.. doxygenfunction:: rocalution::Vector::ScaleAdd2(ValueType, const GlobalVector<ValueType>&, ValueType, const GlobalVector<ValueType>&, ValueType)
+.. doxygenfunction:: rocalution::Vector::ScaleAdd2(ValueType, const LocalVector<ValueType>&, ValueType, const LocalVector<ValueType>&, ValueType)   :project: rocALUTION
+.. doxygenfunction:: rocalution::Vector::ScaleAdd2(ValueType, const GlobalVector<ValueType>&, ValueType, const GlobalVector<ValueType>&, ValueType)   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::Scale
 .. doxygenfunction:: rocalution::Vector::Dot(const LocalVector<ValueType>&) const
 .. doxygenfunction:: rocalution::Vector::Dot(const GlobalVector<ValueType>&) const

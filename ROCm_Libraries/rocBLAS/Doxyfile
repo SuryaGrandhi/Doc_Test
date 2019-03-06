@@ -59,11 +59,8 @@ PROJECT_LOGO           = ./rocm.jpg
 # left blank the current directory will be used.
 
 #Commented so that no extra things are generated.
-<<<<<<< HEAD
+
 #OUTPUT_DIRECTORY       = ROCm_Libraries/rocBLAS/
-=======
-#OUTPUT_DIRECTORY       = 
->>>>>>> 8d4a6a4b1a7106ee5a9aecbc35e3e73cd60af4ee
 
 # If the CREATE_SUBDIRS tag is set to YES then doxygen will create 4096 sub-
 # directories (in 2 levels) under the output directory of each output format and
@@ -780,8 +777,8 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = src/include/ \
-                         src/src/ 
+INPUT                  = ROCm_Libraries/rocBLAS/src/include/ \
+                         ROCm_Libraries/rocBLAS/src/src/ 
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
