@@ -2524,499 +2524,920 @@ Backend Manager
 
 Base Rocalution
 ***************
-.. doxygenclass:: rocalution::BaseRocalution   :project: rocALUTION
-.. doxygenfunction:: rocalution::BaseRocalution::MoveToAccelerator   :project: rocALUTION
-.. doxygenfunction:: rocalution::BaseRocalution::MoveToHost   :project: rocALUTION
-.. doxygenfunction:: rocalution::BaseRocalution::MoveToAcceleratorAsync   :project: rocALUTION
-.. doxygenfunction:: rocalution::BaseRocalution::MoveToHostAsync   :project: rocALUTION
-.. doxygenfunction:: rocalution::BaseRocalution::Sync   :project: rocALUTION
-.. doxygenfunction:: rocalution::BaseRocalution::CloneBackend(const BaseRocalution<ValueType>&)   :project: rocALUTION
-.. doxygenfunction:: rocalution::BaseRocalution::Info   :project: rocALUTION
-.. doxygenfunction:: rocalution::BaseRocalution::Clear   :project: rocALUTION
+.. doxygenclass:: rocalution::BaseRocalution
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::BaseRocalution::MoveToAccelerator
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::BaseRocalution::MoveToHost
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::BaseRocalution::MoveToAcceleratorAsync
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::BaseRocalution::MoveToHostAsync
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::BaseRocalution::Sync
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::BaseRocalution::CloneBackend(const BaseRocalution<ValueType>&)
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::BaseRocalution::Info
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::BaseRocalution::Clear
+   :project: rocALUTION
 
 Operator
 ********
-.. doxygenclass:: rocalution::Operator   :project: rocALUTION
-.. doxygenfunction:: rocalution::Operator::GetM   :project: rocALUTION
-.. doxygenfunction:: rocalution::Operator::GetN   :project: rocALUTION
-.. doxygenfunction:: rocalution::Operator::GetNnz   :project: rocALUTION
-.. doxygenfunction:: rocalution::Operator::GetLocalM   :project: rocALUTION
-.. doxygenfunction:: rocalution::Operator::GetLocalN   :project: rocALUTION
-.. doxygenfunction:: rocalution::Operator::GetLocalNnz   :project: rocALUTION
-.. doxygenfunction:: rocalution::Operator::GetGhostM   :project: rocALUTION
-.. doxygenfunction:: rocalution::Operator::GetGhostN   :project: rocALUTION
-.. doxygenfunction:: rocalution::Operator::GetGhostNnz   :project: rocALUTION
-.. doxygenfunction:: rocalution::Operator::Apply(const LocalVector<ValueType>&, LocalVector<ValueType> *) const   :project: rocALUTION
-.. doxygenfunction:: rocalution::Operator::ApplyAdd(const LocalVector<ValueType>&, ValueType, LocalVector<ValueType> *) const   :project: rocALUTION
-.. doxygenfunction:: rocalution::Operator::Apply(const GlobalVector<ValueType>&, GlobalVector<ValueType> *) const   :project: rocALUTION
-.. doxygenfunction:: rocalution::Operator::ApplyAdd(const GlobalVector<ValueType>&, ValueType, GlobalVector<ValueType> *) const   :project: rocALUTION
+.. doxygenclass:: rocalution::Operator
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::GetM
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::GetN
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::GetNnz
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::GetLocalM
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::GetLocalN
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::GetLocalNnz
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::GetGhostM
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::GetGhostN
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::GetGhostNnz
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::Apply(const LocalVector<ValueType>&, LocalVector<ValueType> *) const
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::ApplyAdd(const LocalVector<ValueType>&, ValueType, LocalVector<ValueType> *) const
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::Apply(const GlobalVector<ValueType>&, GlobalVector<ValueType> *) const
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::Operator::ApplyAdd(const GlobalVector<ValueType>&, ValueType, GlobalVector<ValueType> *) const
+   :project: rocALUTION
 
 Vector
 ******
-.. doxygenclass:: rocalution::Vector   :project: rocALUTION
-.. doxygenfunction:: rocalution::Vector::GetSize   :project: rocALUTION
-.. doxygenfunction:: rocalution::Vector::GetLocalSize   :project: rocALUTION
+.. doxygenclass:: rocalution::Vector
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::Vector::GetSize
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::Vector::GetLocalSize
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::GetGhostSize
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::Check
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::Zeros
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::Ones
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::SetValues
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::SetRandomUniform
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::SetRandomNormal
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::ReadFileASCII
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::WriteFileASCII
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::ReadFileBinary
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::WriteFileBinary
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::CopyFrom(const LocalVector<ValueType>&)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::CopyFrom(const GlobalVector<ValueType>&)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::CopyFromAsync
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::CopyFromFloat
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::CopyFromDouble
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::CopyFrom(const LocalVector<ValueType>&, int, int, int)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::CloneFrom(const LocalVector<ValueType>&)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::CloneFrom(const GlobalVector<ValueType>&)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::AddScale(const LocalVector<ValueType>&, ValueType)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::AddScale(const GlobalVector<ValueType>&, ValueType)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::ScaleAdd(ValueType, const LocalVector<ValueType>&)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::ScaleAdd(ValueType, const GlobalVector<ValueType>&)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::ScaleAddScale(ValueType, const LocalVector<ValueType>&, ValueType)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::ScaleAddScale(ValueType, const GlobalVector<ValueType>&, ValueType)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::ScaleAddScale(ValueType, const LocalVector<ValueType>&, ValueType, int, int, int)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::ScaleAddScale(ValueType, const GlobalVector<ValueType>&, ValueType, int, int, int)
-.. doxygenfunction:: rocalution::Vector::ScaleAdd2(ValueType, const LocalVector<ValueType>&, ValueType, const LocalVector<ValueType>&, ValueType)   :project: rocALUTION
-.. doxygenfunction:: rocalution::Vector::ScaleAdd2(ValueType, const GlobalVector<ValueType>&, ValueType, const GlobalVector<ValueType>&, ValueType)   :project: rocALUTION
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::Vector::ScaleAdd2(ValueType, const LocalVector<ValueType>&, ValueType, const LocalVector<ValueType>&, ValueType)
+   :project: rocALUTION
+.. doxygenfunction:: rocalution::Vector::ScaleAdd2(ValueType, const GlobalVector<ValueType>&, ValueType, const GlobalVector<ValueType>&, ValueType)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::Scale
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::Dot(const LocalVector<ValueType>&) const
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::Dot(const GlobalVector<ValueType>&) const
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::DotNonConj(const LocalVector<ValueType>&) const
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::DotNonConj(const GlobalVector<ValueType>&) const
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::Norm
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::Reduce
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::Asum
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::Amax
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::PointWiseMult(const LocalVector<ValueType>&)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::PointWiseMult(const GlobalVector<ValueType>&)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::PointWiseMult(const LocalVector<ValueType>&, const LocalVector<ValueType>&)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::PointWiseMult(const GlobalVector<ValueType>&, const GlobalVector<ValueType>&)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Vector::Power
+   :project: rocALUTION
 
 Local Matrix
 ************
 .. doxygenclass:: rocalution::LocalMatrix
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::GetFormat
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::Check
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::AllocateCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::AllocateBCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::AllocateMCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::AllocateCOO
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::AllocateDIA
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::AllocateELL
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::AllocateHYB
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::AllocateDENSE
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::SetDataPtrCOO
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::SetDataPtrCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::SetDataPtrMCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::SetDataPtrELL
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::SetDataPtrDIA
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::SetDataPtrDENSE
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::LeaveDataPtrCOO
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::LeaveDataPtrCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::LeaveDataPtrMCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::LeaveDataPtrELL
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::LeaveDataPtrDIA
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::LeaveDataPtrDENSE
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::Zeros
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::Scale
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ScaleDiagonal
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ScaleOffDiagonal
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::AddScalar
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::AddScalarDiagonal
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::AddScalarOffDiagonal
 .. doxygenfunction:: rocalution::LocalMatrix::ExtractSubMatrix
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ExtractSubMatrices
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ExtractDiagonal
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ExtractInverseDiagonal
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ExtractU
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ExtractL
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::Permute
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::PermuteBackward
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::CMK
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::RCMK
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ConnectivityOrder
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::MultiColoring
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::MaximalIndependentSet
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ZeroBlockPermutation
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ILU0Factorize
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::LUFactorize
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ILUTFactorize
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ILUpFactorize
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::LUAnalyse
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::LUAnalyseClear
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::LUSolve
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ICFactorize
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::LLAnalyse
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::LLAnalyseClear
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::LLSolve(const LocalVector<ValueType>&, LocalVector<ValueType> *) const
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::LLSolve(const LocalVector<ValueType>&, const LocalVector<ValueType>&, LocalVector<ValueType> *) const
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::LAnalyse
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::LAnalyseClear
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::LSolve
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::UAnalyse
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::UAnalyseClear
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::USolve
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::Householder
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::QRDecompose
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::QRSolve
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::Invert
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ReadFileMTX
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::WriteFileMTX
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ReadFileCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::WriteFileCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::CopyFrom
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::CopyFromAsync
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::CloneFrom
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::UpdateValuesCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::CopyFromCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::CopyToCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::CopyFromCOO
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::CopyToCOO
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::CopyFromHostCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::CreateFromMap(const LocalVector<int>&, int, int)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::CreateFromMap(const LocalVector<int>&, int, int, LocalMatrix<ValueType> *)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ConvertToCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ConvertToMCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ConvertToBCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ConvertToCOO
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ConvertToELL
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ConvertToDIA
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ConvertToHYB
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ConvertToDENSE
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ConvertTo
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::SymbolicPower
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::MatrixAdd
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::MatrixMult
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::DiagonalMatrixMult
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::DiagonalMatrixMultL
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::DiagonalMatrixMultR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::Gershgorin
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::Compress
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::Transpose
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::Sort
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::Key
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ReplaceColumnVector
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ReplaceRowVector
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ExtractColumnVector
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ExtractRowVector
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::AMGConnect
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::AMGAggregate
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::AMGSmoothedAggregation
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::AMGAggregation
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::RugeStueben
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::FSAI
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::SPAI
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::InitialPairwiseAggregation(ValueType, int&, LocalVector<int> *, int&, int **, int&, int) const
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::InitialPairwiseAggregation(const LocalMatrix<ValueType>&, ValueType, int&, LocalVector<int> *, int&, int **, int&, int) const
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::FurtherPairwiseAggregation(ValueType, int&, LocalVector<int> *, int&, int **, int&, int) const
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::FurtherPairwiseAggregation(const LocalMatrix<ValueType>&, ValueType, int&, LocalVector<int> *, int&, int **, int&, int) const
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::CoarsenOperator
+   :project: rocALUTION
 
 Local Stencil
 *************
 .. doxygenclass:: rocalution::LocalStencil
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalStencil::LocalStencil(unsigned int)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalStencil::GetNDim
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalStencil::SetGrid
+   :project: rocALUTION
 
 Global Matrix
 *************
 .. doxygenclass:: rocalution::GlobalMatrix
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::GlobalMatrix(const ParallelManager&)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::Check
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::AllocateCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::AllocateCOO
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::SetParallelManager
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::SetDataPtrCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::SetDataPtrCOO
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::SetLocalDataPtrCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::SetLocalDataPtrCOO
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::SetGhostDataPtrCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::SetGhostDataPtrCOO
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::LeaveDataPtrCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::LeaveDataPtrCOO
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::LeaveLocalDataPtrCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::LeaveLocalDataPtrCOO
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::LeaveGhostDataPtrCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::LeaveGhostDataPtrCOO
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::CloneFrom
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::CopyFrom
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::ConvertToCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::ConvertToMCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::ConvertToBCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::ConvertToCOO
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::ConvertToELL
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::ConvertToDIA
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::ConvertToHYB
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::ConvertToDENSE
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::ConvertTo
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::ReadFileMTX
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::WriteFileMTX
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::ReadFileCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::WriteFileCSR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::Sort
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::ExtractInverseDiagonal
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::Scale
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::InitialPairwiseAggregation
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::FurtherPairwiseAggregation
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalMatrix::CoarsenOperator
+   :project: rocALUTION
 
 Local Vector
 ************
 .. doxygenclass:: rocalution::LocalVector
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalVector::Allocate
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalVector::SetDataPtr
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalVector::LeaveDataPtr
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalVector::operator[](int)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalVector::operator[](int) const
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalVector::CopyFromPermute
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalVector::CopyFromPermuteBackward
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalVector::CopyFromData
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalVector::CopyToData
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalVector::Permute
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalVector::PermuteBackward
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalVector::Restriction
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalVector::Prolongation
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalVector::SetIndexArray
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalVector::GetIndexValues
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalVector::SetIndexValues
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalVector::GetContinuousValues
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalVector::SetContinuousValues
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalVector::ExtractCoarseMapping
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalVector::ExtractCoarseBoundary
+   :project: rocALUTION
 
 Global Vector
 *************
 .. doxygenclass:: rocalution::GlobalVector
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalVector::GlobalVector(const ParallelManager&)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalVector::Allocate
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalVector::SetParallelManager
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalVector::operator[](int)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalVector::operator[](int) const
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalVector::SetDataPtr
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalVector::LeaveDataPtr
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalVector::Restriction
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalVector::Prolongation
+   :project: rocALUTION
 
 Parallel Manager
 ****************
 .. doxygenclass:: rocalution::ParallelManager
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::ParallelManager::SetMPICommunicator
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::ParallelManager::Clear
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::ParallelManager::GetGlobalSize
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::ParallelManager::GetLocalSize
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::ParallelManager::GetNumReceivers
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::ParallelManager::GetNumSenders
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::ParallelManager::GetNumProcs
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::ParallelManager::SetGlobalSize
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::ParallelManager::SetLocalSize
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::ParallelManager::SetBoundaryIndex
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::ParallelManager::SetReceivers
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::ParallelManager::SetSenders
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::ParallelManager::LocalToGlobal
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::ParallelManager::GlobalToLocal
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::ParallelManager::Status
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::ParallelManager::ReadFileASCII
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::ParallelManager::WriteFileASCII
+   :project: rocALUTION
 
 Solvers
 *******
 .. doxygenclass:: rocalution::Solver
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Solver::SetOperator
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Solver::ResetOperator
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Solver::Print
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Solver::Solve
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Solver::SolveZeroSol
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Solver::Clear
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Solver::Build
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Solver::BuildMoveToAcceleratorAsync
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Solver::Sync
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Solver::ReBuildNumeric
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Solver::MoveToHost
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Solver::MoveToAccelerator
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Solver::Verbose
+   :project: rocALUTION
 
 Iterative Linear Solvers
 ````````````````````````
 .. doxygenclass:: rocalution::IterativeLinearSolver
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::IterativeLinearSolver::Init(double, double, double, int)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::IterativeLinearSolver::Init(double, double, double, int, int)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::IterativeLinearSolver::InitMinIter
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::IterativeLinearSolver::InitMaxIter
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::IterativeLinearSolver::InitTol
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::IterativeLinearSolver::SetResidualNorm
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::IterativeLinearSolver::RecordResidualHistory
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::IterativeLinearSolver::RecordHistory
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::IterativeLinearSolver::Verbose
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::IterativeLinearSolver::Solve
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::IterativeLinearSolver::SetPreconditioner
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::IterativeLinearSolver::GetIterationCount
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::IterativeLinearSolver::GetCurrentResidual
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::IterativeLinearSolver::GetSolverStatus
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::IterativeLinearSolver::GetAmaxResidualIndex
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::FixedPoint
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::FixedPoint::SetRelaxation
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::MixedPrecisionDC
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::MixedPrecisionDC::Set
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::Chebyshev
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::Chebyshev::Set
+   :project: rocALUTION
 
 Krylov Subspace Solvers
 -----------------------
 .. doxygenclass:: rocalution::BiCGStab
+   :project: rocALUTION
 .. doxygenclass:: rocalution::BiCGStabl
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BiCGStabl::SetOrder
+   :project: rocALUTION
 .. doxygenclass:: rocalution::CG
+   :project: rocALUTION
 .. doxygenclass:: rocalution::CR
+   :project: rocALUTION
 .. doxygenclass:: rocalution::FCG
+   :project: rocALUTION
 .. doxygenclass:: rocalution::GMRES
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GMRES::SetBasisSize
+   :project: rocALUTION
 .. doxygenclass:: rocalution::FGMRES
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::FGMRES::SetBasisSize
+   :project: rocALUTION
 .. doxygenclass:: rocalution::IDR
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::IDR::SetShadowSpace
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::IDR::SetRandomSeed
+   :project: rocALUTION
 .. doxygenclass:: rocalution::QMRCGStab
+   :project: rocALUTION
 
 MultiGrid Solvers
 -----------------
 .. doxygenclass:: rocalution::BaseMultiGrid
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BaseMultiGrid::SetSolver
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BaseMultiGrid::SetSmoother
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BaseMultiGrid::SetSmootherPreIter
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BaseMultiGrid::SetSmootherPostIter
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BaseMultiGrid::SetRestrictOperator
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BaseMultiGrid::SetProlongOperator
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BaseMultiGrid::SetOperatorHierarchy
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BaseMultiGrid::SetScaling
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BaseMultiGrid::SetHostLevels
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BaseMultiGrid::SetCycle
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BaseMultiGrid::SetKcycleFull
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BaseMultiGrid::InitLevels
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::MultiGrid
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::BaseAMG
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BaseAMG::ClearLocal
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BaseAMG::BuildHierarchy
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BaseAMG::BuildSmoothers
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BaseAMG::SetCoarsestLevel
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BaseAMG::SetManualSmoothers
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BaseAMG::SetManualSolver
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BaseAMG::SetDefaultSmootherFormat
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BaseAMG::SetOperatorFormat
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BaseAMG::GetNumLevels
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::UAAMG
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::UAAMG::SetCouplingStrength
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::UAAMG::SetOverInterp
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::SAAMG
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::SAAMG::SetCouplingStrength
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::SAAMG::SetInterpRelax
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::RugeStuebenAMG
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::RugeStuebenAMG::SetCouplingStrength
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::PairwiseAMG
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::PairwiseAMG::SetBeta
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::PairwiseAMG::SetOrdering
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::PairwiseAMG::SetCoarseningFactor
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::GlobalPairwiseAMG
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalPairwiseAMG::SetBeta
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalPairwiseAMG::SetOrdering
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::GlobalPairwiseAMG::SetCoarseningFactor
+   :project: rocALUTION
 
 Direct Solvers
 ``````````````
 .. doxygenclass:: rocalution::DirectLinearSolver
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::Inversion
+   :project: rocALUTION
 .. doxygenclass:: rocalution::LU
+   :project: rocALUTION
 .. doxygenclass:: rocalution::QR
+   :project: rocALUTION
 
 Preconditioners
 ***************
 .. doxygenclass:: rocalution::Preconditioner
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::AIChebyshev
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::AIChebyshev::Set
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::FSAI
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::FSAI::Set(int)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::FSAI::Set(const OperatorType&)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::FSAI::SetPrecondMatrixFormat
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::SPAI
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::SPAI::SetPrecondMatrixFormat
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::TNS
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::TNS::Set
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::TNS::SetPrecondMatrixFormat
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::AS
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::AS::Set
+   :project: rocALUTION
 .. doxygenclass:: rocalution::RAS
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::BlockJacobi
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BlockJacobi::Set
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::BlockPreconditioner
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BlockPreconditioner::Set
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BlockPreconditioner::SetDiagonalSolver
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BlockPreconditioner::SetLSolver
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BlockPreconditioner::SetExternalLastMatrix
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::BlockPreconditioner::SetPermutation
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::Jacobi
+   :project: rocALUTION
 .. doxygenclass:: rocalution::GS
+   :project: rocALUTION
 .. doxygenclass:: rocalution::SGS
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::ILU
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::ILU::Set
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::ILUT
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::ILUT::Set(double)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::ILUT::Set(double, int)
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::IC
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::VariablePreconditioner
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::VariablePreconditioner::SetPreconditioner
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::MultiColored
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::MultiColored::SetPrecondMatrixFormat
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::MultiColored::SetDecomposition
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::MultiColoredSGS
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::MultiColoredSGS::SetRelaxation
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::MultiColoredGS
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::MultiColoredILU
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::MultiColoredILU::Set(int)
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::MultiColoredILU::Set(int, int, bool)
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::MultiElimination
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::MultiElimination::GetSizeDiagBlock
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::MultiElimination::GetLevel
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::MultiElimination::Set
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::MultiElimination::SetPrecondMatrixFormat
+   :project: rocALUTION
 
 .. doxygenclass:: rocalution::DiagJacobiSaddlePointPrecond
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::DiagJacobiSaddlePointPrecond::Set
+   :project: rocALUTION
 
 
 
