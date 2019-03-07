@@ -2730,6 +2730,7 @@ Local Matrix
 .. doxygenfunction:: rocalution::LocalMatrix::AddScalarDiagonal
    :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::AddScalarOffDiagonal
+   :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ExtractSubMatrix
    :project: rocALUTION
 .. doxygenfunction:: rocalution::LocalMatrix::ExtractSubMatrices

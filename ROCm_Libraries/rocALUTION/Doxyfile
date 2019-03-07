@@ -780,9 +780,16 @@ WARN_LOGFILE           =
 
 INPUT                  = ROCm_Libraries/rocALUTION/src/base/ \
 			 ROCm_Libraries/rocALUTION/src/solvers/ \
-			 ROCm_Libraries/rocALUTION/src/allocate_free.hpp \
+			 ROCm_Libraries/rocALUTION/src/solvers/direct/ \
+			 ROCm_Libraries/rocALUTION/src/solvers/krylov/ \
+			 ROCm_Libraries/rocALUTION/src/solvers/multigrid/ \
+			 ROCm_Libraries/rocALUTION/src/solvers/preconditioners/ \
+			 ROCm_Libraries/rocALUTION/src/utils/ \
+			 ROCm_Libraries/rocALUTION/src/clients/include/ \
+			 ROCm_Libraries/rocALUTION/src/clients/samples/ \
+			 ROCm_Libraries/rocALUTION/src/clients/tests/ \
 			 ROCm_Libraries/rocALUTION/src/modules.dox \
-			 ROCm_Libraries/rocALUTION/src/time_functions.hpp
+			 ROCm_Libraries/rocALUTION/src/rocalution.hpp
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
