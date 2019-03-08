@@ -2,7 +2,7 @@
 
 doxygen Doxyfile
 
-doxygen ROCm_API_Refereneces/ROCr/Doxyfile
+doxygen ROCm_API_References/ROCr/Doxyfile
 
 doxygen ROCm_Libraries/rocBLAS/Doxyfile
 
