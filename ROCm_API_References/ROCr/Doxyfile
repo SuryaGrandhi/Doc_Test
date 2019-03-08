@@ -775,7 +775,10 @@ WARN_LOGFILE           =
 #INPUT                  = ../../include/hip/hcc_detail/hip_runtime_api.h
 
 INPUT                  = ROCm_API_References/ROCr/src/ \
-			 ROCm_API_References/ROCr/src/core/ \
+			 ROCm_API_References/ROCr/src/core/common \
+			 ROCm_API_References/ROCr/src/core/inc \
+			 ROCm_API_References/ROCr/src/core/runtime \
+			 ROCm_API_References/ROCr/src/core/util \
 			 ROCm_API_References/ROCr/src/inc/ \
 			 ROCm_API_References/ROCr/src/libamdhsacode/ \
 			 ROCm_API_References/ROCr/src/loader/ \
@@ -808,8 +811,8 @@ FILE_PATTERNS          = *.h *.cpp
 # The default value is: NO.
 
 #YES -> NO for rocblas_handle to come along with Enums 
-#YES for avoiding including subfolders into input tag in ROCr
-RECURSIVE              = YES
+#NO for avoiding multiple instances of the functions in subfolders in input.
+RECURSIVE              = NO
 
 # The EXCLUDE tag can be used to specify files and/or directories that should be
 # excluded from the INPUT source files. This way you can easily exclude a
