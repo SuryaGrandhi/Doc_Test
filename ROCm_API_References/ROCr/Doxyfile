@@ -808,7 +808,8 @@ FILE_PATTERNS          = *.h *.cpp
 # The default value is: NO.
 
 #YES -> NO for rocblas_handle to come along with Enums 
-RECURSIVE              = NO
+#YES for avoiding including subfolders into input tag in ROCr
+RECURSIVE              = YES
 
 # The EXCLUDE tag can be used to specify files and/or directories that should be
 # excluded from the INPUT source files. This way you can easily exclude a
