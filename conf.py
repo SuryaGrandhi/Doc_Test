@@ -47,11 +47,11 @@ extensions = [
 ]
 
 # Breathe extension variables
-#breathe_projects = { "ReadTheDocs-Breathe": "xml/",
-breathe_projects = { "rocBLAS": "rocBLASxml/",
+breathe_projects = { "ReadTheDocs-Breathe": "xml/",
+		     "rocBLAS": "rocBLASxml/",
 		     "rocALUTION": "rocALUTIONxml/",
 		     }
-breathe_default_project = "rocBLAS"
+breathe_default_project = "ReadTheDocs-Breathe"
 
 #Added from mj
 # Configuration for mathjax extension
