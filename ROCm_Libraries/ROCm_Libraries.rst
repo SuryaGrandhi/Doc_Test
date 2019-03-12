@@ -277,6 +277,14 @@ rocblas_gemm_algo
 .. doxygenenum:: rocblas_gemm_algo
    :project: rocBLAS
 
+rocblas_<type>scal()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_dscal
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_sscal
+   :project: rocBLAS
+
 Functions
 *********
 
