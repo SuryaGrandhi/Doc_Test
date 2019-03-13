@@ -286,78 +286,78 @@ Level 1 BLAS
 
 rocblas_<type>scal()
 ^^^^^^^^^^^^^^^^^^^^^^^
-.. doxygenfunction:: rocblas::rocblas_dscal
+.. doxygenfunction:: rocblas_dscal
    :project: rocBLAS
 
-.. doxygenfunction:: rocblas::rocblas_sscal
+.. doxygenfunction:: rocblas_sscal
    :project: rocBLAS
 rocblas_<type>copy()
 ^^^^^^^^^^^^^^^^^^^^^^^
-.. doxygenfunction:: rocblas::rocblas_dcopy
+.. doxygenfunction:: rocblas_dcopy
    :project: rocBLAS
 
-.. doxygenfunction:: rocblas::rocblas_scopy
+.. doxygenfunction:: rocblas_scopy
    :project: rocBLAS
 
 rocblas_<type>dot()
 ^^^^^^^^^^^^^^^^^^^^^^^
-.. doxygenfunction:: rocblas::rocblas_ddot
+.. doxygenfunction:: rocblas_ddot
    :project: rocBLAS
 
-.. doxygenfunction:: rocblas::rocblas_sdot
+.. doxygenfunction:: rocblas_sdot
    :project: rocBLAS
 
 rocblas_<type>swap()
 ^^^^^^^^^^^^^^^^^^^^^^^
-.. doxygenfunction:: rocblas::rocblas_sswap
+.. doxygenfunction:: rocblas_sswap
    :project: rocBLAS
 
-.. doxygenfunction:: rocblas::rocblas_dswap
+.. doxygenfunction:: rocblas_dswap
    :project: rocBLAS
 
 rocblas_<type>axpy()
 ^^^^^^^^^^^^^^^^^^^^^^^
-.. doxygenfunction:: rocblas::rocblas_daxpy
+.. doxygenfunction:: rocblas_daxpy
    :project: rocBLAS
 
-.. doxygenfunction:: rocblas::rocblas_saxpy
+.. doxygenfunction:: rocblas_saxpy
    :project: rocBLAS
 
-.. doxygenfunction:: rocblas::rocblas_haxpy
+.. doxygenfunction:: rocblas_haxpy
    :project: rocBLAS
 
 rocblas_<type>asum()
 ^^^^^^^^^^^^^^^^^^^^^^^
-.. doxygenfunction:: rocblas::rocblas_dasum
+.. doxygenfunction:: rocblas_dasum
    :project: rocBLAS
 
-.. doxygenfunction:: rocblas::rocblas_sasum
+.. doxygenfunction:: rocblas_sasum
    :project: rocBLAS
 
 
 rocblas_<type>nrm2()
 ^^^^^^^^^^^^^^^^^^^^^^^
-.. doxygenfunction:: rocblas::rocblas_dnrm2
+.. doxygenfunction:: rocblas_dnrm2
    :project: rocBLAS
 
-.. doxygenfunction:: rocblas::rocblas_snrm2
+.. doxygenfunction:: rocblas_snrm2
    :project: rocBLAS
 
 
 rocblas_i<type>amax()
 ^^^^^^^^^^^^^^^^^^^^^^^
-.. doxygenfunction:: rocblas::rocblas_idamax
+.. doxygenfunction:: rocblas_idamax
    :project: rocBLAS
 
-.. doxygenfunction:: rocblas::rocblas_isamax
+.. doxygenfunction:: rocblas_isamax
    :project: rocBLAS
 
 rocblas_i<type>amin()
 ^^^^^^^^^^^^^^^^^^^^^^^
-.. doxygenfunction:: rocblas::rocblas_idamin
+.. doxygenfunction:: rocblas_idamin
    :project: rocBLAS
 
-.. doxygenfunction:: rocblas::rocblas_isamin
+.. doxygenfunction:: rocblas_isamin
    :project: rocBLAS
 
 Level 2 BLAS
