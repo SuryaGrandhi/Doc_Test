@@ -11,3 +11,5 @@ doxygen ROCm_Libraries/rocBLAS/Doxyfile
 rm *.h
 
 doxygen ROCm_Libraries/rocALUTION/Doxyfile
+
+doxygen ROCm_Libraries/rocSPARSE/Doxyfile

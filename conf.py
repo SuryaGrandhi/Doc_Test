@@ -49,6 +49,7 @@ extensions = [
 # Breathe extension variables
 breathe_projects = { "ReadTheDocs-Breathe": "xml/",
 		     "rocBLAS": "rocBLASxml/",
+		     "rocSPARSE": "rocSPARSExml/",
 		     "rocALUTION": "rocALUTIONxml/",
 		     }
 breathe_default_project = "ReadTheDocs-Breathe"

@@ -3684,8 +3684,724 @@ Common build problems
 
    **Solution:** Install `ROCm cmake modules <https://github.com/RadeonOpenCompute/rocm-cmake>`_
 
-Regarding more information about rocSPARSE and it's functions, corresponding API's, Please refer 
-`rocsparse <https://rocsparse.readthedocs.io/en/latest/library.html>`_
+Storage Formats
+#####################
+
+COO storage format
+*******************
+The Coordinate (COO) storage format represents a :math:`m \times n` matrix by
+
+=========== ==================================================================
+m           number of rows (integer).
+n           number of columns (integer).
+nnz         number of non-zero elements (integer).
+coo_val     array of ``nnz`` elements containing the data (floating point).
+coo_row_ind array of ``nnz`` elements containing the row indices (integer).
+coo_col_ind array of ``nnz`` elements containing the column indices (integer).
+=========== ==================================================================
+
+The COO matrix is expected to be sorted by row indices and column indices per row. Furthermore, each pair of indices should appear only once.
+Consider the following :math:`3 \times 5` matrix and the corresponding COO structures, with :math:`m = 3, n = 5` and :math:`\text{nnz} = 8` using zero based indexing:
+
+.. math::
+
+  A = \begin{pmatrix}
+        1.0 & 2.0 & 0.0 & 3.0 & 0.0 \\
+        0.0 & 4.0 & 5.0 & 0.0 & 0.0 \\
+        6.0 & 0.0 & 0.0 & 7.0 & 8.0 \\
+      \end{pmatrix}
+
+where
+
+.. math::
+
+  \begin{array}{ll}
+    \text{coo_val}[8] & = \{1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0\} \\
+    \text{coo_row_ind}[8] & = \{0, 0, 0, 1, 1, 2, 2, 2\} \\
+    \text{coo_col_ind}[8] & = \{0, 1, 3, 1, 2, 0, 3, 4\}
+  \end{array}
+
+CSR storage format
+*******************
+The Compressed Sparse Row (CSR) storage format represents a :math:`m \times n` matrix by
+
+=========== =========================================================================
+m           number of rows (integer).
+n           number of columns (integer).
+nnz         number of non-zero elements (integer).
+csr_val     array of ``nnz`` elements containing the data (floating point).
+csr_row_ptr array of ``m+1`` elements that point to the start of every row (integer).
+csr_col_ind array of ``nnz`` elements containing the column indices (integer).
+=========== =========================================================================
+
+The CSR matrix is expected to be sorted by column indices within each row. Furthermore, each pair of indices should appear only once.
+Consider the following :math:`3 \times 5` matrix and the corresponding CSR structures, with :math:`m = 3, n = 5` and :math:`\text{nnz} = 8` using one based indexing:
+
+.. math::
+
+  A = \begin{pmatrix}
+        1.0 & 2.0 & 0.0 & 3.0 & 0.0 \\
+        0.0 & 4.0 & 5.0 & 0.0 & 0.0 \\
+        6.0 & 0.0 & 0.0 & 7.0 & 8.0 \\
+      \end{pmatrix}
+
+where
+
+.. math::
+
+  \begin{array}{ll}
+    \text{csr_val}[8] & = \{1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0\} \\
+    \text{csr_row_ptr}[4] & = \{1, 4, 6, 9\} \\
+    \text{csr_col_ind}[8] & = \{1, 2, 4, 2, 3, 1, 4, 5\}
+  \end{array}
+
+ELL storage format
+*******************
+The Ellpack-Itpack (ELL) storage format represents a :math:`m \times n` matrix by
+
+=========== ================================================================================
+m           number of rows (integer).
+n           number of columns (integer).
+ell_width   maximum number of non-zero elements per row (integer)
+ell_val     array of ``m times ell_width`` elements containing the data (floating point).
+ell_col_ind array of ``m times ell_width`` elements containing the column indices (integer).
+=========== ================================================================================
+
+The ELL matrix is assumed to be stored in column-major format. Rows with less than ``ell_width`` non-zero elements are padded with zeros (``ell_val``) and :math:`-1` (``ell_col_ind``).
+Consider the following :math:`3 \times 5` matrix and the corresponding ELL structures, with :math:`m = 3, n = 5` and :math:`\text{ell_width} = 3` using zero based indexing:
+
+.. math::
+
+  A = \begin{pmatrix}
+        1.0 & 2.0 & 0.0 & 3.0 & 0.0 \\
+        0.0 & 4.0 & 5.0 & 0.0 & 0.0 \\
+        6.0 & 0.0 & 0.0 & 7.0 & 8.0 \\
+      \end{pmatrix}
+
+where
+
+.. math::
+
+  \begin{array}{ll}
+    \text{ell_val}[9] & = \{1.0, 4.0, 6.0, 2.0, 5.0, 7.0, 3.0, 0.0, 8.0\} \\
+    \text{ell_col_ind}[9] & = \{0, 1, 0, 1, 2, 3, 3, -1, 4\}
+  \end{array}
+
+.. _HYB storage format:
+
+HYB storage format
+*******************
+The Hybrid (HYB) storage format represents a :math:`m \times n` matrix by
+
+=========== =========================================================================================
+m           number of rows (integer).
+n           number of columns (integer).
+nnz         number of non-zero elements of the COO part (integer)
+ell_width   maximum number of non-zero elements per row of the ELL part (integer)
+ell_val     array of ``m times ell_width`` elements containing the ELL part data (floating point).
+ell_col_ind array of ``m times ell_width`` elements containing the ELL part column indices (integer).
+coo_val     array of ``nnz`` elements containing the COO part data (floating point).
+coo_row_ind array of ``nnz`` elements containing the COO part row indices (integer).
+coo_col_ind array of ``nnz`` elements containing the COO part column indices (integer).
+=========== =========================================================================================
+
+The HYB format is a combination of the ELL and COO sparse matrix formats. Typically, the regular part of the matrix is stored in ELL storage format, and the irregular part of the matrix is stored in COO storage format. Three different partitioning schemes can be applied when converting a CSR matrix to a matrix in HYB storage format. For further details on the partitioning schemes, see :ref:`rocsparse_hyb_partition_`.
+
+Types
+##########
+
+rocsparse_handle
+*****************
+
+.. doxygentypedef:: rocsparse_handle
+   :project: rocSPARSE
+
+rocsparse_mat_descr
+********************
+
+.. doxygentypedef:: rocsparse_mat_descr
+   :project: rocSPARSE
 
 
+.. _rocsparse_mat_info_:
 
+rocsparse_mat_info
+*******************
+
+.. doxygentypedef:: rocsparse_mat_info
+   :project: rocSPARSE
+
+
+rocsparse_hyb_mat
+******************
+
+.. doxygentypedef:: rocsparse_hyb_mat
+   :project: rocSPARSE
+
+For more details on the HYB format, see :ref:`HYB storage format`.
+
+rocsparse_action
+*****************
+
+.. doxygenenum:: rocsparse_action
+   :project: rocSPARSE
+
+.. _rocsparse_hyb_partition_:
+
+rocsparse_hyb_partition
+************************
+
+.. doxygenenum:: rocsparse_hyb_partition
+   :project: rocSPARSE
+
+rocsparse_index_base
+*********************
+
+.. doxygenenum:: rocsparse_index_base
+   :project: rocSPARSE
+
+.. _rocsparse_layer_mode_:
+
+rocsparse_matrix_type
+**********************
+
+.. doxygenenum:: rocsparse_matrix_type
+   :project: rocSPARSE
+
+rocsparse_fill_mode
+*******************
+
+.. doxygenenum:: rocsparse_fill_mode
+   :project: rocSPARSE
+
+rocsparse_diag_type
+*******************
+
+.. doxygenenum:: rocsparse_diag_type
+   :project: rocSPARSE
+
+rocsparse_operation
+********************
+
+.. doxygenenum:: rocsparse_operation
+   :project: rocSPARSE
+
+rocsparse_pointer_mode
+***********************
+
+.. doxygenenum:: rocsparse_pointer_mode
+   :project: rocSPARSE
+
+rocsparse_analysis_policy
+*************************
+
+.. doxygenenum:: rocsparse_analysis_policy
+   :project: rocSPARSE
+
+rocsparse_solve_policy
+**********************
+
+.. doxygenenum:: rocsparse_solve_policy
+   :project: rocSPARSE
+
+rocsparse_layer_mode
+*********************
+
+.. doxygenenum:: rocsparse_layer_mode
+   :project: rocSPARSE
+
+For more details on logging, see :ref:`rocsparse_logging`.
+
+rocsparse_status
+*****************
+
+.. doxygenenum:: rocsparse_status
+   :project: rocSPARSE
+
+.. _rocsparse_logging:
+
+Logging
+##############
+Three different environment variables can be set to enable logging in rocSPARSE: ``ROCSPARSE_LAYER``, ``ROCSPARSE_LOG_TRACE_PATH`` and ``ROCSPARSE_LOG_BENCH_PATH``.
+
+``ROCSPARSE_LAYER`` is a bit mask, where several logging modes (:ref:`rocsparse_layer_mode_`) can be combined as follows:
+
+================================  ===========================================
+``ROCSPARSE_LAYER`` unset         logging is disabled.
+``ROCSPARSE_LAYER`` set to ``1``  trace logging is enabled.
+``ROCSPARSE_LAYER`` set to ``2``  bench logging is enabled.
+``ROCSPARSE_LAYER`` set to ``3``  trace logging and bench logging is enabled.
+================================  ===========================================
+
+When logging is enabled, each rocSPARSE function call will write the function name as well as function arguments to the logging stream. The default logging stream is ``stderr``.
+
+If the user sets the environment variable ``ROCSPARSE_LOG_TRACE_PATH`` to the full path name for a file, the file is opened and trace logging is streamed to that file. If the user sets the environment variable ``ROCSPARSE_LOG_BENCH_PATH`` to the full path name for a file, the file is opened and bench logging is streamed to that file. If the file cannot be opened, logging output is stream to ``stderr``.
+
+Note that performance will degrade when logging is enabled. By default, the environment variable ``ROCSPARSE_LAYER`` is unset and logging is disabled.
+
+.. _rocsparse_auxiliary_functions_:
+
+Sparse Auxiliary Functions
+###########################
+
+This module holds all sparse auxiliary functions.
+
+The functions that are contained in the auxiliary module describe all available helper functions that are required for subsequent library calls.
+
+.. _rocsparse_create_handle_:
+
+rocsparse_create_handle()
+**************************
+
+.. doxygenfunction:: rocsparse_create_handle
+   :project: rocSPARSE
+
+.. _rocsparse_destroy_handle_:
+
+rocsparse_destroy_handle()
+***************************
+
+.. doxygenfunction:: rocsparse_destroy_handle
+   :project: rocSPARSE
+
+.. _rocsparse_set_stream_:
+
+rocsparse_set_stream()
+***********************
+
+.. doxygenfunction:: rocsparse_set_stream
+   :project: rocSPARSE
+
+rocsparse_get_stream()
+***********************
+
+.. doxygenfunction:: rocsparse_get_stream
+   :project: rocSPARSE
+
+rocsparse_set_pointer_mode()
+*****************************
+
+.. doxygenfunction:: rocsparse_set_pointer_mode
+   :project: rocSPARSE
+
+rocsparse_get_pointer_mode()
+*****************************
+
+.. doxygenfunction:: rocsparse_get_pointer_mode
+   :project: rocSPARSE
+
+rocsparse_get_version()
+************************
+
+.. doxygenfunction:: rocsparse_get_version
+   :project: rocSPARSE
+
+rocsparse_get_git_rev()
+************************
+
+.. doxygenfunction:: rocsparse_get_git_rev
+   :project: rocSPARSE
+
+rocsparse_create_mat_descr()
+*****************************
+
+.. doxygenfunction:: rocsparse_create_mat_descr
+   :project: rocSPARSE
+
+rocsparse_destroy_mat_descr()
+******************************
+
+.. doxygenfunction:: rocsparse_destroy_mat_descr
+   :project: rocSPARSE
+
+rocsparse_copy_mat_descr()
+**************************
+
+.. doxygenfunction:: rocsparse_copy_mat_descr
+   :project: rocSPARSE
+
+rocsparse_set_mat_index_base()
+*******************************
+
+.. doxygenfunction:: rocsparse_set_mat_index_base
+   :project: rocSPARSE
+
+rocsparse_get_mat_index_base()
+*******************************
+
+.. doxygenfunction:: rocsparse_get_mat_index_base
+   :project: rocSPARSE
+
+rocsparse_set_mat_type()
+*************************
+
+.. doxygenfunction:: rocsparse_set_mat_type
+   :project: rocSPARSE
+
+rocsparse_get_mat_type()
+*************************
+
+.. doxygenfunction:: rocsparse_get_mat_type
+   :project: rocSPARSE
+
+rocsparse_set_mat_fill_mode()
+*****************************
+
+.. doxygenfunction:: rocsparse_set_mat_fill_mode
+   :project: rocSPARSE
+
+rocsparse_get_mat_fill_mode()
+*****************************
+
+.. doxygenfunction:: rocsparse_get_mat_fill_mode
+   :project: rocSPARSE
+
+rocsparse_set_mat_diag_type()
+*****************************
+
+.. doxygenfunction:: rocsparse_set_mat_diag_type
+   :project: rocSPARSE
+
+rocsparse_get_mat_diag_type()
+*****************************
+
+.. doxygenfunction:: rocsparse_get_mat_diag_type
+   :project: rocSPARSE
+
+.. _rocsparse_create_hyb_mat_:
+
+rocsparse_create_hyb_mat()
+***************************
+
+.. doxygenfunction:: rocsparse_create_hyb_mat
+   :project: rocSPARSE
+
+rocsparse_destroy_hyb_mat()
+****************************
+
+.. doxygenfunction:: rocsparse_destroy_hyb_mat
+   :project: rocSPARSE
+
+rocsparse_create_mat_info()
+***************************
+
+.. doxygenfunction:: rocsparse_create_mat_info
+   :project: rocSPARSE
+
+.. _rocsparse_destroy_mat_info_:
+
+rocsparse_destroy_mat_info()
+*****************************
+
+.. doxygenfunction:: rocsparse_destroy_mat_info
+   :project: rocSPARSE
+
+.. _rocsparse_level1_functions_:
+
+Sparse Level 1 Functions
+#######################
+
+The sparse level 1 routines describe operations between a vector in sparse format and a vector in dense format. This section describes all rocSPARSE level 1 sparse linear algebra functions.
+
+rocsparse_axpyi()
+*****************
+
+.. doxygenfunction:: rocsparse_saxpyi
+   :project: rocSPARSE
+  :outline:
+.. doxygenfunction:: rocsparse_daxpyi
+   :project: rocSPARSE
+
+rocsparse_doti()
+*********************
+
+.. doxygenfunction:: rocsparse_sdoti
+   :project: rocSPARSE
+  :outline:
+.. doxygenfunction:: rocsparse_ddoti
+   :project: rocSPARSE
+
+rocsparse_gthr()
+*********************
+
+.. doxygenfunction:: rocsparse_sgthr
+   :project: rocSPARSE
+  :outline:
+.. doxygenfunction:: rocsparse_dgthr
+   :project: rocSPARSE
+
+rocsparse_gthrz()
+*********************
+
+.. doxygenfunction:: rocsparse_sgthrz
+   :project: rocSPARSE
+  :outline:
+.. doxygenfunction:: rocsparse_dgthrz
+   :project: rocSPARSE
+
+rocsparse_roti()
+****************
+
+.. doxygenfunction:: rocsparse_sroti
+   :project: rocSPARSE
+  :outline:
+.. doxygenfunction:: rocsparse_droti
+   :project: rocSPARSE
+
+rocsparse_sctr()
+****************
+
+.. doxygenfunction:: rocsparse_ssctr
+   :project: rocSPARSE
+  :outline:
+.. doxygenfunction:: rocsparse_dsctr
+   :project: rocSPARSE
+
+.. _rocsparse_level2_functions_:
+
+Sparse Level 2 Functions
+###########################
+
+This module holds all sparse level 2 routines.
+
+The sparse level 2 routines describe operations between a matrix in sparse format and a vector in dense format.
+
+rocsparse_coomv()
+*****************
+
+.. doxygenfunction:: rocsparse_scoomv
+   :project: rocSPARSE
+  :outline:
+.. doxygenfunction:: rocsparse_dcoomv
+   :project: rocSPARSE
+
+rocsparse_csrmv_analysis()
+***************************
+
+.. doxygenfunction:: rocsparse_scsrmv_analysis
+   :project: rocSPARSE
+  :outline:
+.. doxygenfunction:: rocsparse_dcsrmv_analysis
+   :project: rocSPARSE
+
+rocsparse_csrmv()
+*****************
+
+.. doxygenfunction:: rocsparse_scsrmv
+   :project: rocSPARSE
+  :outline:
+.. doxygenfunction:: rocsparse_dcsrmv
+   :project: rocSPARSE
+
+rocsparse_csrmv_analysis_clear()
+*********************************
+
+.. doxygenfunction:: rocsparse_csrmv_clear
+   :project: rocSPARSE
+
+rocsparse_ellmv()
+*****************
+
+.. doxygenfunction:: rocsparse_sellmv
+   :project: rocSPARSE
+  :outline:
+.. doxygenfunction:: rocsparse_dellmv
+   :project: rocSPARSE
+
+rocsparse_hybmv()
+*****************
+
+.. doxygenfunction:: rocsparse_shybmv
+   :project: rocSPARSE
+  :outline:
+.. doxygenfunction:: rocsparse_dhybmv
+   :project: rocSPARSE
+
+rocsparse_csrsv_zero_pivot()
+****************************
+
+.. doxygenfunction:: rocsparse_csrsv_zero_pivot
+   :project: rocSPARSE
+
+rocsparse_csrsv_buffer_size()
+*****************************
+
+.. doxygenfunction:: rocsparse_scsrsv_buffer_size
+   :project: rocSPARSE
+  :outline:
+.. doxygenfunction:: rocsparse_dcsrsv_buffer_size
+
+rocsparse_csrsv_analysis()
+**************************
+
+.. doxygenfunction:: rocsparse_scsrsv_analysis
+  :outline:
+.. doxygenfunction:: rocsparse_dcsrsv_analysis
+
+rocsparse_csrsv_solve()
+***********************
+
+.. doxygenfunction:: rocsparse_scsrsv_solve
+  :outline:
+.. doxygenfunction:: rocsparse_dcsrsv_solve
+
+rocsparse_csrsv_clear()
+********************************
+
+.. doxygenfunction:: rocsparse_csrsv_clear
+
+.. _rocsparse_level3_functions_:
+
+Sparse Level 3 Functions
+#####################
+
+This module holds all sparse level 3 routines.
+
+The sparse level 3 routines describe operations between a matrix in sparse format and multiple vectors in dense format that can also be seen as a dense matrix.
+
+rocsparse_csrmm()
+*********************
+
+.. doxygenfunction:: rocsparse_scsrmm
+  :outline:
+.. doxygenfunction:: rocsparse_dcsrmm
+
+.. _rocsparse_precond_functions_:
+
+Preconditioner Functions
+#####################
+
+This module holds all sparse preconditioners.
+
+The sparse preconditioners describe manipulations on a matrix in sparse format to obtain a sparse preconditioner matrix.
+
+rocsparse_csrilu0_zero_pivot()
+******************************
+
+.. doxygenfunction:: rocsparse_csrilu0_zero_pivot
+
+rocsparse_csrilu0_buffer_size()
+*******************************
+
+.. doxygenfunction:: rocsparse_scsrilu0_buffer_size
+  :outline:
+.. doxygenfunction:: rocsparse_dcsrilu0_buffer_size
+
+rocsparse_csrilu0_analysis()
+****************************
+
+.. doxygenfunction:: rocsparse_scsrilu0_analysis
+  :outline:
+.. doxygenfunction:: rocsparse_dcsrilu0_analysis
+
+rocsparse_csrilu0()
+*******************
+
+.. doxygenfunction:: rocsparse_scsrilu0
+  :outline:
+.. doxygenfunction:: rocsparse_dcsrilu0
+
+rocsparse_csrilu0_clear()
+**********************************
+
+.. doxygenfunction:: rocsparse_csrilu0_clear
+
+.. _rocsparse_conversion_functions_:
+
+Sparse Conversion Functions
+#############################
+
+This module holds all sparse conversion routines.
+
+The sparse conversion routines describe operations on a matrix in sparse format to obtain a matrix in a different sparse format.
+
+rocsparse_csr2coo()
+*******************
+
+.. doxygenfunction:: rocsparse_csr2coo
+
+rocsparse_coo2csr()
+*******************
+
+.. doxygenfunction:: rocsparse_coo2csr
+
+rocsparse_csr2csc_buffer_size()
+*******************************
+
+.. doxygenfunction:: rocsparse_csr2csc_buffer_size
+
+rocsparse_csr2csc()
+*******************
+
+.. doxygenfunction:: rocsparse_scsr2csc
+  :outline:
+.. doxygenfunction:: rocsparse_dcsr2csc
+
+rocsparse_csr2ell_width()
+*************************
+
+.. doxygenfunction:: rocsparse_csr2ell_width
+
+rocsparse_csr2ell()
+*******************
+
+.. doxygenfunction:: rocsparse_scsr2ell
+  :outline:
+.. doxygenfunction:: rocsparse_dcsr2ell
+
+rocsparse_ell2csr_nnz()
+***********************
+
+.. doxygenfunction:: rocsparse_ell2csr_nnz
+
+rocsparse_ell2csr()
+*******************
+
+.. doxygenfunction:: rocsparse_sell2csr
+  :outline:
+.. doxygenfunction:: rocsparse_dell2csr
+
+rocsparse_csr2hyb()
+*******************
+
+.. doxygenfunction:: rocsparse_scsr2hyb
+   :project: rocSPARSE
+  :outline:
+.. doxygenfunction:: rocsparse_dcsr2hyb
+   :project: rocSPARSE
+
+rocsparse_create_identity_permutation()
+***************************************
+
+.. doxygenfunction:: rocsparse_create_identity_permutation
+   :project: rocSPARSE
+
+rocsparse_csrsort_buffer_size()
+*******************************
+
+.. doxygenfunction:: rocsparse_csrsort_buffer_size
+   :project: rocSPARSE
+
+rocsparse_csrsort()
+*******************
+
+.. doxygenfunction:: rocsparse_csrsort
+   :project: rocSPARSE
+
+rocsparse_coosort_buffer_size()
+*******************************
+
+.. doxygenfunction:: rocsparse_coosort_buffer_size
+   :project: rocSPARSE
+
+rocsparse_coosort_by_row()
+**************************
+
+.. doxygenfunction:: rocsparse_coosort_by_row
+   :project: rocSPARSE
+
+rocsparse_coosort_by_column()
+*****************************
+
+.. doxygenfunction:: rocsparse_coosort_by_column
+   :project: rocSPARSE
