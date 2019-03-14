@@ -780,7 +780,8 @@ WARN_LOGFILE           =
 INPUT                  = ROCm_Libraries/rocSPARSE/src/modules.dox \
                          ROCm_Libraries/rocSPARSE/src/rocsparse-functions.h \
                          ROCm_Libraries/rocSPARSE/src/rocsparse-auxiliary.h \
-                         ROCm_Libraries/rocSPARSE/src/rocsparse-types.h 
+                         ROCm_Libraries/rocSPARSE/src/rocsparse-types.h \
+			 ROCm_Libraries/rocSPARSE/src/rocsparse.h 
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
