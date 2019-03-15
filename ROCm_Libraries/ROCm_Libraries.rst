@@ -3787,8 +3787,6 @@ where
     \text{ell_col_ind}[9] & = \{0, 1, 0, 1, 2, 3, 3, -1, 4\}
   \end{array}
 
-.. _HYB storage format:
-
 HYB storage format
 *******************
 The Hybrid (HYB) storage format represents a :math:`m \times n` matrix by
@@ -3822,8 +3820,6 @@ rocsparse_mat_descr
 .. doxygentypedef:: rocsparse_mat_descr
    :project: rocSPARSE
 
-
-.. _rocsparse_mat_info_:
 
 rocsparse_mat_info
 *******************
