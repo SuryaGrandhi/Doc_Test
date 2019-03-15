@@ -3825,12 +3825,14 @@ rocsparse_mat_info
 *******************
 
 .. doxygentypedef:: rocsparse_mat_info
+   :project: rocSPARSE
 
 
 rocsparse_hyb_mat
 ******************
 
 .. doxygentypedef:: rocsparse_hyb_mat
+   :project: rocSPARSE
 
 For more details on the HYB format, see :ref:`HYB storage format`.
 
@@ -3838,60 +3840,69 @@ rocsparse_action
 *****************
 
 .. doxygenenum:: rocsparse_action
+   :project: rocSPARSE
 
-.. _rocsparse_hyb_partition_:
 
 rocsparse_hyb_partition
 ************************
 
 .. doxygenenum:: rocsparse_hyb_partition
+   :project: rocSPARSE
 
 rocsparse_index_base
 *********************
 
 .. doxygenenum:: rocsparse_index_base
+   :project: rocSPARSE
 
-.. _rocsparse_layer_mode_:
 
 rocsparse_matrix_type
 **********************
 
 .. doxygenenum:: rocsparse_matrix_type
+   :project: rocSPARSE
 
 rocsparse_fill_mode
 *******************
 
 .. doxygenenum:: rocsparse_fill_mode
+   :project: rocSPARSE
 
 rocsparse_diag_type
 *******************
 
 .. doxygenenum:: rocsparse_diag_type
+   :project: rocSPARSE
 
 rocsparse_operation
 ********************
 
 .. doxygenenum:: rocsparse_operation
+   :project: rocSPARSE
 
 rocsparse_pointer_mode
 ***********************
 
 .. doxygenenum:: rocsparse_pointer_mode
+   :project: rocSPARSE
 
 rocsparse_analysis_policy
 *************************
 
 .. doxygenenum:: rocsparse_analysis_policy
+   :project: rocSPARSE
 
 rocsparse_solve_policy
 **********************
 
 .. doxygenenum:: rocsparse_solve_policy
+   :project: rocSPARSE
 
 rocsparse_layer_mode
 *********************
 
 .. doxygenenum:: rocsparse_layer_mode
+   :project: rocSPARSE
 
 For more details on logging, see :ref:`rocsparse_logging`.
 
@@ -3899,8 +3910,8 @@ rocsparse_status
 *****************
 
 .. doxygenenum:: rocsparse_status
+   :project: rocSPARSE
 
-.. _rocsparse_logging:
 
 Logging
 ##############
@@ -3921,7 +3932,6 @@ If the user sets the environment variable ``ROCSPARSE_LOG_TRACE_PATH`` to the fu
 
 Note that performance will degrade when logging is enabled. By default, the environment variable ``ROCSPARSE_LAYER`` is unset and logging is disabled.
 
-.. _rocsparse_auxiliary_functions_:
 
 Sparse Auxiliary Functions
 ###########################
@@ -3930,66 +3940,74 @@ This module holds all sparse auxiliary functions.
 
 The functions that are contained in the auxiliary module describe all available helper functions that are required for subsequent library calls.
 
-.. _rocsparse_create_handle_:
 
 rocsparse_create_handle()
 **************************
 
 .. doxygenfunction:: rocsparse_create_handle
+   :project: rocSPARSE
 
-.. _rocsparse_destroy_handle_:
 
 rocsparse_destroy_handle()
 ***************************
 
 .. doxygenfunction:: rocsparse_destroy_handle
+   :project: rocSPARSE
 
-.. _rocsparse_set_stream_:
 
 rocsparse_set_stream()
 ***********************
 
 .. doxygenfunction:: rocsparse_set_stream
+   :project: rocSPARSE
 
 rocsparse_get_stream()
 ***********************
 
 .. doxygenfunction:: rocsparse_get_stream
+   :project: rocSPARSE
 
 rocsparse_set_pointer_mode()
 *****************************
 
 .. doxygenfunction:: rocsparse_set_pointer_mode
+   :project: rocSPARSE
 
 rocsparse_get_pointer_mode()
 *****************************
 
 .. doxygenfunction:: rocsparse_get_pointer_mode
+   :project: rocSPARSE
 
 rocsparse_get_version()
 ************************
 
 .. doxygenfunction:: rocsparse_get_version
+   :project: rocSPARSE
 
 rocsparse_get_git_rev()
 ************************
 
 .. doxygenfunction:: rocsparse_get_git_rev
+   :project: rocSPARSE
 
 rocsparse_create_mat_descr()
 *****************************
 
 .. doxygenfunction:: rocsparse_create_mat_descr
+   :project: rocSPARSE
 
 rocsparse_destroy_mat_descr()
 ******************************
 
 .. doxygenfunction:: rocsparse_destroy_mat_descr
+   :project: rocSPARSE
 
 rocsparse_copy_mat_descr()
 **************************
 
 .. doxygenfunction:: rocsparse_copy_mat_descr
+   :project: rocSPARSE
 
 rocsparse_set_mat_index_base()
 *******************************
