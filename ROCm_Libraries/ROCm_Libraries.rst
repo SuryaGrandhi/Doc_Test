@@ -3787,6 +3787,8 @@ where
     \text{ell_col_ind}[9] & = \{0, 1, 0, 1, 2, 3, 3, -1, 4\}
   \end{array}
 
+.. _HYB storage format:
+
 HYB storage format
 *******************
 The Hybrid (HYB) storage format represents a :math:`m \times n` matrix by
@@ -3821,6 +3823,8 @@ rocsparse_mat_descr
    :project: rocSPARSE
 
 
+.. _rocsparse_mat_info_:
+
 rocsparse_mat_info
 *******************
 
@@ -3842,6 +3846,7 @@ rocsparse_action
 .. doxygenenum:: rocsparse_action
    :project: rocSPARSE
 
+.. _rocsparse_hyb_partition_:
 
 rocsparse_hyb_partition
 ************************
@@ -3855,6 +3860,7 @@ rocsparse_index_base
 .. doxygenenum:: rocsparse_index_base
    :project: rocSPARSE
 
+.. _rocsparse_layer_mode_:
 
 rocsparse_matrix_type
 **********************
@@ -3912,6 +3918,7 @@ rocsparse_status
 .. doxygenenum:: rocsparse_status
    :project: rocSPARSE
 
+.. _rocsparse_logging:
 
 Logging
 ##############
@@ -3932,6 +3939,7 @@ If the user sets the environment variable ``ROCSPARSE_LOG_TRACE_PATH`` to the fu
 
 Note that performance will degrade when logging is enabled. By default, the environment variable ``ROCSPARSE_LAYER`` is unset and logging is disabled.
 
+.. _rocsparse_auxiliary_functions_:
 
 Sparse Auxiliary Functions
 ###########################
@@ -3940,6 +3948,7 @@ This module holds all sparse auxiliary functions.
 
 The functions that are contained in the auxiliary module describe all available helper functions that are required for subsequent library calls.
 
+.. _rocsparse_create_handle_:
 
 rocsparse_create_handle()
 **************************
@@ -3947,6 +3956,7 @@ rocsparse_create_handle()
 .. doxygenfunction:: rocsparse_create_handle
    :project: rocSPARSE
 
+.. _rocsparse_destroy_handle_:
 
 rocsparse_destroy_handle()
 ***************************
@@ -3954,6 +3964,7 @@ rocsparse_destroy_handle()
 .. doxygenfunction:: rocsparse_destroy_handle
    :project: rocSPARSE
 
+.. _rocsparse_set_stream_:
 
 rocsparse_set_stream()
 ***********************
@@ -4013,41 +4024,49 @@ rocsparse_set_mat_index_base()
 *******************************
 
 .. doxygenfunction:: rocsparse_set_mat_index_base
+   :project: rocSPARSE
 
 rocsparse_get_mat_index_base()
 *******************************
 
 .. doxygenfunction:: rocsparse_get_mat_index_base
+   :project: rocSPARSE
 
 rocsparse_set_mat_type()
 *************************
 
 .. doxygenfunction:: rocsparse_set_mat_type
+   :project: rocSPARSE
 
 rocsparse_get_mat_type()
 *************************
 
 .. doxygenfunction:: rocsparse_get_mat_type
+   :project: rocSPARSE
 
 rocsparse_set_mat_fill_mode()
 *****************************
 
 .. doxygenfunction:: rocsparse_set_mat_fill_mode
+   :project: rocSPARSE
 
 rocsparse_get_mat_fill_mode()
 *****************************
 
 .. doxygenfunction:: rocsparse_get_mat_fill_mode
+   :project: rocSPARSE
 
 rocsparse_set_mat_diag_type()
 *****************************
 
 .. doxygenfunction:: rocsparse_set_mat_diag_type
+   :project: rocSPARSE
 
 rocsparse_get_mat_diag_type()
 *****************************
 
 .. doxygenfunction:: rocsparse_get_mat_diag_type
+   :project: rocSPARSE
 
 .. _rocsparse_create_hyb_mat_:
 
@@ -4055,16 +4074,19 @@ rocsparse_create_hyb_mat()
 ***************************
 
 .. doxygenfunction:: rocsparse_create_hyb_mat
+   :project: rocSPARSE
 
 rocsparse_destroy_hyb_mat()
 ****************************
 
 .. doxygenfunction:: rocsparse_destroy_hyb_mat
+   :project: rocSPARSE
 
 rocsparse_create_mat_info()
 ***************************
 
 .. doxygenfunction:: rocsparse_create_mat_info
+   :project: rocSPARSE
 
 .. _rocsparse_destroy_mat_info_:
 
@@ -4072,6 +4094,7 @@ rocsparse_destroy_mat_info()
 *****************************
 
 .. doxygenfunction:: rocsparse_destroy_mat_info
+   :project: rocSPARSE
 
 .. _rocsparse_level1_functions_:
 
@@ -4084,43 +4107,55 @@ rocsparse_axpyi()
 *****************
 
 .. doxygenfunction:: rocsparse_saxpyi
-
+   :project: rocSPARSE
+  :outline:
 .. doxygenfunction:: rocsparse_daxpyi
+   :project: rocSPARSE
 
 rocsparse_doti()
 *********************
 
 .. doxygenfunction:: rocsparse_sdoti
-
+   :project: rocSPARSE
+  :outline:
 .. doxygenfunction:: rocsparse_ddoti
+   :project: rocSPARSE
 
 rocsparse_gthr()
 *********************
 
 .. doxygenfunction:: rocsparse_sgthr
-
+   :project: rocSPARSE
+  :outline:
 .. doxygenfunction:: rocsparse_dgthr
+   :project: rocSPARSE
 
 rocsparse_gthrz()
 *********************
 
 .. doxygenfunction:: rocsparse_sgthrz
-
+   :project: rocSPARSE
+  :outline:
 .. doxygenfunction:: rocsparse_dgthrz
+   :project: rocSPARSE
 
 rocsparse_roti()
 ****************
 
 .. doxygenfunction:: rocsparse_sroti
-
+   :project: rocSPARSE
+  :outline:
 .. doxygenfunction:: rocsparse_droti
+   :project: rocSPARSE
 
 rocsparse_sctr()
 ****************
 
 .. doxygenfunction:: rocsparse_ssctr
-
+   :project: rocSPARSE
+  :outline:
 .. doxygenfunction:: rocsparse_dsctr
+   :project: rocSPARSE
 
 .. _rocsparse_level2_functions_:
 
@@ -4135,66 +4170,79 @@ rocsparse_coomv()
 *****************
 
 .. doxygenfunction:: rocsparse_scoomv
-
+   :project: rocSPARSE
+  :outline:
 .. doxygenfunction:: rocsparse_dcoomv
+   :project: rocSPARSE
 
 rocsparse_csrmv_analysis()
 ***************************
 
 .. doxygenfunction:: rocsparse_scsrmv_analysis
-
+   :project: rocSPARSE
+  :outline:
 .. doxygenfunction:: rocsparse_dcsrmv_analysis
+   :project: rocSPARSE
 
 rocsparse_csrmv()
 *****************
 
 .. doxygenfunction:: rocsparse_scsrmv
-
+   :project: rocSPARSE
+  :outline:
 .. doxygenfunction:: rocsparse_dcsrmv
+   :project: rocSPARSE
 
 rocsparse_csrmv_analysis_clear()
 *********************************
 
 .. doxygenfunction:: rocsparse_csrmv_clear
+   :project: rocSPARSE
 
 rocsparse_ellmv()
 *****************
 
 .. doxygenfunction:: rocsparse_sellmv
-
+   :project: rocSPARSE
+  :outline:
 .. doxygenfunction:: rocsparse_dellmv
+   :project: rocSPARSE
 
 rocsparse_hybmv()
 *****************
 
 .. doxygenfunction:: rocsparse_shybmv
-
+   :project: rocSPARSE
+  :outline:
 .. doxygenfunction:: rocsparse_dhybmv
+   :project: rocSPARSE
 
 rocsparse_csrsv_zero_pivot()
 ****************************
 
 .. doxygenfunction:: rocsparse_csrsv_zero_pivot
+   :project: rocSPARSE
 
 rocsparse_csrsv_buffer_size()
 *****************************
 
 .. doxygenfunction:: rocsparse_scsrsv_buffer_size
-
+   :project: rocSPARSE
+  :outline:
 .. doxygenfunction:: rocsparse_dcsrsv_buffer_size
 
 rocsparse_csrsv_analysis()
 **************************
 
 .. doxygenfunction:: rocsparse_scsrsv_analysis
-
+  :outline:
 .. doxygenfunction:: rocsparse_dcsrsv_analysis
 
 rocsparse_csrsv_solve()
 ***********************
 
 .. doxygenfunction:: rocsparse_scsrsv_solve
-
+  :outline:
 .. doxygenfunction:: rocsparse_dcsrsv_solve
 
 rocsparse_csrsv_clear()
@@ -4215,7 +4263,7 @@ rocsparse_csrmm()
 *********************
 
 .. doxygenfunction:: rocsparse_scsrmm
-
+  :outline:
 .. doxygenfunction:: rocsparse_dcsrmm
 
 .. _rocsparse_precond_functions_:
@@ -4236,21 +4284,21 @@ rocsparse_csrilu0_buffer_size()
 *******************************
 
 .. doxygenfunction:: rocsparse_scsrilu0_buffer_size
-
+  :outline:
 .. doxygenfunction:: rocsparse_dcsrilu0_buffer_size
 
 rocsparse_csrilu0_analysis()
 ****************************
 
 .. doxygenfunction:: rocsparse_scsrilu0_analysis
-
+  :outline:
 .. doxygenfunction:: rocsparse_dcsrilu0_analysis
 
 rocsparse_csrilu0()
 *******************
 
 .. doxygenfunction:: rocsparse_scsrilu0
-
+  :outline:
 .. doxygenfunction:: rocsparse_dcsrilu0
 
 rocsparse_csrilu0_clear()
@@ -4286,7 +4334,7 @@ rocsparse_csr2csc()
 *******************
 
 .. doxygenfunction:: rocsparse_scsr2csc
-
+  :outline:
 .. doxygenfunction:: rocsparse_dcsr2csc
 
 rocsparse_csr2ell_width()
@@ -4298,7 +4346,7 @@ rocsparse_csr2ell()
 *******************
 
 .. doxygenfunction:: rocsparse_scsr2ell
-
+  :outline:
 .. doxygenfunction:: rocsparse_dcsr2ell
 
 rocsparse_ell2csr_nnz()
@@ -4310,42 +4358,50 @@ rocsparse_ell2csr()
 *******************
 
 .. doxygenfunction:: rocsparse_sell2csr
-
+  :outline:
 .. doxygenfunction:: rocsparse_dell2csr
 
 rocsparse_csr2hyb()
 *******************
 
 .. doxygenfunction:: rocsparse_scsr2hyb
-
+   :project: rocSPARSE
+  :outline:
 .. doxygenfunction:: rocsparse_dcsr2hyb
+   :project: rocSPARSE
 
 rocsparse_create_identity_permutation()
 ***************************************
 
 .. doxygenfunction:: rocsparse_create_identity_permutation
+   :project: rocSPARSE
 
 rocsparse_csrsort_buffer_size()
 *******************************
 
 .. doxygenfunction:: rocsparse_csrsort_buffer_size
+   :project: rocSPARSE
 
 rocsparse_csrsort()
 *******************
 
 .. doxygenfunction:: rocsparse_csrsort
+   :project: rocSPARSE
 
 rocsparse_coosort_buffer_size()
 *******************************
 
 .. doxygenfunction:: rocsparse_coosort_buffer_size
+   :project: rocSPARSE
 
 rocsparse_coosort_by_row()
 **************************
 
 .. doxygenfunction:: rocsparse_coosort_by_row
+   :project: rocSPARSE
 
 rocsparse_coosort_by_column()
 *****************************
 
 .. doxygenfunction:: rocsparse_coosort_by_column
+   :project: rocSPARSE
