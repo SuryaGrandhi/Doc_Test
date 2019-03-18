@@ -708,6 +708,7 @@ LAYOUT_FILE            =
 # search path. See also \cite for info how to create references.
 
 #CITE_BIB_FILES         = source/references.bib
+CITE_BIB_FILES         = source/references.bib
 
 #---------------------------------------------------------------------------
 # Configuration options related to warning and progress messages
