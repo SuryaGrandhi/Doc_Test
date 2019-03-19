@@ -4349,6 +4349,7 @@ rocsparse_csr2csc()
 *******************
 
 .. doxygenfunction:: rocsparse_scsr2csc
+   :project: rocSPARSE
 
 .. doxygenfunction:: rocsparse_dcsr2csc
    :project: rocSPARSE
