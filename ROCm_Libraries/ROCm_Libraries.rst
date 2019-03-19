@@ -4387,7 +4387,7 @@ rocsparse_csr2csc()
 
 .. doxygenfunction:: rocsparse_scsr2csc
    :project: rocSPARSE
-  :outline:
+   :outline:
 .. doxygenfunction:: rocsparse_dcsr2csc
    :project: rocSPARSE
 
@@ -4402,7 +4402,7 @@ rocsparse_csr2ell()
 
 .. doxygenfunction:: rocsparse_scsr2ell
    :project: rocSPARSE
-  :outline:
+
 .. doxygenfunction:: rocsparse_dcsr2ell
    :project: rocSPARSE
 
@@ -4417,7 +4417,7 @@ rocsparse_ell2csr()
 
 .. doxygenfunction:: rocsparse_sell2csr
    :project: rocSPARSE
-  :outline:
+   :outline:
 .. doxygenfunction:: rocsparse_dell2csr
    :project: rocSPARSE
 
@@ -4426,7 +4426,7 @@ rocsparse_csr2hyb()
 
 .. doxygenfunction:: rocsparse_scsr2hyb
    :project: rocSPARSE
-  :outline:
+
 .. doxygenfunction:: rocsparse_dcsr2hyb
    :project: rocSPARSE
 
