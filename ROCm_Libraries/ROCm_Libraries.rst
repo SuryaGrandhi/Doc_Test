@@ -3820,26 +3820,6 @@ Common build problems
 
    **Solution:** Install `ROCm cmake modules <https://github.com/RadeonOpenCompute/rocm-cmake>`_
 
-.. _HYB storage format:
-
-HYB storage format
-*******************
-The Hybrid (HYB) storage format represents a :math:`m \times n` matrix by
-
-=========== =========================================================================================
-m           number of rows (integer).
-n           number of columns (integer).
-nnz         number of non-zero elements of the COO part (integer)
-ell_width   maximum number of non-zero elements per row of the ELL part (integer)
-ell_val     array of ``m times ell_width`` elements containing the ELL part data (floating point).
-ell_col_ind array of ``m times ell_width`` elements containing the ELL part column indices (integer).
-coo_val     array of ``nnz`` elements containing the COO part data (floating point).
-coo_row_ind array of ``nnz`` elements containing the COO part row indices (integer).
-coo_col_ind array of ``nnz`` elements containing the COO part column indices (integer).
-=========== =========================================================================================
-
-The HYB format is a combination of the ELL and COO sparse matrix formats. Typically, the regular part of the matrix is stored in ELL storage format, and the irregular part of the matrix is stored in COO storage format. Three different partitioning schemes can be applied when converting a CSR matrix to a matrix in HYB storage format. For further details on the partitioning schemes, see :ref:`rocsparse_hyb_partition_`.
-
 Types
 ##########
 
@@ -3855,8 +3835,6 @@ rocsparse_mat_descr
 .. doxygentypedef:: rocsparse_mat_descr
    :project: rocSPARSE
 
-
-.. _rocsparse_mat_info_:
 
 rocsparse_mat_info
 *******************
@@ -3879,7 +3857,6 @@ rocsparse_action
 .. doxygenenum:: rocsparse_action
    :project: rocSPARSE
 
-.. _rocsparse_hyb_partition_:
 
 rocsparse_hyb_partition
 ************************
@@ -3893,7 +3870,6 @@ rocsparse_index_base
 .. doxygenenum:: rocsparse_index_base
    :project: rocSPARSE
 
-.. _rocsparse_layer_mode_:
 
 rocsparse_matrix_type
 **********************
@@ -3951,7 +3927,6 @@ rocsparse_status
 .. doxygenenum:: rocsparse_status
    :project: rocSPARSE
 
-.. _rocsparse_logging:
 
 Logging
 ##############
@@ -3972,7 +3947,6 @@ If the user sets the environment variable ``ROCSPARSE_LOG_TRACE_PATH`` to the fu
 
 Note that performance will degrade when logging is enabled. By default, the environment variable ``ROCSPARSE_LAYER`` is unset and logging is disabled.
 
-.. _rocsparse_auxiliary_functions_:
 
 Sparse Auxiliary Functions
 ###########################
@@ -3981,7 +3955,6 @@ This module holds all sparse auxiliary functions.
 
 The functions that are contained in the auxiliary module describe all available helper functions that are required for subsequent library calls.
 
-.. _rocsparse_create_handle_:
 
 rocsparse_create_handle()
 **************************
@@ -3989,7 +3962,6 @@ rocsparse_create_handle()
 .. doxygenfunction:: rocsparse_create_handle
    :project: rocSPARSE
 
-.. _rocsparse_destroy_handle_:
 
 rocsparse_destroy_handle()
 ***************************
@@ -3997,7 +3969,6 @@ rocsparse_destroy_handle()
 .. doxygenfunction:: rocsparse_destroy_handle
    :project: rocSPARSE
 
-.. _rocsparse_set_stream_:
 
 rocsparse_set_stream()
 ***********************
@@ -4101,8 +4072,6 @@ rocsparse_get_mat_diag_type()
 .. doxygenfunction:: rocsparse_get_mat_diag_type
    :project: rocSPARSE
 
-.. _rocsparse_create_hyb_mat_:
-
 rocsparse_create_hyb_mat()
 ***************************
 
@@ -4121,7 +4090,6 @@ rocsparse_create_mat_info()
 .. doxygenfunction:: rocsparse_create_mat_info
    :project: rocSPARSE
 
-.. _rocsparse_destroy_mat_info_:
 
 rocsparse_destroy_mat_info()
 *****************************
@@ -4129,7 +4097,6 @@ rocsparse_destroy_mat_info()
 .. doxygenfunction:: rocsparse_destroy_mat_info
    :project: rocSPARSE
 
-.. _rocsparse_level1_functions_:
 
 Sparse Level 1 Functions
 #######################
@@ -4141,7 +4108,7 @@ rocsparse_axpyi()
 
 .. doxygenfunction:: rocsparse_saxpyi
    :project: rocSPARSE
-  :outline:
+
 .. doxygenfunction:: rocsparse_daxpyi
    :project: rocSPARSE
 
@@ -4150,7 +4117,7 @@ rocsparse_doti()
 
 .. doxygenfunction:: rocsparse_sdoti
    :project: rocSPARSE
-  :outline:
+
 .. doxygenfunction:: rocsparse_ddoti
    :project: rocSPARSE
 
@@ -4159,7 +4126,7 @@ rocsparse_gthr()
 
 .. doxygenfunction:: rocsparse_sgthr
    :project: rocSPARSE
-  :outline:
+
 .. doxygenfunction:: rocsparse_dgthr
    :project: rocSPARSE
 
@@ -4168,7 +4135,7 @@ rocsparse_gthrz()
 
 .. doxygenfunction:: rocsparse_sgthrz
    :project: rocSPARSE
-  :outline:
+
 .. doxygenfunction:: rocsparse_dgthrz
    :project: rocSPARSE
 
@@ -4177,7 +4144,7 @@ rocsparse_roti()
 
 .. doxygenfunction:: rocsparse_sroti
    :project: rocSPARSE
-  :outline:
+
 .. doxygenfunction:: rocsparse_droti
    :project: rocSPARSE
 
@@ -4186,11 +4153,10 @@ rocsparse_sctr()
 
 .. doxygenfunction:: rocsparse_ssctr
    :project: rocSPARSE
-  :outline:
+
 .. doxygenfunction:: rocsparse_dsctr
    :project: rocSPARSE
 
-.. _rocsparse_level2_functions_:
 
 Sparse Level 2 Functions
 ###########################
@@ -4204,7 +4170,7 @@ rocsparse_coomv()
 
 .. doxygenfunction:: rocsparse_scoomv
    :project: rocSPARSE
-  :outline:
+
 .. doxygenfunction:: rocsparse_dcoomv
    :project: rocSPARSE
 
@@ -4213,7 +4179,7 @@ rocsparse_csrmv_analysis()
 
 .. doxygenfunction:: rocsparse_scsrmv_analysis
    :project: rocSPARSE
-  :outline:
+
 .. doxygenfunction:: rocsparse_dcsrmv_analysis
    :project: rocSPARSE
 
@@ -4222,7 +4188,7 @@ rocsparse_csrmv()
 
 .. doxygenfunction:: rocsparse_scsrmv
    :project: rocSPARSE
-  :outline:
+
 .. doxygenfunction:: rocsparse_dcsrmv
    :project: rocSPARSE
 
@@ -4237,7 +4203,7 @@ rocsparse_ellmv()
 
 .. doxygenfunction:: rocsparse_sellmv
    :project: rocSPARSE
-  :outline:
+
 .. doxygenfunction:: rocsparse_dellmv
    :project: rocSPARSE
 
@@ -4246,7 +4212,7 @@ rocsparse_hybmv()
 
 .. doxygenfunction:: rocsparse_shybmv
    :project: rocSPARSE
-  :outline:
+
 .. doxygenfunction:: rocsparse_dhybmv
    :project: rocSPARSE
 
@@ -4261,7 +4227,7 @@ rocsparse_csrsv_buffer_size()
 
 .. doxygenfunction:: rocsparse_scsrsv_buffer_size
    :project: rocSPARSE
-  :outline:
+
 .. doxygenfunction:: rocsparse_dcsrsv_buffer_size
    :project: rocSPARSE
 
@@ -4270,7 +4236,7 @@ rocsparse_csrsv_analysis()
 
 .. doxygenfunction:: rocsparse_scsrsv_analysis
    :project: rocSPARSE
-  :outline:
+
 .. doxygenfunction:: rocsparse_dcsrsv_analysis
    :project: rocSPARSE
 
@@ -4279,7 +4245,7 @@ rocsparse_csrsv_solve()
 
 .. doxygenfunction:: rocsparse_scsrsv_solve
    :project: rocSPARSE
-  :outline:
+
 .. doxygenfunction:: rocsparse_dcsrsv_solve
    :project: rocSPARSE
 
@@ -4289,7 +4255,6 @@ rocsparse_csrsv_clear()
 .. doxygenfunction:: rocsparse_csrsv_clear
    :project: rocSPARSE
 
-.. _rocsparse_level3_functions_:
 
 Sparse Level 3 Functions
 #####################
@@ -4303,11 +4268,10 @@ rocsparse_csrmm()
 
 .. doxygenfunction:: rocsparse_scsrmm
    :project: rocSPARSE
-  :outline:
+
 .. doxygenfunction:: rocsparse_dcsrmm
    :project: rocSPARSE
 
-.. _rocsparse_precond_functions_:
 
 Preconditioner Functions
 #####################
@@ -4327,7 +4291,7 @@ rocsparse_csrilu0_buffer_size()
 
 .. doxygenfunction:: rocsparse_scsrilu0_buffer_size
    :project: rocSPARSE
-  :outline:
+
 .. doxygenfunction:: rocsparse_dcsrilu0_buffer_size
    :project: rocSPARSE
 
@@ -4336,7 +4300,7 @@ rocsparse_csrilu0_analysis()
 
 .. doxygenfunction:: rocsparse_scsrilu0_analysis
    :project: rocSPARSE
-  :outline:
+
 .. doxygenfunction:: rocsparse_dcsrilu0_analysis
    :project: rocSPARSE
 
@@ -4345,7 +4309,7 @@ rocsparse_csrilu0()
 
 .. doxygenfunction:: rocsparse_scsrilu0
    :project: rocSPARSE
-  :outline:
+
 .. doxygenfunction:: rocsparse_dcsrilu0
    :project: rocSPARSE
 
@@ -4355,7 +4319,6 @@ rocsparse_csrilu0_clear()
 .. doxygenfunction:: rocsparse_csrilu0_clear
    :project: rocSPARSE
 
-.. _rocsparse_conversion_functions_:
 
 Sparse Conversion Functions
 #############################
@@ -4386,8 +4349,7 @@ rocsparse_csr2csc()
 *******************
 
 .. doxygenfunction:: rocsparse_scsr2csc
-   :project: rocSPARSE
-   :outline:
+
 .. doxygenfunction:: rocsparse_dcsr2csc
    :project: rocSPARSE
 
@@ -4417,7 +4379,7 @@ rocsparse_ell2csr()
 
 .. doxygenfunction:: rocsparse_sell2csr
    :project: rocSPARSE
-   :outline:
+
 .. doxygenfunction:: rocsparse_dell2csr
    :project: rocSPARSE
 
@@ -4465,4 +4427,3 @@ rocsparse_coosort_by_column()
 
 .. doxygenfunction:: rocsparse_coosort_by_column
    :project: rocSPARSE
-
