@@ -3849,8 +3849,6 @@ rocsparse_hyb_mat
 .. doxygentypedef:: rocsparse_hyb_mat
    :project: rocSPARSE
 
-For more details on the HYB format, see :ref:`HYB storage format`.
-
 rocsparse_action
 *****************
 
@@ -3919,8 +3917,6 @@ rocsparse_layer_mode
 .. doxygenenum:: rocsparse_layer_mode
    :project: rocSPARSE
 
-For more details on logging, see :ref:`rocsparse_logging`.
-
 rocsparse_status
 *****************
 
@@ -3932,7 +3928,7 @@ Logging
 ##############
 Three different environment variables can be set to enable logging in rocSPARSE: ``ROCSPARSE_LAYER``, ``ROCSPARSE_LOG_TRACE_PATH`` and ``ROCSPARSE_LOG_BENCH_PATH``.
 
-``ROCSPARSE_LAYER`` is a bit mask, where several logging modes (:ref:`rocsparse_layer_mode_`) can be combined as follows:
+``ROCSPARSE_LAYER`` is a bit mask, where several logging modes can be combined as follows:
 
 ================================  ===========================================
 ``ROCSPARSE_LAYER`` unset         logging is disabled.
