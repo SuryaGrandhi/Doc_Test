@@ -1,7 +1,7 @@
 .. _ROCm_Libraries:
 
 .. toctree::
-   :maxdepth: 4 
+   :maxdepth: 9 
    :caption: Contents:
 
 
@@ -105,11 +105,6 @@ The following is a simple example code that shows how to use rocFFT to compute a
           return 0;
     }
 
-
-
-
-
-
 ******************
 rocBLAS
 ******************
@@ -187,6 +182,360 @@ Asynchronous API
 Except a few routines (like TRSM) having memory allocation inside preventing asynchronicity, most of the library routines (like BLAS-1 SCAL, BLAS-2 GEMV, BLAS-3 GEMM) are configured to operate in asynchronous fashion with respect to CPU, meaning these library functions return immediately.
 
 For more information regarding rocBLAS library and corresponding API documentation, refer `rocBLAS <https://rocblas.readthedocs.io/en/latest/>`_
+
+API
+####
+
+This section provides details of the library API
+
+Types
+-------
+Definitions
+*************
+
+rocblas_int
+^^^^^^^^^^^^^^^^^^
+.. doxygentypedef:: rocblas_int
+   :project: rocBLAS
+
+rocblas_long
+^^^^^^^^^^^^^^^^^^
+.. doxygentypedef:: rocblas_long
+   :project: rocBLAS
+
+rocblas_float_complex
+^^^^^^^^^^^^^^^^^^
+.. doxygentypedef:: rocblas_float_complex
+   :project: rocBLAS
+
+rocblas_double_complex
+^^^^^^^^^^^^^^^^^^
+.. doxygentypedef:: rocblas_double_complex
+   :project: rocBLAS
+
+rocblas_half
+^^^^^^^^^^^^^^^^^^
+.. doxygentypedef:: rocblas_half
+   :project: rocBLAS
+
+rocblas_half_complex
+^^^^^^^^^^^^^^^^^^
+.. doxygentypedef:: rocblas_half_complex
+   :project: rocBLAS
+
+rocblas_handle
+^^^^^^^^^^^^^^^^^^
+.. doxygentypedef:: rocblas_handle
+   :project: rocBLAS
+
+
+Enums
+******
+Enumeration constants have numbering that is consistent with CBLAS, ACML and most standard C BLAS libraries.
+
+rocblas_operation
+^^^^^^^^^^^^^^^^^^
+.. doxygenenum:: rocblas_operation
+   :project: rocBLAS
+
+rocblas_fill
+^^^^^^^^^^^^^^^^^^
+.. doxygenenum:: rocblas_fill
+   :project: rocBLAS
+
+rocblas_diagonal
+^^^^^^^^^^^^^^^^^^
+.. doxygenenum:: rocblas_diagonal
+   :project: rocBLAS
+
+rocblas_side
+^^^^^^^^^^^^^^^^^^
+.. doxygenenum:: rocblas_side
+   :project: rocBLAS
+
+rocblas_status
+^^^^^^^^^^^^^^^^^^
+.. doxygenenum:: rocblas_status
+   :project: rocBLAS
+
+rocblas_datatype
+^^^^^^^^^^^^^^^^^^
+.. doxygenenum:: rocblas_datatype
+   :project: rocBLAS
+
+rocblas_pointer_mode
+^^^^^^^^^^^^^^^^^^
+.. doxygenenum:: rocblas_pointer_mode
+   :project: rocBLAS
+
+rocblas_layer_mode
+^^^^^^^^^^^^^^^^^^
+.. doxygenenum:: rocblas_layer_mode
+   :project: rocBLAS
+
+rocblas_gemm_algo
+^^^^^^^^^^^^^^^^^^
+.. doxygenenum:: rocblas_gemm_algo
+   :project: rocBLAS
+
+
+Functions
+----------
+
+Level 1 BLAS
+*************
+
+rocblas_<type>scal()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_dscal
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_sscal
+   :project: rocBLAS
+rocblas_<type>copy()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_dcopy
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_scopy
+   :project: rocBLAS
+
+rocblas_<type>dot()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_ddot
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_sdot
+   :project: rocBLAS
+
+rocblas_<type>swap()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_sswap
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_dswap
+   :project: rocBLAS
+
+rocblas_<type>axpy()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_daxpy
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_saxpy
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_haxpy
+   :project: rocBLAS
+
+rocblas_<type>asum()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_dasum
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_sasum
+   :project: rocBLAS
+
+
+rocblas_<type>nrm2()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_dnrm2
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_snrm2
+   :project: rocBLAS
+
+
+rocblas_i<type>amax()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_idamax
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_isamax
+   :project: rocBLAS
+
+rocblas_i<type>amin()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_idamin
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_isamin
+   :project: rocBLAS
+
+Level 2 BLAS
+```````````````
+rocblas_<type>gemv()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_dgemv
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_sgemv
+   :project: rocBLAS
+
+rocblas_<type>trsv()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_dtrsv
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_strsv
+   :project: rocBLAS
+
+rocblas_<type>ger()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_dger
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_sger
+   :project: rocBLAS
+
+rocblas_<type>syr()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_dsyr
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_ssyr
+   :project: rocBLAS
+
+Level 3 BLAS
+```````````````
+rocblas_<type>trtri_batched()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_dtrtri_batched
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_strtri_batched
+   :project: rocBLAS
+
+rocblas_<type>trsm()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_dtrsm
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_strsm
+   :project: rocBLAS
+
+rocblas_<type>gemm()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_dgemm
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_sgemm
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_hgemm
+   :project: rocBLAS
+
+rocblas_<type>gemm_strided_batched()
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_dgemm_strided_batched
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_sgemm_strided_batched
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_hgemm_strided_batched
+   :project: rocBLAS
+
+rocblas_<type>gemm_kernel_name()
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_dgemm_kernel_name
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_sgemm_kernel_name
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_hgemm_kernel_name
+   :project: rocBLAS
+
+rocblas_<type>geam()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_dgeam
+   :project: rocBLAS
+
+.. doxygenfunction:: rocblas_sgeam
+   :project: rocBLAS
+
+BLAS Extensions
+``````````````````
+rocblas_gemm_ex()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_gemm_ex
+   :project: rocBLAS
+
+rocblas_gemm_strided_batched_ex()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_gemm_strided_batched_ex
+   :project: rocBLAS
+
+Build Information
+```````````````````
+
+rocblas_get_version_string()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_get_version_string
+   :project: rocBLAS
+
+Auxiliary
+````````````
+
+rocblas_pointer_to_mode()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_pointer_to_mode
+   :project: rocBLAS
+
+rocblas_create_handle()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_create_handle
+   :project: rocBLAS
+
+rocblas_destroy_handle()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_destroy_handle
+   :project: rocBLAS
+
+rocblas_add_stream()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_add_stream
+   :project: rocBLAS
+
+rocblas_set_stream()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_set_stream
+   :project: rocBLAS
+
+rocblas_get_stream()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_get_stream
+   :project: rocBLAS
+
+rocblas_set_pointer_mode()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_set_pointer_mode
+   :project: rocBLAS
+
+rocblas_get_pointer_mode()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_get_pointer_mode
+   :project: rocBLAS
+
+rocblas_set_vector()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_set_vector
+   :project: rocBLAS
+
+rocblas_get_vector()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_get_vector
+   :project: rocBLAS
+
+rocblas_set_matrix()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_set_matrix
+   :project: rocBLAS
+
+rocblas_get_matrix()
+^^^^^^^^^^^^^^^^^^^^^^^
+.. doxygenfunction:: rocblas_get_matrix
+   :project: rocBLAS
 
 ************
 hipBLAS
