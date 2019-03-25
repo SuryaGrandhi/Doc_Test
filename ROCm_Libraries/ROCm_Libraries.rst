@@ -4278,13 +4278,13 @@ This module holds all sparse preconditioners.
 The sparse preconditioners describe manipulations on a matrix in sparse format to obtain a sparse preconditioner matrix.
 
 rocsparse_csrilu0_zero_pivot()
-******************************
+--------------------------------
 
 .. doxygenfunction:: rocsparse_csrilu0_zero_pivot
    :project: rocSPARSE
 
 rocsparse_csrilu0_buffer_size()
-*******************************
+--------------------------------
 
 .. doxygenfunction:: rocsparse_scsrilu0_buffer_size
    :project: rocSPARSE
@@ -4293,7 +4293,7 @@ rocsparse_csrilu0_buffer_size()
    :project: rocSPARSE
 
 rocsparse_csrilu0_analysis()
-****************************
+--------------------------------
 
 .. doxygenfunction:: rocsparse_scsrilu0_analysis
    :project: rocSPARSE
@@ -4302,7 +4302,7 @@ rocsparse_csrilu0_analysis()
    :project: rocSPARSE
 
 rocsparse_csrilu0()
-*******************
+--------------------------------
 
 .. doxygenfunction:: rocsparse_scsrilu0
    :project: rocSPARSE
@@ -4311,7 +4311,7 @@ rocsparse_csrilu0()
    :project: rocSPARSE
 
 rocsparse_csrilu0_clear()
-**********************************
+--------------------------------
 
 .. doxygenfunction:: rocsparse_csrilu0_clear
    :project: rocSPARSE
@@ -4325,25 +4325,25 @@ This module holds all sparse conversion routines.
 The sparse conversion routines describe operations on a matrix in sparse format to obtain a matrix in a different sparse format.
 
 rocsparse_csr2coo()
-*******************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. doxygenfunction:: rocsparse_csr2coo
    :project: rocSPARSE
 
 rocsparse_coo2csr()
-*******************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. doxygenfunction:: rocsparse_coo2csr
    :project: rocSPARSE
 
 rocsparse_csr2csc_buffer_size()
-*******************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. doxygenfunction:: rocsparse_csr2csc_buffer_size
    :project: rocSPARSE
 
 rocsparse_csr2csc()
-*******************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. doxygenfunction:: rocsparse_scsr2csc
    :project: rocSPARSE
@@ -4352,13 +4352,13 @@ rocsparse_csr2csc()
    :project: rocSPARSE
 
 rocsparse_csr2ell_width()
-*************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. doxygenfunction:: rocsparse_csr2ell_width
    :project: rocSPARSE
 
 rocsparse_csr2ell()
-*******************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. doxygenfunction:: rocsparse_scsr2ell
    :project: rocSPARSE
@@ -4367,13 +4367,13 @@ rocsparse_csr2ell()
    :project: rocSPARSE
 
 rocsparse_ell2csr_nnz()
-***********************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. doxygenfunction:: rocsparse_ell2csr_nnz
    :project: rocSPARSE
 
 rocsparse_ell2csr()
-*******************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. doxygenfunction:: rocsparse_sell2csr
    :project: rocSPARSE
@@ -4382,7 +4382,7 @@ rocsparse_ell2csr()
    :project: rocSPARSE
 
 rocsparse_csr2hyb()
-*******************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. doxygenfunction:: rocsparse_scsr2hyb
    :project: rocSPARSE
@@ -4391,37 +4391,37 @@ rocsparse_csr2hyb()
    :project: rocSPARSE
 
 rocsparse_create_identity_permutation()
-***************************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. doxygenfunction:: rocsparse_create_identity_permutation
    :project: rocSPARSE
 
 rocsparse_csrsort_buffer_size()
-*******************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. doxygenfunction:: rocsparse_csrsort_buffer_size
    :project: rocSPARSE
 
 rocsparse_csrsort()
-*******************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. doxygenfunction:: rocsparse_csrsort
    :project: rocSPARSE
 
 rocsparse_coosort_buffer_size()
-*******************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. doxygenfunction:: rocsparse_coosort_buffer_size
    :project: rocSPARSE
 
 rocsparse_coosort_by_row()
-**************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. doxygenfunction:: rocsparse_coosort_by_row
    :project: rocSPARSE
 
 rocsparse_coosort_by_column()
-*****************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. doxygenfunction:: rocsparse_coosort_by_column
    :project: rocSPARSE
