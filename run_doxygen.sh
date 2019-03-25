@@ -1,11 +1,11 @@
 #!/bin/bash
 
-doxygen Doxyfile
+#doxygen Doxyfile
 
 doxygen ROCm_Libraries/rocBLAS/Doxyfile
 
-doxygen ROCm_Libraries/rocALUTION/Doxyfile
+#doxygen ROCm_Libraries/rocALUTION/Doxyfile
 
-doxygen ROCm_Libraries/rocFFT/Doxyfile
+#doxygen ROCm_Libraries/rocFFT/Doxyfile
 
-doxygen ROCm_Libraries/rocSPARSE/Doxyfile
+#doxygen ROCm_Libraries/rocSPARSE/Doxyfile
