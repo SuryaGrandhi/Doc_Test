@@ -778,8 +778,8 @@ WARN_LOGFILE           =
 # Note: If this tag is empty the current directory is searched.
 
 INPUT                  = ROCm_Libraries/rocSPARSE/src/modules.dox \
-                         ROCm_Libraries/rocSPARSE/src/rocsparse-functions.h \
-                         ROCm_Libraries/rocSPARSE/src/rocsparse-auxiliary.h \
+                         ROCm_Libraries/rocSPARSE/src/rocsparse-functions_sed.h \
+                         ROCm_Libraries/rocSPARSE/src/rocsparse-auxiliary_sed.h \
                          ROCm_Libraries/rocSPARSE/src/rocsparse-types.h \
 			 ROCm_Libraries/rocSPARSE/src/rocsparse.h 
 
