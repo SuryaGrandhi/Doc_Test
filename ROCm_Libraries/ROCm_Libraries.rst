@@ -191,7 +191,7 @@ This section provides details of the library API
 Types
 -------
 Definitions
-*************
+^^^^^^^^^^^^^^^^^^
 
 rocblas_int
 ^^^^^^^^^^^^^^^^^^
@@ -230,7 +230,7 @@ rocblas_handle
 
 
 Enums
-******
+^^^^^^^^^^^^^^^^^^
 Enumeration constants have numbering that is consistent with CBLAS, ACML and most standard C BLAS libraries.
 
 rocblas_operation
