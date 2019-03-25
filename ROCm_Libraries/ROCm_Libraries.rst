@@ -327,7 +327,7 @@ Except a few routines (like TRSM) having memory allocation inside preventing asy
 For more information regarding rocBLAS library and corresponding API documentation, refer `rocBLAS <https://rocblas.readthedocs.io/en/latest/>`_
 
 
-API
+APIs
 ####
 
 This section provides details of the library API
