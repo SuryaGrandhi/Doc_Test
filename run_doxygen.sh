@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#doxygen Doxyfile
+doxygen Doxyfile
 
 sed -e 's/ROCBLAS_EXPORT //g' ROCm_Libraries/rocBLAS/src/include/rocblas.h > ROCm_Libraries/rocBLAS/src/rocblas.h
 sed -e 's/ROCBLAS_EXPORT //g' ROCm_Libraries/rocBLAS/src/include/rocblas-functions.h > ROCm_Libraries/rocBLAS/src/rocblas-functions.h
@@ -9,8 +9,10 @@ sed -e 's/ROCBLAS_EXPORT //g' ROCm_Libraries/rocBLAS/src/include/rocblas-auxilia
 
 doxygen ROCm_Libraries/rocBLAS/Doxyfile
 
-#doxygen ROCm_Libraries/rocALUTION/Doxyfile
+doxygen ROCm_Libraries/rocALUTION/Doxyfile
 
-#doxygen ROCm_Libraries/rocFFT/Doxyfile
+sed -e 's/ROCFFT_EXPORT //g' ROCm_Libraries/rocFFT/src/rocfft.h > ROCm_Libraries/rocFFT/src/rocfft_sed.h
+
+doxygen ROCm_Libraries/rocFFT/Doxyfile
 
 #doxygen ROCm_Libraries/rocSPARSE/Doxyfile
