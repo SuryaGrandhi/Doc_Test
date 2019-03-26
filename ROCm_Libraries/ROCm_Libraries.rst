@@ -336,90 +336,90 @@ Types
 --------------
 
 Definitions
-^^^^^^^^^^^^^^^^^^
+<<<<<<<<<<<<<
 
 rocblas_int
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 .. doxygentypedef:: rocblas_int
    :project: rocBLAS
 
 rocblas_long
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 .. doxygentypedef:: rocblas_long
    :project: rocBLAS
 
 rocblas_float_complex
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 .. doxygentypedef:: rocblas_float_complex
    :project: rocBLAS
 
 rocblas_double_complex
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 .. doxygentypedef:: rocblas_double_complex
    :project: rocBLAS
 
 rocblas_half
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 .. doxygentypedef:: rocblas_half
    :project: rocBLAS
 
 rocblas_half_complex
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 .. doxygentypedef:: rocblas_half_complex
    :project: rocBLAS
 
 rocblas_handle
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 .. doxygentypedef:: rocblas_handle
    :project: rocBLAS
 
 
 Enums
-^^^^^^^^^^^^^^^^^^
+<<<<<<<<<<<<
 Enumeration constants have numbering that is consistent with CBLAS, ACML and most standard C BLAS libraries.
 
 rocblas_operation
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 .. doxygenenum:: rocblas_operation
    :project: rocBLAS
 
 rocblas_fill
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 .. doxygenenum:: rocblas_fill
    :project: rocBLAS
 
 rocblas_diagonal
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 .. doxygenenum:: rocblas_diagonal
    :project: rocBLAS
 
 rocblas_side
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 .. doxygenenum:: rocblas_side
    :project: rocBLAS
 
 rocblas_status
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 .. doxygenenum:: rocblas_status
    :project: rocBLAS
 
 rocblas_datatype
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 .. doxygenenum:: rocblas_datatype
    :project: rocBLAS
 
 rocblas_pointer_mode
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 .. doxygenenum:: rocblas_pointer_mode
    :project: rocBLAS
 
 rocblas_layer_mode
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 .. doxygenenum:: rocblas_layer_mode
    :project: rocBLAS
 
 rocblas_gemm_algo
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 .. doxygenenum:: rocblas_gemm_algo
    :project: rocBLAS
 
@@ -680,6 +680,13 @@ rocblas_set_matrix()
 rocblas_get_matrix()
 ^^^^^^^^^^^^^^^^^^^^^^^
 .. doxygenfunction:: rocblas_get_matrix
+   :project: rocBLAS
+
+
+All API
+##############
+
+.. doxygenindex::
    :project: rocBLAS
 
 
