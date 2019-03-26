@@ -428,7 +428,7 @@ Functions
 --------------
 
 Level 1 BLAS
-~~~~~~~~~~~~~~~
+**************************
 
 rocblas_<type>scal()
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -507,7 +507,8 @@ rocblas_i<type>amin()
    :project: rocBLAS
 
 Level 2 BLAS
-~~~~~~~~~~~~~~~
+**************************
+
 rocblas_<type>gemv()
 ^^^^^^^^^^^^^^^^^^^^^^^
 .. doxygenfunction:: rocblas_dgemv
@@ -541,7 +542,8 @@ rocblas_<type>syr()
    :project: rocBLAS
 
 Level 3 BLAS
-~~~~~~~~~~~~~~~
+**************************
+
 rocblas_<type>trtri_batched()
 ^^^^^^^^^^^^^^^^^^^^^^^
 .. doxygenfunction:: rocblas_dtrtri_batched
@@ -600,7 +602,8 @@ rocblas_<type>geam()
    :project: rocBLAS
 
 BLAS Extensions
-~~~~~~~~~~~~~~~
+**************************
+
 rocblas_gemm_ex()
 ^^^^^^^^^^^^^^^^^^^^^^^
 .. doxygenfunction:: rocblas_gemm_ex
@@ -612,7 +615,7 @@ rocblas_gemm_strided_batched_ex()
    :project: rocBLAS
 
 Build Information
-~~~~~~~~~~~~~~~
+**************************
 
 rocblas_get_version_string()
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -620,7 +623,7 @@ rocblas_get_version_string()
    :project: rocBLAS
 
 Auxiliary
-~~~~~~~~~~~~~~~
+*************
 
 rocblas_pointer_to_mode()
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -4083,6 +4086,226 @@ rocsparse_destroy_mat_info()
 .. doxygenfunction:: rocsparse_destroy_mat_info
    :project: rocSPARSE
 
+Sparse Level 1 Functions
+#######################
+
+The sparse level 1 routines describe operations between a vector in sparse format and a vector in dense format. This section describes all rocSPARSE level 1 sparse linear algebra functions.
+
+rocsparse_axpyi()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_saxpyi
+   :project: rocSPARSE
+
+.. doxygenfunction:: rocsparse_daxpyi
+   :project: rocSPARSE
+
+rocsparse_doti()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_sdoti
+   :project: rocSPARSE
+
+.. doxygenfunction:: rocsparse_ddoti
+   :project: rocSPARSE
+
+rocsparse_gthr()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_sgthr
+   :project: rocSPARSE
+
+.. doxygenfunction:: rocsparse_dgthr
+   :project: rocSPARSE
+
+rocsparse_gthrz()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_sgthrz
+   :project: rocSPARSE
+
+.. doxygenfunction:: rocsparse_dgthrz
+   :project: rocSPARSE
+
+rocsparse_roti()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_sroti
+   :project: rocSPARSE
+
+.. doxygenfunction:: rocsparse_droti
+   :project: rocSPARSE
+
+rocsparse_sctr()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_ssctr
+   :project: rocSPARSE
+
+.. doxygenfunction:: rocsparse_dsctr
+   :project: rocSPARSE
+
+
+Sparse Level 2 Functions
+###########################
+
+This module holds all sparse level 2 routines.
+
+The sparse level 2 routines describe operations between a matrix in sparse format and a vector in dense format.
+
+rocsparse_coomv()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_scoomv
+   :project: rocSPARSE
+
+.. doxygenfunction:: rocsparse_dcoomv
+   :project: rocSPARSE
+
+rocsparse_csrmv_analysis()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_scsrmv_analysis
+   :project: rocSPARSE
+
+.. doxygenfunction:: rocsparse_dcsrmv_analysis
+   :project: rocSPARSE
+
+rocsparse_csrmv()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_scsrmv
+   :project: rocSPARSE
+
+.. doxygenfunction:: rocsparse_dcsrmv
+   :project: rocSPARSE
+
+rocsparse_csrmv_analysis_clear()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_csrmv_clear
+   :project: rocSPARSE
+
+rocsparse_ellmv()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_sellmv
+   :project: rocSPARSE
+
+.. doxygenfunction:: rocsparse_dellmv
+   :project: rocSPARSE
+
+rocsparse_hybmv()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_shybmv
+   :project: rocSPARSE
+
+.. doxygenfunction:: rocsparse_dhybmv
+   :project: rocSPARSE
+
+rocsparse_csrsv_zero_pivot()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_csrsv_zero_pivot
+   :project: rocSPARSE
+
+rocsparse_csrsv_buffer_size()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_scsrsv_buffer_size
+   :project: rocSPARSE
+
+.. doxygenfunction:: rocsparse_dcsrsv_buffer_size
+   :project: rocSPARSE
+
+rocsparse_csrsv_analysis()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_scsrsv_analysis
+   :project: rocSPARSE
+
+.. doxygenfunction:: rocsparse_dcsrsv_analysis
+   :project: rocSPARSE
+
+rocsparse_csrsv_solve()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_scsrsv_solve
+   :project: rocSPARSE
+
+.. doxygenfunction:: rocsparse_dcsrsv_solve
+   :project: rocSPARSE
+
+rocsparse_csrsv_clear()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_csrsv_clear
+   :project: rocSPARSE
+
+
+Sparse Level 3 Functions
+#####################
+
+This module holds all sparse level 3 routines.
+
+The sparse level 3 routines describe operations between a matrix in sparse format and multiple vectors in dense format that can also be seen as a dense matrix.
+
+rocsparse_csrmm()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_scsrmm
+   :project: rocSPARSE
+
+.. doxygenfunction:: rocsparse_dcsrmm
+   :project: rocSPARSE
+
+
+Preconditioner Functions
+#####################
+
+This module holds all sparse preconditioners.
+
+The sparse preconditioners describe manipulations on a matrix in sparse format to obtain a sparse preconditioner matrix.
+
+rocsparse_csrilu0_zero_pivot()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_csrilu0_zero_pivot
+   :project: rocSPARSE
+
+rocsparse_csrilu0_buffer_size()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_scsrilu0_buffer_size
+   :project: rocSPARSE
+
+.. doxygenfunction:: rocsparse_dcsrilu0_buffer_size
+   :project: rocSPARSE
+
+rocsparse_csrilu0_analysis()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_scsrilu0_analysis
+   :project: rocSPARSE
+
+.. doxygenfunction:: rocsparse_dcsrilu0_analysis
+   :project: rocSPARSE
+
+rocsparse_csrilu0()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_scsrilu0
+   :project: rocSPARSE
+
+.. doxygenfunction:: rocsparse_dcsrilu0
+   :project: rocSPARSE
+
+rocsparse_csrilu0_clear()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_csrilu0_clear
+   :project: rocSPARSE
 
 
 Sparse Conversion Functions
