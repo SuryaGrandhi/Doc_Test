@@ -336,90 +336,90 @@ Types
 --------------
 
 Definitions
-**************
+^^^^^^^^^^^^^^^^^^^^^^^
 
 rocblas_int
-""""""""""""""""""""""""
+**************************
 .. doxygentypedef:: rocblas_int
    :project: rocBLAS
 
 rocblas_long
-""""""""""""""""""""""""
+**************************
 .. doxygentypedef:: rocblas_long
    :project: rocBLAS
 
 rocblas_float_complex
-""""""""""""""""""""""""
+**************************
 .. doxygentypedef:: rocblas_float_complex
    :project: rocBLAS
 
 rocblas_double_complex
-""""""""""""""""""""""""
+**************************
 .. doxygentypedef:: rocblas_double_complex
    :project: rocBLAS
 
 rocblas_half
-""""""""""""""""""""""""
+**************************
 .. doxygentypedef:: rocblas_half
    :project: rocBLAS
 
 rocblas_half_complex
-""""""""""""""""""""""""
+**************************
 .. doxygentypedef:: rocblas_half_complex
    :project: rocBLAS
 
 rocblas_handle
-""""""""""""""""""""""""
+**************************
 .. doxygentypedef:: rocblas_handle
    :project: rocBLAS
 
 
 Enums
-**********
+^^^^^^^^^^^^^^^^^^^^^^^
 Enumeration constants have numbering that is consistent with CBLAS, ACML and most standard C BLAS libraries.
 
 rocblas_operation
-""""""""""""""""""""""""
+**************************
 .. doxygenenum:: rocblas_operation
    :project: rocBLAS
 
 rocblas_fill
-""""""""""""""""""""""""
+**************************
 .. doxygenenum:: rocblas_fill
    :project: rocBLAS
 
 rocblas_diagonal
-""""""""""""""""""""""""
+**************************
 .. doxygenenum:: rocblas_diagonal
    :project: rocBLAS
 
 rocblas_side
-""""""""""""""""""""""""
+**************************
 .. doxygenenum:: rocblas_side
    :project: rocBLAS
 
 rocblas_status
-""""""""""""""""""""""""
+**************************
 .. doxygenenum:: rocblas_status
    :project: rocBLAS
 
 rocblas_datatype
-""""""""""""""""""""""""
+**************************
 .. doxygenenum:: rocblas_datatype
    :project: rocBLAS
 
 rocblas_pointer_mode
-""""""""""""""""""""""""
+**************************
 .. doxygenenum:: rocblas_pointer_mode
    :project: rocBLAS
 
 rocblas_layer_mode
-""""""""""""""""""""""""
+**************************
 .. doxygenenum:: rocblas_layer_mode
    :project: rocBLAS
 
 rocblas_gemm_algo
-""""""""""""""""""""""""
+**************************
 .. doxygenenum:: rocblas_gemm_algo
    :project: rocBLAS
 
@@ -428,7 +428,7 @@ Functions
 --------------
 
 Level 1 BLAS
-**************************
+~~~~~~~~~~~~~~~
 
 rocblas_<type>scal()
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -507,7 +507,7 @@ rocblas_i<type>amin()
    :project: rocBLAS
 
 Level 2 BLAS
-**************************
+~~~~~~~~~~~~~~~
 
 rocblas_<type>gemv()
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -542,7 +542,7 @@ rocblas_<type>syr()
    :project: rocBLAS
 
 Level 3 BLAS
-**************************
+~~~~~~~~~~~~~~~
 
 rocblas_<type>trtri_batched()
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -602,7 +602,7 @@ rocblas_<type>geam()
    :project: rocBLAS
 
 BLAS Extensions
-**************************
+~~~~~~~~~~~~~~~
 
 rocblas_gemm_ex()
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -615,7 +615,7 @@ rocblas_gemm_strided_batched_ex()
    :project: rocBLAS
 
 Build Information
-**************************
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 rocblas_get_version_string()
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -623,7 +623,7 @@ rocblas_get_version_string()
    :project: rocBLAS
 
 Auxiliary
-*************
+~~~~~~~~~~~~~~~
 
 rocblas_pointer_to_mode()
 ^^^^^^^^^^^^^^^^^^^^^^^
