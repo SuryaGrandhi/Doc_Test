@@ -428,7 +428,7 @@ Functions
 --------------
 
 Level 1 BLAS
-~~~~~~~~~~~~~~~
+***************
 
 rocblas_<type>scal()
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -507,7 +507,7 @@ rocblas_i<type>amin()
    :project: rocBLAS
 
 Level 2 BLAS
-~~~~~~~~~~~~~~~
+***************
 
 rocblas_<type>gemv()
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -542,7 +542,7 @@ rocblas_<type>syr()
    :project: rocBLAS
 
 Level 3 BLAS
-~~~~~~~~~~~~~~~
+***************
 
 rocblas_<type>trtri_batched()
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -602,7 +602,7 @@ rocblas_<type>geam()
    :project: rocBLAS
 
 BLAS Extensions
-~~~~~~~~~~~~~~~
+***************
 
 rocblas_gemm_ex()
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -615,7 +615,7 @@ rocblas_gemm_strided_batched_ex()
    :project: rocBLAS
 
 Build Information
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+******************************
 
 rocblas_get_version_string()
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -623,7 +623,7 @@ rocblas_get_version_string()
    :project: rocBLAS
 
 Auxiliary
-~~~~~~~~~~~~~~~
+***************
 
 rocblas_pointer_to_mode()
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -4095,6 +4095,7 @@ rocsparse_axpyi()
 --------------------------------
 
 .. doxygenfunction:: rocsparse_saxpyi
+   :outline:
    :project: rocSPARSE
 
 .. doxygenfunction:: rocsparse_daxpyi
@@ -4105,6 +4106,7 @@ rocsparse_doti()
 
 .. doxygenfunction:: rocsparse_sdoti
    :project: rocSPARSE
+   :outline:
 
 .. doxygenfunction:: rocsparse_ddoti
    :project: rocSPARSE
