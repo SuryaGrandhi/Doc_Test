@@ -142,8 +142,24 @@ Plan
 
 The following functions are used to create and destroy plan objects.
 
-.. doxygenfunction:: rocfft_plan_create
-   :project: rocFFT
+.. role:: red
+:red:`rocfft_status rocfft_plan_create(rocfft_plan *plan, rocfft_result_placement placement, rocfft_transform_type transform_type, rocfft_precision precision, size_t dimensions, const size_t *lengths, size_t number_of_transforms, const rocfft_plan_description description)`
+
+    Create an FFT plan.
+
+    This API creates a plan, which the user can execute subsequently. This function takes many of the fundamental parameters needed to specify a transform. The parameters are self explanatory. The dimensions parameter can take a value of 1,2 or 3. The ‘lengths’ array specifies size of data in each dimension. Note that lengths[0] is the size of the innermost dimension, lengths[1] is the next higher dimension and so on. The ‘number_of_transforms’ parameter specifies how many transforms (of the same kind) needs to be computed. By specifying a value greater than 1, a batch of transforms can be computed with a single api call. Additionally, a handle to a plan description can be passed for more detailed transforms. For simple transforms, this parameter can be set to null ptr.
+
+	Parameters
+
+           - ``plan``: plan handle
+           - ``placement``: placement of result
+           - ``transform_type``: type of transform
+           - ``precision``: precision
+           - ``dimensions``: dimensions
+           - ``lengths``: dimensions sized array of transform lengths
+           - ``number_of_transforms``: number of transforms
+           - ``description``: description handle created by rocfft_plan_description_create; can be null ptr for simple transforms
+
 
 .. doxygenfunction:: rocfft_plan_destroy
    :project: rocFFT
