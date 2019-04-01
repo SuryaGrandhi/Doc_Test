@@ -142,9 +142,9 @@ Plan
 
 The following functions are used to create and destroy plan objects.
 
-.. role:: blue
+.. role:: bluetext
 
-I like color :blue:`blue`.
+I like color :bluetext:`blue`.
 
 After blue.
 
