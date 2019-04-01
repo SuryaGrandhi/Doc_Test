@@ -142,6 +142,12 @@ Plan
 
 The following functions are used to create and destroy plan objects.
 
+.. role:: blue
+
+I like color :blue:`blue`.
+
+After blue.
+
 :blue:`rocfft_status` **rocfft_plan_create** :blue:`(rocfft_plan *plan, rocfft_result_placement placement, rocfft_transform_type transform_type, rocfft_precision precision, size_t dimensions, const size_t *lengths, size_t number_of_transforms, const rocfft_plan_description description)`
 
     Create an FFT plan.
