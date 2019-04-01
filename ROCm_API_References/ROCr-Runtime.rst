@@ -21,16 +21,16 @@ common definition
 .. doxygenclass:: struct hsa_dim3_s
    :project: ROCr
 
-.. doxygenfunction:: HSA_API hsa_init()
+.. doxygenfunction:: hsa_init()
    :project: ROCr	
 
 Initialization and Shut Down
 -----------------------------
 
-.. doxygenfunction:: HSA_API hsa_init()
+.. doxygenfunction:: hsa_init()
    :project: ROCr	
 
-.. doxygenfunction:: HSA_API hsa_shut_down()
+.. doxygenfunction:: hsa_shut_down()
    :project: ROCr	
 
 System and Agent Information
