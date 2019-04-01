@@ -52,6 +52,7 @@ breathe_projects = { "ReadTheDocs-Breathe": "xml/",
 		     "rocALUTION": "rocALUTIONxml/",
 		     "rocFFT": "rocFFTxml/",
 		     "rocSPARSE": "rocSPARSExml/",
+		     "ROCr": "ROCrxml/",
 		     }
 breathe_default_project = "ReadTheDocs-Breathe"
 
