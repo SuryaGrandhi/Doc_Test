@@ -779,8 +779,7 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = ROCm_API_References/ROCr/src/ \
-			 ROCm_API_References/ROCr/src/core/shared.h \
+INPUT                  = ROCm_API_References/ROCr/src/core/shared.h \
 			 ROCm_API_References/ROCr/src/core/inc/ \
 			 ROCm_API_References/ROCr/src/core/util/
 
