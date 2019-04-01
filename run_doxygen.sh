@@ -22,6 +22,8 @@ sed -i 's/#include "rocsparse-export.h"//g' rocsparse-auxiliary_sed.h
 
 doxygen ROCm_Libraries/rocSPARSE/Doxyfile
 
-sed -e 's/HSA_API //g' ROCm_API_References/ROCr/src/src/hsa.h > ROCm_API_References/ROCr/src/hsa.h
+sed -e 's/HSA_API //g' ROCm_API_References/ROCr/src/src/hsa.h > ROCm_API_References/ROCr/src/hsa1.h
+sed -e 's/HSA_DEPRECATED//g' ROCm_API_References/ROCr/src/hsa1.h > ROCm_API_References/ROCr/src/hsa.h
+sed -e 's/HSA_API //g' ROCm_API_References/ROCr/src/src/hsa_ext_finalize.h > ROCm_API_References/ROCr/src/hsa_ext_finalize.h
 
 doxygen ROCm_API_References/ROCr/Doxyfile
