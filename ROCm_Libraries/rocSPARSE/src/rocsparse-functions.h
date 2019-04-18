@@ -532,7 +532,7 @@ rocsparse_status rocsparse_zsctr(rocsparse_handle handle,
  *  \f[
  *    op(A) = \left\{
  *    \begin{array}{ll}
- *        A,   & intertext{if trans == rocsparse_operation_none} \\
+ *        A,   & \intertext{if trans == rocsparse_operation_none} \\
  *        A^T, & if\: trans == rocsparse\_operation\_transpose \\
  *        A^H, & if\: trans == rocsparse\_operation\_conjugate\_transpose
  *    \end{array}
