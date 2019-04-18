@@ -532,8 +532,9 @@ rocsparse_status rocsparse_zsctr(rocsparse_handle handle,
  *  \f[
  *    op(A) = \left\{
  *    \begin{array}{ll}
- *        x^2 & : x < 0\\
- *   	  x^3 & : x \ge 0
+ *        A,   & if trans == rocsparse_operation_none \\
+ *        A^T, & if trans == rocsparse_operation_transpose \\
+ *        A^H, & if trans == rocsparse_operation_conjugate_transpose
  *    \end{array}
  *    \right.
  *  \f]
