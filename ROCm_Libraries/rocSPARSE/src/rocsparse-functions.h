@@ -134,7 +134,7 @@ rocsparse_status rocsparse_zaxpyi(rocsparse_handle handle,
  *  \p rocsparse_doti computes the dot product of the sparse vector \f$x\f$ with the
  *  dense vector \f$y\f$, such that
  *  \f[
- *    \text{result} := y^T x
+ *    \text{result == res} := y^T x
  *  \f]
  *
  *  \code{.c}
@@ -532,9 +532,9 @@ rocsparse_status rocsparse_zsctr(rocsparse_handle handle,
  *  \f[
  *    op(A) = \left\{
  *    \begin{array}{ll}
- *        A,   & \mbox{if trans} == \mbox{rocsparse_operation_none} \\
- *        A^T, & \mbox{if trans} == \mbox{rocsparse_operation_transpose} \\
- *        A^H, & \mbox{if trans} == \mbox{rocsparse_operation_conjugate_transpose}
+ *        A,   & if\: trans == rocsparse\_operation\_none} \\
+ *        A^T, & if\: trans} == rocsparse\_operation\_transpose} \\
+ *        A^H, & if\: trans} == rocsparse\_operation\_conjugate\_transpose}
  *    \end{array}
  *    \right.
  *  \f]
