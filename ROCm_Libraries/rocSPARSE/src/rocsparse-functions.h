@@ -532,11 +532,11 @@ rocsparse_status rocsparse_zsctr(rocsparse_handle handle,
  *  \f[
  *    op(A) = \left\{
  *    \begin{array}{ll}
- *        A, & \text{if trans == rocsparse_operation_none} \\
- *        A^T, & \text{if trans == rocsparse_operation_transpose} \\
- *        A^H, & \text{if trans == rocsparse_operation_conjugate_transpose}
+ *        $A$,   & \text{if trans == rocsparse_operation_none} \\
+ *        $A^T$, & \text{if trans == rocsparse_operation_transpose} \\
+ *        $A^H$, & \text{if trans == rocsparse_operation_conjugate_transpose}
  *    \end{array}
- *    \right\.
+ *    \right.
  *  \f]
  *
  *  The COO matrix has to be sorted by row indices. This can be achieved by using
@@ -784,15 +784,6 @@ rocsparse_status rocsparse_csrmv_clear(rocsparse_handle handle, rocsparse_mat_in
  *    y := \alpha \cdot op(A) \cdot x + \beta \cdot y,
  *  \f]
  *  with
- *  \f[
- *    op(A) = \left\{
- *    \begin{array}{ll}
- *        A, & \text{if trans == rocsparse_operation_none} \\
- *        A^T, & \text{if trans == rocsparse_operation_transpose} \\
- *        A^H, & \text{if trans == rocsparse_operation_conjugate_transpose}
- *    \end{array}
- *    \right\.
- *  \f]
  *
  *  The \p info parameter is optional and contains information collected by
  *  rocsparse_scsrmv_analysis() or rocsparse_dcsrmv_analysis(). If present, the
@@ -1219,15 +1210,6 @@ rocsparse_status rocsparse_csrsv_clear(rocsparse_handle handle,
  *    op(A) \cdot y = \alpha \cdot x,
  *  \f]
  *  with
- *  \f[
- *    op(A) = \left\{
- *    \begin{array}{ll}
- *        A, & \text{if trans == rocsparse_operation_none} \\
- *        A^T, & \text{if trans == rocsparse_operation_transpose} \\
- *        A^H, & \text{if trans == rocsparse_operation_conjugate_transpose}
- *    \end{array}
- *    \right\.
- *  \f]
  *
  *  \p rocsparse_csrsv_solve requires a user allocated temporary buffer. Its size is
  *  returned by rocsparse_scsrsv_buffer_size() or rocsparse_dcsrsv_buffer_size().
@@ -1411,15 +1393,6 @@ rocsparse_status rocsparse_dcsrsv_solve(rocsparse_handle handle,
  *    y := \alpha \cdot op(A) \cdot x + \beta \cdot y,
  *  \f]
  *  with
- *  \f[
- *    op(A) = \left\{
- *    \begin{array}{ll}
- *        A, & \text{if trans == rocsparse_operation_none} \\
- *        A^T, & \text{if trans == rocsparse_operation_transpose} \\
- *        A^H, & \text{if trans == rocsparse_operation_conjugate_transpose}
- *    \end{array}
- *    \right\.
- *  \f]
  *
  *  \code{.c}
  *      for(i = 0; i < m; ++i)
@@ -1556,15 +1529,6 @@ rocsparse_status rocsparse_sellmv(rocsparse_handle handle,
  *    y := \alpha \cdot op(A) \cdot x + \beta \cdot y,
  *  \f]
  *  with
- *  \f[
- *    op(A) = \left\{
- *    \begin{array}{ll}
- *        A, & \text{if trans == rocsparse_operation_none} \\
- *        A^T, & \text{if trans == rocsparse_operation_transpose} \\
- *        A^H, & \text{if trans == rocsparse_operation_conjugate_transpose}
- *    \end{array}
- *    \right\.
- *  \f]
  *
  *  \note
  *  This function is non blocking and executed asynchronously with respect to the host.
@@ -1669,25 +1633,6 @@ rocsparse_status rocsparse_dhybmv(rocsparse_handle handle,
  *    C := \alpha \cdot op(A) \cdot op(B) + \beta \cdot C,
  *  \f]
  *  with
- *  \f[
- *    op(A) = \left\{
- *    \begin{array}{ll}
- *        A, & \text{if trans_A == rocsparse_operation_none} \\
- *        A^T, & \text{if trans_A == rocsparse_operation_transpose} \\
- *        A^H, & \text{if trans_A == rocsparse_operation_conjugate_transpose}
- *    \end{array}
- *    \right\.
- *  \f]
- *  and
- *  \f[
- *    op(B) = \left\{
- *    \begin{array}{ll}
- *        B, & \text{if trans_B == rocsparse_operation_none} \\
- *        B^T, & \text{if trans_B == rocsparse_operation_transpose} \\
- *        B^H, & \text{if trans_B == rocsparse_operation_conjugate_transpose}
- *    \end{array}
- *    \right\.
- *  \f]
  *
  *  \code{.c}
  *      for(i = 0; i < ldc; ++i)
