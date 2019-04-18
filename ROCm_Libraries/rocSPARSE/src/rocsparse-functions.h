@@ -531,7 +531,7 @@ rocsparse_status rocsparse_zsctr(rocsparse_handle handle,
  *  with
  *  \f[
  *    op(A) = \left\{
- *    \begin{ll}
+ *    \begin
  *        A,   & \text{if trans == rocsparse_operation_none} \\
  *        A^T, & \text{if trans == rocsparse_operation_transpose} \\
  *        A^H, & \text{if trans == rocsparse_operation_conjugate_transpose}
@@ -786,7 +786,7 @@ rocsparse_status rocsparse_csrmv_clear(rocsparse_handle handle, rocsparse_mat_in
  *  with
  *  \f[
  *    op(A) = \left\{
- *    \begin{ll}
+ *    \begin
  *        A,   & \text{if trans == rocsparse_operation_none} \\
  *        A^T, & \text{if trans == rocsparse_operation_transpose} \\
  *        A^H, & \text{if trans == rocsparse_operation_conjugate_transpose}
@@ -1221,7 +1221,7 @@ rocsparse_status rocsparse_csrsv_clear(rocsparse_handle handle,
  *  with
  *  \f[
  *    op(A) = \left\{
- *    \begin{ll}
+ *    \begin
  *        A,   & \text{if trans == rocsparse_operation_none} \\
  *        A^T, & \text{if trans == rocsparse_operation_transpose} \\
  *        A^H, & \text{if trans == rocsparse_operation_conjugate_transpose}
@@ -1413,7 +1413,7 @@ rocsparse_status rocsparse_dcsrsv_solve(rocsparse_handle handle,
  *  with
  *  \f[
  *    op(A) = \left\{
- *    \begin{ll}
+ *    \begin
  *        A,   & \text{if trans == rocsparse_operation_none} \\
  *        A^T, & \text{if trans == rocsparse_operation_transpose} \\
  *        A^H, & \text{if trans == rocsparse_operation_conjugate_transpose}
@@ -1558,7 +1558,7 @@ rocsparse_status rocsparse_sellmv(rocsparse_handle handle,
  *  with
  *  \f[
  *    op(A) = \left\{
- *    \begin{ll}
+ *    \begin
  *        A,   & \text{if trans == rocsparse_operation_none} \\
  *        A^T, & \text{if trans == rocsparse_operation_transpose} \\
  *        A^H, & \text{if trans == rocsparse_operation_conjugate_transpose}
@@ -1671,7 +1671,7 @@ rocsparse_status rocsparse_dhybmv(rocsparse_handle handle,
  *  with
  *  \f[
  *    op(A) = \left\{
- *    \begin{ll}
+ *    \begin
  *        A,   & \text{if trans_A == rocsparse_operation_none} \\
  *        A^T, & \text{if trans_A == rocsparse_operation_transpose} \\
  *        A^H, & \text{if trans_A == rocsparse_operation_conjugate_transpose}
@@ -1681,7 +1681,7 @@ rocsparse_status rocsparse_dhybmv(rocsparse_handle handle,
  *  and
  *  \f[
  *    op(B) = \left\{
- *    \begin{ll}
+ *    \begin
  *        B,   & \text{if trans_B == rocsparse_operation_none} \\
  *        B^T, & \text{if trans_B == rocsparse_operation_transpose} \\
  *        B^H, & \text{if trans_B == rocsparse_operation_conjugate_transpose}
