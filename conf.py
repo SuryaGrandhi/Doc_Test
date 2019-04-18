@@ -65,6 +65,7 @@ breathe_default_project = "ReadTheDocs-Breathe"
 ##mathjax_path = 'https://c328740.ssl.cf1.rackcdn.com/' \
 ##               'mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
 
+mathjax_path="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
