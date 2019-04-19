@@ -1521,13 +1521,12 @@ rocsparse_status rocsparse_sellmv(rocsparse_handle handle,
  *  \f]
  *  with
  *  \f[
- *    op(A) = \left
+ *    op(A) =
  *    \begin{cases}
  *        A,   & \text{if trans == rocsparse_operation_none} \\
  *        A^T, & \text{if trans == rocsparse_operation_transpose} \\
  *        A^H, & \text{if trans == rocsparse_operation_conjugate_transpose}
  *    \end{cases}
- *    \right.
  *  \f]
  *
  *  \note
