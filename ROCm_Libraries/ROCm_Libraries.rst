@@ -3863,9 +3863,9 @@ where
 .. math::
 
   \begin{array}{ll}
-    \text{coo_val}[8] & = \{1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0\} \\
-    \text{coo_row_ind}[8] & = \{0, 0, 0, 1, 1, 2, 2, 2\} \\
-    \text{coo_col_ind}[8] & = \{0, 1, 3, 1, 2, 0, 3, 4\}
+    coo\_val\[8\] & = \{1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0\} \\
+    coo\_row\_ind\[8\] & = \{0, 0, 0, 1, 1, 2, 2, 2\} \\
+    coo\_col\_ind\[8\] & = \{0, 1, 3, 1, 2, 0, 3, 4\}
   \end{array}
 
 CSR storage format
@@ -3897,9 +3897,9 @@ where
 .. math::
 
   \begin{array}{ll}
-    \text{csr_val}[8] & = \{1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0\} \\
-    \text{csr_row_ptr}[4] & = \{1, 4, 6, 9\} \\
-    \text{csr_col_ind}[8] & = \{1, 2, 4, 2, 3, 1, 4, 5\}
+    csr\_val\[8\] & = \{1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0\} \\
+    csr\_row\_ptr\[4\] & = \{1, 4, 6, 9\} \\
+    csr\_col\_ind\[8\] & = \{1, 2, 4, 2, 3, 1, 4, 5\}
   \end{array}
 
 ELL storage format
