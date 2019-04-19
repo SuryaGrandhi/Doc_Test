@@ -1521,7 +1521,7 @@ rocsparse_status rocsparse_sellmv(rocsparse_handle handle,
  *  \f]
  *  with
  *  \f[
- *    op(A) = \left\{
+ *    op(A) = \left
  *    \begin{cases}
  *        A,   & \text{if trans == rocsparse_operation_none} \\
  *        A^T, & \text{if trans == rocsparse_operation_transpose} \\
