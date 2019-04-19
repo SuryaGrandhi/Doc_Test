@@ -142,29 +142,8 @@ Plan
 
 The following functions are used to create and destroy plan objects.
 
-.. role:: red
-
-I like color :red:`blue`.
-
-After red.
-
-:blue:`rocfft_status` **rocfft_plan_create** :blue:`(rocfft_plan *plan, rocfft_result_placement placement, rocfft_transform_type transform_type, rocfft_precision precision, size_t dimensions, const size_t *lengths, size_t number_of_transforms, const rocfft_plan_description description)`
-
-    Create an FFT plan.
-
-    This API creates a plan, which the user can execute subsequently. This function takes many of the fundamental parameters needed to specify a transform. The parameters are self explanatory. The dimensions parameter can take a value of 1,2 or 3. The ‘lengths’ array specifies size of data in each dimension. Note that lengths[0] is the size of the innermost dimension, lengths[1] is the next higher dimension and so on. The ‘number_of_transforms’ parameter specifies how many transforms (of the same kind) needs to be computed. By specifying a value greater than 1, a batch of transforms can be computed with a single api call. Additionally, a handle to a plan description can be passed for more detailed transforms. For simple transforms, this parameter can be set to null ptr.
-
-    | Parameters
-
-           - ``plan``: plan handle
-           - ``placement``: placement of result
-           - ``transform_type``: type of transform
-           - ``precision``: precision
-           - ``dimensions``: dimensions
-           - ``lengths``: dimensions sized array of transform lengths
-           - ``number_of_transforms``: number of transforms
-           - ``description``: description handle created by rocfft_plan_description_create; can be null ptr for simple transforms
-
+.. doxygenfunction:: rocfft_plan_create
+   :project: rocFFT
 
 .. doxygenfunction:: rocfft_plan_destroy
    :project: rocFFT
@@ -279,13 +258,13 @@ rocBLAS
 A BLAS implementation on top of AMD's Radeon Open Compute `ROCm <http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html>`_ runtime and toolchains. rocBLAS is implemented in the `HIP <http://rocm-documentation.readthedocs.io/en/latest/Programming_Guides/Programming-Guides.html#hip-programing-guide>`_ programming language and optimized for AMD's latest discrete GPUs.
 
 Installing pre-built packages
-###################################
+##############################
 Download pre-built packages either from `ROCm's package servers <http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html#installation-guide-ubuntu>`_ or by clicking the github releases tab and manually downloading, which could be newer. Release notes are available for each release on the releases tab.
 ::
   sudo apt update && sudo apt install rocblas
 
 Quickstart rocBLAS build
-###################################
+###########################
 
 **Bash helper build script (Ubuntu only)**
 
@@ -295,7 +274,7 @@ The root of this repository has a helper bash script install.sh to build and ins
   ./install -id -- build library, build dependencies and install (-d flag only needs to be passed once on a system)
 
 Manual build (all supported platforms)
-############################################
+#########################################
 If you use a distro other than Ubuntu, or would like more control over the build process, the :ref:`rocblaswiki` has helpful information on how to configure cmake and manually build.
 
 **Functions supported**
@@ -303,11 +282,11 @@ If you use a distro other than Ubuntu, or would like more control over the build
 A list of exported functions from rocblas can be found on the wiki
 
 rocBLAS interface examples
-###################################
+#############################
 In general, the rocBLAS interface is compatible with CPU oriented `Netlib BLAS <http://www.netlib.org/blas/>`_ and the cuBLAS-v2 API, with the explicit exception that traditional BLAS interfaces do not accept handles. The cuBLAS' cublasHandle_t is replaced with rocblas_handle everywhere. Thus, porting a CUDA application which originally calls the cuBLAS API to a HIP application calling rocBLAS API should be relatively straightforward. For example, the rocBLAS SGEMV interface is
 
 GEMV API
-###################################
+###############
 
 ::
 
@@ -322,7 +301,7 @@ GEMV API
                 float* y, rocblas_int incy);
 
 Batched and strided GEMM API
-###################################
+################################
 rocBLAS GEMM can process matrices in batches with regular strides. There are several permutations of these API's, the following is an example that takes everything
 
 ::
@@ -342,14 +321,14 @@ rocBLAS GEMM can process matrices in batches with regular strides. There are sev
 rocBLAS assumes matrices A and vectors x, y are allocated in GPU memory space filled with data. Users are responsible for copying data from/to the host and device memory. HIP provides memcpy style API's to facilitate data management.
 
 Asynchronous API
-###################################
+###################
 Except a few routines (like TRSM) having memory allocation inside preventing asynchronicity, most of the library routines (like BLAS-1 SCAL, BLAS-2 GEMV, BLAS-3 GEMM) are configured to operate in asynchronous fashion with respect to CPU, meaning these library functions return immediately.
 
 For more information regarding rocBLAS library and corresponding API documentation, refer `rocBLAS <https://rocblas.readthedocs.io/en/latest/>`_
 
 
 API
-###################################
+####
 
 This section provides details of the library API
 
@@ -806,11 +785,11 @@ Random number generator Mrg31k3p example:
 
 file: Randomarray.cpp
 
-#!c++
 
 ::
 
- 
+  #!c++
+  
   //This example is a simple random array generation and it compares host output with device output
   //Random number generator Mrg31k3p
   #include <stdio.h>
@@ -3700,34 +3679,34 @@ rocSPARSE is a library that contains basic linear algebra subroutines for sparse
 The code is open and hosted here: https://github.com/ROCmSoftwarePlatform/rocSPARSE
 
 Device and Stream Management
-############################
+------------------------------
 *hipSetDevice()* and *hipGetDevice()* are HIP device management APIs. They are NOT part of the rocSPARSE API.
 
 Asynchronous Execution
-######################
+```````````````````````````
 All rocSPARSE library functions, unless otherwise stated, are non blocking and executed asynchronously with respect to the host. They may return before the actual computation has finished. To force synchronization, *hipDeviceSynchronize()* or *hipStreamSynchronize()* can be used. This will ensure that all previously executed rocSPARSE functions on the device / this particular stream have completed.
 
 HIP Device Management
-#####################
+``````````````````````````
 Before a HIP kernel invocation, users need to call *hipSetDevice()* to set a device, e.g. device 1. If users do not explicitly call it, the system by default sets it as device 0. Unless users explicitly call *hipSetDevice()* to set to another device, their HIP kernels are always launched on device 0.
 
 The above is a HIP (and CUDA) device management approach and has nothing to do with rocSPARSE. rocSPARSE honors the approach above and assumes users have already set the device before a rocSPARSE routine call.
 
 HIP Stream Management
-#####################
+```````````````````````
 HIP kernels are always launched in a queue (also known as stream).
 
 If users do not explicitly specify a stream, the system provides a default stream, maintained by the system. Users cannot create or destroy the default stream. However, users can freely create new streams (with *hipStreamCreate()*) and bind it to the rocSPARSE handle. HIP kernels are invoked in rocSPARSE routines. The rocSPARSE handle is always associated with a stream, and rocSPARSE passes its stream to the kernels inside the routine. One rocSPARSE routine only takes one stream in a single invocation. If users create a stream, they are responsible for destroying it.
 
 Multiple Streams and Multiple Devices
-#####################################
+```````````````````````````````````````
 If the system under test has multiple HIP devices, users can run multiple rocSPARSE handles concurrently, but can NOT run a single rocSPARSE handle on different discrete devices. Each handle is associated with a particular singular device, and a new handle should be created for each additional device.
 
 Building and Installing
 #######################
 
 Installing from AMD ROCm repositories
-#####################################
+-----------------------------------------
 rocSPARSE can be installed from `AMD ROCm repositories <https://rocm.github.io/ROCmInstall.html#installing-from-amd-rocm-repositories>`_ by
 
 ::
@@ -3736,10 +3715,10 @@ rocSPARSE can be installed from `AMD ROCm repositories <https://rocm.github.io/R
 
 
 Building rocSPARSE from Open-Source repository
-##############################################
+------------------------------------------------
 
 Download rocSPARSE
-##################
+``````````````````````
 The rocSPARSE source code is available at the `rocSPARSE github page <https://github.com/ROCmSoftwarePlatform/rocSPARSE>`_.
 Download the master branch using:
 
@@ -3755,7 +3734,7 @@ Below are steps to build different packages of the library, including dependenci
 It is recommended to install rocSPARSE using the *install.sh* script.
 
 Using *install.sh* to build dependencies + library
-##################################################
+`````````````````````````````````````````````````````
 The following table lists common uses of *install.sh* to build dependencies + library.
 
 ================= ====
@@ -3768,7 +3747,7 @@ Command           Description
 ================= ====
 
 Using *install.sh* to build dependencies + library + client
-###########################################################
+`````````````````````````````````````````````````````````````
 The client contains example code, unit tests and benchmarks. Common uses of *install.sh* to build them are listed in the table below.
 
 =================== ====
@@ -3782,7 +3761,7 @@ Command             Description
 =================== ====
 
 Using individual commands to build rocSPARSE
-############################################
+````````````````````````````````````````````````
 CMake 3.5 or later is required in order to build rocSPARSE.
 The rocSPARSE library contains both, host and device code, therefore the HCC compiler must be specified during cmake configuration process.
 
@@ -3833,7 +3812,7 @@ rocSPARSE with dependencies and client can be built using the following commands
   sudo make install
 
 Common build problems
-#####################
+```````````````````````
 #. **Issue:** HIP (/opt/rocm/hip) was built using hcc 1.0.xxx-xxx-xxx-xxx, but you are using /opt/rocm/bin/hcc with version 1.0.yyy-yyy-yyy-yyy from hipcc (version mismatch). Please rebuild HIP including cmake or update HCC_HOME variable.
 
    **Solution:** Download HIP from github and use hcc to `build from source <https://github.com/ROCm-Developer-Tools/HIP/blob/master/INSTALL.md>`_ and then use the built HIP instead of /opt/rocm/hip.
@@ -3851,6 +3830,128 @@ Common build problems
               rocm-config.cmake
 
    **Solution:** Install `ROCm cmake modules <https://github.com/RadeonOpenCompute/rocm-cmake>`_
+
+Storage Formats
+#################
+
+COO storage format
+--------------------
+The Coordinate (COO) storage format represents a :math:`m \times n` matrix by
+
+=========== ==================================================================
+m           number of rows (integer).
+n           number of columns (integer).
+nnz         number of non-zero elements (integer).
+coo_val     array of ``nnz`` elements containing the data (floating point).
+coo_row_ind array of ``nnz`` elements containing the row indices (integer).
+coo_col_ind array of ``nnz`` elements containing the column indices (integer).
+=========== ==================================================================
+
+The COO matrix is expected to be sorted by row indices and column indices per row. Furthermore, each pair of indices should appear only once.
+Consider the following :math:`3 \times 5` matrix and the corresponding COO structures, with :math:`m = 3, n = 5` and :math:`\text{nnz} = 8` using zero based indexing:
+
+.. math::
+
+  A = \begin{pmatrix}
+        1.0 & 2.0 & 0.0 & 3.0 & 0.0 \\
+        0.0 & 4.0 & 5.0 & 0.0 & 0.0 \\
+        6.0 & 0.0 & 0.0 & 7.0 & 8.0 \\
+      \end{pmatrix}
+
+where
+
+.. math::
+
+  \begin{array}{ll}
+    \text{coo_val}[8] & = \{1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0\} \\
+    \text{coo_row_ind}[8] & = \{0, 0, 0, 1, 1, 2, 2, 2\} \\
+    \text{coo_col_ind}[8] & = \{0, 1, 3, 1, 2, 0, 3, 4\}
+  \end{array}
+
+CSR storage format
+--------------------
+The Compressed Sparse Row (CSR) storage format represents a :math:`m \times n` matrix by
+
+=========== =========================================================================
+m           number of rows (integer).
+n           number of columns (integer).
+nnz         number of non-zero elements (integer).
+csr_val     array of ``nnz`` elements containing the data (floating point).
+csr_row_ptr array of ``m+1`` elements that point to the start of every row (integer).
+csr_col_ind array of ``nnz`` elements containing the column indices (integer).
+=========== =========================================================================
+
+The CSR matrix is expected to be sorted by column indices within each row. Furthermore, each pair of indices should appear only once.
+Consider the following :math:`3 \times 5` matrix and the corresponding CSR structures, with :math:`m = 3, n = 5` and :math:`\text{nnz} = 8` using one based indexing:
+
+.. math::
+
+  A = \begin{pmatrix}
+        1.0 & 2.0 & 0.0 & 3.0 & 0.0 \\
+        0.0 & 4.0 & 5.0 & 0.0 & 0.0 \\
+        6.0 & 0.0 & 0.0 & 7.0 & 8.0 \\
+      \end{pmatrix}
+
+where
+
+.. math::
+
+  \begin{array}{ll}
+    \text{csr_val}[8] & = \{1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0\} \\
+    \text{csr_row_ptr}[4] & = \{1, 4, 6, 9\} \\
+    \text{csr_col_ind}[8] & = \{1, 2, 4, 2, 3, 1, 4, 5\}
+  \end{array}
+
+ELL storage format
+--------------------
+The Ellpack-Itpack (ELL) storage format represents a :math:`m \times n` matrix by
+
+=========== ================================================================================
+m           number of rows (integer).
+n           number of columns (integer).
+ell_width   maximum number of non-zero elements per row (integer)
+ell_val     array of ``m times ell_width`` elements containing the data (floating point).
+ell_col_ind array of ``m times ell_width`` elements containing the column indices (integer).
+=========== ================================================================================
+
+The ELL matrix is assumed to be stored in column-major format. Rows with less than ``ell_width`` non-zero elements are padded with zeros (``ell_val``) and :math:`-1` (``ell_col_ind``).
+Consider the following :math:`3 \times 5` matrix and the corresponding ELL structures, with :math:`m = 3, n = 5` and :math:`\text{ell_width} = 3` using zero based indexing:
+
+.. math::
+
+  A = \begin{pmatrix}
+        1.0 & 2.0 & 0.0 & 3.0 & 0.0 \\
+        0.0 & 4.0 & 5.0 & 0.0 & 0.0 \\
+        6.0 & 0.0 & 0.0 & 7.0 & 8.0 \\
+      \end{pmatrix}
+
+where
+
+.. math::
+
+  \begin{array}{ll}
+    \text{ell_val}[9] & = \{1.0, 4.0, 6.0, 2.0, 5.0, 7.0, 3.0, 0.0, 8.0\} \\
+    \text{ell_col_ind}[9] & = \{0, 1, 0, 1, 2, 3, 3, -1, 4\}
+  \end{array}
+
+
+HYB storage format
+--------------------
+The Hybrid (HYB) storage format represents a :math:`m \times n` matrix by
+
+=========== =========================================================================================
+m           number of rows (integer).
+n           number of columns (integer).
+nnz         number of non-zero elements of the COO part (integer)
+ell_width   maximum number of non-zero elements per row of the ELL part (integer)
+ell_val     array of ``m times ell_width`` elements containing the ELL part data (floating point).
+ell_col_ind array of ``m times ell_width`` elements containing the ELL part column indices (integer).
+coo_val     array of ``nnz`` elements containing the COO part data (floating point).
+coo_row_ind array of ``nnz`` elements containing the COO part row indices (integer).
+coo_col_ind array of ``nnz`` elements containing the COO part column indices (integer).
+=========== =========================================================================================
+
+The HYB format is a combination of the ELL and COO sparse matrix formats. Typically, the regular part of the matrix is stored in ELL storage format, and the irregular part of the matrix is stored in COO storage format. Three different partitioning schemes can be applied when converting a CSR matrix to a matrix in HYB storage format. For further details on the partitioning schemes, see :ref:`rocsparse_hyb_partition_`.
 
 Types
 ##########
@@ -3955,7 +4056,24 @@ rocsparse_status
 .. doxygenenum:: rocsparse_status
    :project: rocSPARSE
 
+Logging
+#########
+Three different environment variables can be set to enable logging in rocSPARSE: ``ROCSPARSE_LAYER``, ``ROCSPARSE_LOG_TRACE_PATH`` and ``ROCSPARSE_LOG_BENCH_PATH``.
 
+``ROCSPARSE_LAYER`` is a bit mask, where several logging modes (:ref:`rocsparse_layer_mode_`) can be combined as follows:
+
+================================  ===========================================
+``ROCSPARSE_LAYER`` unset         logging is disabled.
+``ROCSPARSE_LAYER`` set to ``1``  trace logging is enabled.
+``ROCSPARSE_LAYER`` set to ``2``  bench logging is enabled.
+``ROCSPARSE_LAYER`` set to ``3``  trace logging and bench logging is enabled.
+================================  ===========================================
+
+When logging is enabled, each rocSPARSE function call will write the function name as well as function arguments to the logging stream. The default logging stream is ``stderr``.
+
+If the user sets the environment variable ``ROCSPARSE_LOG_TRACE_PATH`` to the full path name for a file, the file is opened and trace logging is streamed to that file. If the user sets the environment variable ``ROCSPARSE_LOG_BENCH_PATH`` to the full path name for a file, the file is opened and bench logging is streamed to that file. If the file cannot be opened, logging output is stream to ``stderr``.
+
+Note that performance will degrade when logging is enabled. By default, the environment variable ``ROCSPARSE_LAYER`` is unset and logging is disabled.
 
 
 Sparse Auxiliary Functions
@@ -4280,7 +4398,7 @@ rocsparse_csrsv_clear()
 
 
 Sparse Level 3 Functions
-#####################
+#########################
 
 This module holds all sparse level 3 routines.
 
@@ -4298,7 +4416,7 @@ rocsparse_csrmm()
 
 
 Preconditioner Functions
-#####################
+##########################
 
 This module holds all sparse preconditioners.
 
