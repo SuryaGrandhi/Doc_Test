@@ -1,10 +1,5 @@
 .. _ROCm_Libraries:
 
-.. toctree::
-   :maxdepth: 9 
-   :caption: ROCm Libraries:
-
-
 =====================
 ROCm Libraries
 =====================

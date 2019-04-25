@@ -62,10 +62,9 @@ breathe_default_project = "ReadTheDocs-Breathe"
 # Set path for mathjax js to a https URL as sometimes the Breathe docs are displayed under https
 # and we can't load an http mathjax file from an https view of the docs. So we change to a https
 # mathjax file which we can load from http or https. We break the url over two lines.
-##mathjax_path = 'https://c328740.ssl.cf1.rackcdn.com/' \
-##               'mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+mathjax_path = 'https://c328740.ssl.cf1.rackcdn.com/' \
+               'mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
 
-mathjax_path="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
@@ -140,7 +139,7 @@ html_theme = 'sphinx_rtd_theme'
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
-#html_theme_options = {'navigation_depth': 9}
+#html_theme_options = {}
 
 # Add any paths that contain custom themes here, relative to this directory.
 #html_theme_path = []
