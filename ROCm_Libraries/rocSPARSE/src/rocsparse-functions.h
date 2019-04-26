@@ -746,40 +746,6 @@ rocsparse_status rocsparse_csrsv_zero_pivot(rocsparse_handle handle,
  *  rocsparse_dcsrilu0_buffer_size() if the matrix sparsity pattern is identical. The
  *  user allocated buffer can thus be shared between subsequent calls to those functions.
  *
- *  @param[in]
- *  handle      handle to the rocsparse library context queue.
- *  @param[in]
- *  trans       matrix operation type.
- *  @param[in]
- *  m           number of rows of the sparse CSR matrix.
- *  @param[in]
- *  nnz         number of non-zero entries of the sparse CSR matrix.
- *  @param[in]
- *  descr       descriptor of the sparse CSR matrix.
- *  @param[in]
- *  csr_val     array of \p nnz elements of the sparse CSR matrix.
- *  @param[in]
- *  csr_row_ptr array of \p m+1 elements that point to the start of every row of the
- *              sparse CSR matrix.
- *  @param[in]
- *  csr_col_ind array of \p nnz elements containing the column indices of the sparse
- *              CSR matrix.
- *  @param[out]
- *  info        structure that holds the information collected during the analysis step.
- *  @param[in]
- *  buffer_size number of bytes of the temporary storage buffer required by
- *              rocsparse_scsrsv_analysis(), rocsparse_dcsrsv_analysis(),
- *              rocsparse_scsrsv_solve() and rocsparse_dcsrsv_solve().
- *
- *  \retval     rocsparse_status_success the operation completed successfully.
- *  \retval     rocsparse_status_invalid_handle the library context was not initialized.
- *  \retval     rocsparse_status_invalid_size \p m or \p nnz is invalid.
- *  \retval     rocsparse_status_invalid_pointer \p descr, \p csr_val, \p csr_row_ptr,
- *              \p csr_col_ind, \p info or \p buffer_size pointer is invalid.
- *  \retval     rocsparse_status_internal_error an internal error occurred.
- *  \retval     rocsparse_status_not_implemented
- *              \p trans != \ref rocsparse_operation_none or
- *              \ref rocsparse_matrix_type != \ref rocsparse_matrix_type_general.
  */
 /**@{*/
 ROCSPARSE_EXPORT
@@ -873,19 +839,7 @@ rocsparse_status rocsparse_dcsrsv_analysis(rocsparse_handle handle,
  *  the opaque \ref rocsparse_mat_info struct is destroyed using
  *  rocsparse_destroy_mat_info().
  *
- *  @param[in]
- *  handle      handle to the rocsparse library context queue.
- *  @param[in]
- *  descr       descriptor of the sparse CSR matrix.
- *  @param[inout]
- *  info        structure that holds the information collected during the analysis step.
- *
- *  \retval     rocsparse_status_success the operation completed successfully.
- *  \retval     rocsparse_status_invalid_handle the library context was not initialized.
- *  \retval     rocsparse_status_invalid_pointer \p info pointer is invalid.
- *  \retval     rocsparse_status_memory_error the buffer holding the meta data could not
- *              be deallocated.
- *  \retval     rocsparse_status_internal_error an internal error occurred.
+ *  
  */
 ROCSPARSE_EXPORT
 rocsparse_status rocsparse_csrsv_clear(rocsparse_handle handle,
@@ -1461,38 +1415,7 @@ rocsparse_status rocsparse_csrilu0_zero_pivot(rocsparse_handle handle,
  *  rocsparse_dcsrsv_buffer_size() if the matrix sparsity pattern is identical. The user
  *  allocated buffer can thus be shared between subsequent calls to those functions.
  *
- *  @param[in]
- *  handle      handle to the rocsparse library context queue.
- *  @param[in]
- *  m           number of rows of the sparse CSR matrix.
- *  @param[in]
- *  nnz         number of non-zero entries of the sparse CSR matrix.
- *  @param[in]
- *  descr       descriptor of the sparse CSR matrix.
- *  @param[in]
- *  csr_val     array of \p nnz elements of the sparse CSR matrix.
- *  @param[in]
- *  csr_row_ptr array of \p m+1 elements that point to the start of every row of the
- *              sparse CSR matrix.
- *  @param[in]
- *  csr_col_ind array of \p nnz elements containing the column indices of the sparse
- *              CSR matrix.
- *  @param[out]
- *  info        structure that holds the information collected during the analysis step.
- *  @param[in]
- *  buffer_size number of bytes of the temporary storage buffer required by
- *              rocsparse_scsrilu0_analysis(), rocsparse_dcsrilu0_analysis(),
- *              rocsparse_scsrilu0() and rocsparse_dcsrilu0().
- *
- *  \retval     rocsparse_status_success the operation completed successfully.
- *  \retval     rocsparse_status_invalid_handle the library context was not initialized.
- *  \retval     rocsparse_status_invalid_size \p m or \p nnz is invalid.
- *  \retval     rocsparse_status_invalid_pointer \p descr, \p csr_val, \p csr_row_ptr,
- *              \p csr_col_ind, \p info or \p buffer_size pointer is invalid.
- *  \retval     rocsparse_status_internal_error an internal error occurred.
- *  \retval     rocsparse_status_not_implemented
- *              \p trans != \ref rocsparse_operation_none or
- *              \ref rocsparse_matrix_type != \ref rocsparse_matrix_type_general.
+ *  
  */
 /**@{*/
 ROCSPARSE_EXPORT
@@ -1905,32 +1828,7 @@ rocsparse_status rocsparse_csr2coo(rocsparse_handle handle,
  *  required by rocsparse_scsr2csc() and rocsparse_dcsr2csc(). The temporary storage
  *  buffer must be allocated by the user.
  *
- *  @param[in]
- *  handle      handle to the rocsparse library context queue.
- *  @param[in]
- *  m           number of rows of the sparse CSR matrix.
- *  @param[in]
- *  n           number of columns of the sparse CSR matrix.
- *  @param[in]
- *  nnz         number of non-zero entries of the sparse CSR matrix.
- *  @param[in]
- *  csr_row_ptr array of \p m+1 elements that point to the start of every row of the
- *              sparse CSR matrix.
- *  @param[in]
- *  csr_col_ind array of \p nnz elements containing the column indices of the sparse
- *              CSR matrix.
- *  @param[in]
- *  copy_values \ref rocsparse_action_symbolic or \ref rocsparse_action_numeric.
- *  @param[out]
- *  buffer_size number of bytes of the temporary storage buffer required by
- *              sparse_csr2csc().
- *
- *  \retval     rocsparse_status_success the operation completed successfully.
- *  \retval     rocsparse_status_invalid_handle the library context was not initialized.
- *  \retval     rocsparse_status_invalid_size \p m, \p n or \p nnz is invalid.
- *  \retval     rocsparse_status_invalid_pointer \p csr_row_ptr, \p csr_col_ind or
- *              \p buffer_size pointer is invalid.
- *  \retval     rocsparse_status_internal_error an internal error occurred.
+ *  
  */
 ROCSPARSE_EXPORT
 rocsparse_status rocsparse_csr2csc_buffer_size(rocsparse_handle handle,
@@ -2557,29 +2455,7 @@ rocsparse_create_identity_permutation(rocsparse_handle handle, rocsparse_int n, 
  *  required by rocsparse_csrsort(). The temporary storage buffer must be allocated by
  *  the user.
  *
- *  @param[in]
- *  handle          handle to the rocsparse library context queue.
- *  @param[in]
- *  m               number of rows of the sparse CSR matrix.
- *  @param[in]
- *  n               number of columns of the sparse CSR matrix.
- *  @param[in]
- *  nnz             number of non-zero entries of the sparse CSR matrix.
- *  @param[in]
- *  csr_row_ptr     array of \p m+1 elements that point to the start of every row of the
- *                  sparse CSR matrix.
- *  @param[in]
- *  csr_col_ind     array of \p nnz elements containing the column indices of the sparse
- *                  CSR matrix.
- *  @param[out]
- *  buffer_size     number of bytes of the temporary storage buffer required by
- *                  rocsparse_csrsort().
- *
- *  \retval     rocsparse_status_success the operation completed successfully.
- *  \retval     rocsparse_status_invalid_handle the library context was not initialized.
- *  \retval     rocsparse_status_invalid_size \p m, \p n or \p nnz is invalid.
- *  \retval     rocsparse_status_invalid_pointer \p csr_row_ptr, \p csr_col_ind or
- *              \p buffer_size pointer is invalid.
+ *  
  */
 ROCSPARSE_EXPORT
 rocsparse_status rocsparse_csrsort_buffer_size(rocsparse_handle handle,
@@ -2668,30 +2544,7 @@ rocsparse_status rocsparse_csrsort(rocsparse_handle handle,
  *  required by rocsparse_coosort_by_row() and rocsparse_coosort_by_column(). The
  *  temporary storage buffer has to be allocated by the user.
  *
- *  @param[in]
- *  handle          handle to the rocsparse library context queue.
- *  @param[in]
- *  m               number of rows of the sparse COO matrix.
- *  @param[in]
- *  n               number of columns of the sparse COO matrix.
- *  @param[in]
- *  nnz             number of non-zero entries of the sparse COO matrix.
- *  @param[in]
- *  coo_row_ind     array of \p nnz elements containing the row indices of the sparse
- *                  COO matrix.
- *  @param[in]
- *  coo_col_ind     array of \p nnz elements containing the column indices of the sparse
- *                  COO matrix.
- *  @param[out]
- *  buffer_size     number of bytes of the temporary storage buffer required by
- *                  rocsparse_coosort_by_row() and rocsparse_coosort_by_column().
- *
- *  \retval     rocsparse_status_success the operation completed successfully.
- *  \retval     rocsparse_status_invalid_handle the library context was not initialized.
- *  \retval     rocsparse_status_invalid_size \p m, \p n or \p nnz is invalid.
- *  \retval     rocsparse_status_invalid_pointer \p coo_row_ind, \p coo_col_ind or
- *              \p buffer_size pointer is invalid.
- *  \retval     rocsparse_status_internal_error an internal error occurred.
+ *  
  */
 ROCSPARSE_EXPORT
 rocsparse_status rocsparse_coosort_buffer_size(rocsparse_handle handle,
