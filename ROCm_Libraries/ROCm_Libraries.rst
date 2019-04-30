@@ -3826,108 +3826,6 @@ Common build problems
 
    **Solution:** Install `ROCm cmake modules <https://github.com/RadeonOpenCompute/rocm-cmake>`_
 
-Types
-##########
-
-rocsparse_handle
---------------------------------
-
-.. doxygentypedef:: rocsparse_handle
-   :project: rocSPARSE
-
-rocsparse_mat_descr
---------------------------------
-
-.. doxygentypedef:: rocsparse_mat_descr
-   :project: rocSPARSE
-
-
-rocsparse_mat_info
---------------------------------
-
-.. doxygentypedef:: rocsparse_mat_info
-   :project: rocSPARSE
-
-
-rocsparse_hyb_mat
---------------------------------
-
-.. doxygentypedef:: rocsparse_hyb_mat
-   :project: rocSPARSE
-
-rocsparse_action
---------------------------------
-
-.. doxygenenum:: rocsparse_action
-   :project: rocSPARSE
-
-
-rocsparse_hyb_partition
---------------------------------
-
-.. doxygenenum:: rocsparse_hyb_partition
-   :project: rocSPARSE
-
-rocsparse_index_base
---------------------------------
-
-.. doxygenenum:: rocsparse_index_base
-   :project: rocSPARSE
-
-
-rocsparse_matrix_type
---------------------------------
-
-.. doxygenenum:: rocsparse_matrix_type
-   :project: rocSPARSE
-
-rocsparse_fill_mode
---------------------------------
-
-.. doxygenenum:: rocsparse_fill_mode
-   :project: rocSPARSE
-
-rocsparse_diag_type
---------------------------------
-
-.. doxygenenum:: rocsparse_diag_type
-   :project: rocSPARSE
-
-rocsparse_operation
---------------------------------
-
-.. doxygenenum:: rocsparse_operation
-   :project: rocSPARSE
-
-rocsparse_pointer_mode
---------------------------------
-
-.. doxygenenum:: rocsparse_pointer_mode
-   :project: rocSPARSE
-
-rocsparse_analysis_policy
---------------------------------
-
-.. doxygenenum:: rocsparse_analysis_policy
-   :project: rocSPARSE
-
-rocsparse_solve_policy
---------------------------------
-
-.. doxygenenum:: rocsparse_solve_policy
-   :project: rocSPARSE
-
-rocsparse_layer_mode
---------------------------------
-
-.. doxygenenum:: rocsparse_layer_mode
-   :project: rocSPARSE
-
-rocsparse_status
---------------------------------
-
-.. doxygenenum:: rocsparse_status
-   :project: rocSPARSE
 
 Sparse Auxiliary Functions
 ###########################
@@ -4078,7 +3976,194 @@ rocsparse_destroy_mat_info()
 .. doxygenfunction:: rocsparse_destroy_mat_info
    :project: rocSPARSE
 
+Sparse Level 1 Functions
+#######################
 
+The sparse level 1 routines describe operations between a vector in sparse format and a vector in dense format. This section describes all rocSPARSE level 1 sparse linear algebra functions.
+
+rocsparse_axpyi()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_saxpyi
+   :outline:
+   :project: rocSPARSE
+
+.. doxygenfunction:: rocsparse_daxpyi
+   :project: rocSPARSE
+
+rocsparse_doti()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_sdoti
+   :project: rocSPARSE
+   :outline:
+
+.. doxygenfunction:: rocsparse_ddoti
+   :project: rocSPARSE
+
+rocsparse_gthr()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_sgthr
+   :outline:
+   :project: rocSPARSE
+
+.. doxygenfunction:: rocsparse_dgthr
+   :project: rocSPARSE
+
+rocsparse_gthrz()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_sgthrz
+   :project: rocSPARSE
+   :outline:
+
+.. doxygenfunction:: rocsparse_dgthrz
+   :project: rocSPARSE
+
+rocsparse_roti()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_sroti
+   :project: rocSPARSE
+   :outline:
+
+.. doxygenfunction:: rocsparse_droti
+   :project: rocSPARSE
+
+rocsparse_sctr()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_ssctr
+   :project: rocSPARSE
+   :outline:
+
+.. doxygenfunction:: rocsparse_dsctr
+   :project: rocSPARSE
+
+
+Sparse Level 2 Functions
+###########################
+
+This module holds all sparse level 2 routines.
+
+The sparse level 2 routines describe operations between a matrix in sparse format and a vector in dense format.
+
+rocsparse_coomv()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_scoomv
+   :project: rocSPARSE
+   :outline:
+
+.. doxygenfunction:: rocsparse_dcoomv
+   :project: rocSPARSE
+
+rocsparse_csrmv_analysis()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_scsrmv_analysis
+   :project: rocSPARSE
+   :outline:
+
+.. doxygenfunction:: rocsparse_dcsrmv_analysis
+   :project: rocSPARSE
+
+rocsparse_csrmv()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_scsrmv
+   :project: rocSPARSE
+   :outline:
+
+.. doxygenfunction:: rocsparse_dcsrmv
+   :project: rocSPARSE
+
+rocsparse_csrmv_analysis_clear()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_csrmv_clear
+   :project: rocSPARSE
+
+rocsparse_ellmv()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_sellmv
+   :project: rocSPARSE
+   :outline:
+
+.. doxygenfunction:: rocsparse_dellmv
+   :project: rocSPARSE
+
+rocsparse_hybmv()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_shybmv
+   :project: rocSPARSE
+   :outline:
+
+.. doxygenfunction:: rocsparse_dhybmv
+   :project: rocSPARSE
+
+rocsparse_csrsv_zero_pivot()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_csrsv_zero_pivot
+   :project: rocSPARSE
+
+rocsparse_csrsv_buffer_size()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_scsrsv_buffer_size
+   :project: rocSPARSE
+   :outline:
+
+.. doxygenfunction:: rocsparse_dcsrsv_buffer_size
+   :project: rocSPARSE
+
+rocsparse_csrsv_analysis()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_scsrsv_analysis
+   :project: rocSPARSE
+   :outline:
+
+.. doxygenfunction:: rocsparse_dcsrsv_analysis
+   :project: rocSPARSE
+
+rocsparse_csrsv_solve()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_scsrsv_solve
+   :project: rocSPARSE
+   :outline:
+
+.. doxygenfunction:: rocsparse_dcsrsv_solve
+   :project: rocSPARSE
+
+rocsparse_csrsv_clear()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_csrsv_clear
+   :project: rocSPARSE
+
+
+Sparse Level 3 Functions
+#########################
+
+This module holds all sparse level 3 routines.
+
+The sparse level 3 routines describe operations between a matrix in sparse format and multiple vectors in dense format that can also be seen as a dense matrix.
+
+rocsparse_csrmm()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_scsrmm
+   :project: rocSPARSE
+   :outline:
+
+.. doxygenfunction:: rocsparse_dcsrmm
+   :project: rocSPARSE
 
 
 Preconditioner Functions
