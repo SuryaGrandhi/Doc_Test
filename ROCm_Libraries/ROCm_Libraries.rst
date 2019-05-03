@@ -3826,3 +3826,105 @@ Common build problems
 
    **Solution:** Install `ROCm cmake modules <https://github.com/RadeonOpenCompute/rocm-cmake>`_
 
+Types
+##########
+
+rocsparse_handle
+--------------------------------
+
+.. doxygentypedef:: rocsparse_handle
+   :project: rocSPARSE
+
+rocsparse_mat_descr
+--------------------------------
+
+.. doxygentypedef:: rocsparse_mat_descr
+   :project: rocSPARSE
+
+
+rocsparse_mat_info
+--------------------------------
+
+.. doxygentypedef:: rocsparse_mat_info
+   :project: rocSPARSE
+
+
+rocsparse_hyb_mat
+--------------------------------
+
+.. doxygentypedef:: rocsparse_hyb_mat
+   :project: rocSPARSE
+
+rocsparse_action
+--------------------------------
+
+.. doxygenenum:: rocsparse_action
+   :project: rocSPARSE
+
+
+rocsparse_hyb_partition
+--------------------------------
+
+.. doxygenenum:: rocsparse_hyb_partition
+   :project: rocSPARSE
+
+rocsparse_index_base
+--------------------------------
+
+.. doxygenenum:: rocsparse_index_base
+   :project: rocSPARSE
+
+
+rocsparse_matrix_type
+--------------------------------
+
+.. doxygenenum:: rocsparse_matrix_type
+   :project: rocSPARSE
+
+rocsparse_fill_mode
+--------------------------------
+
+.. doxygenenum:: rocsparse_fill_mode
+   :project: rocSPARSE
+
+rocsparse_diag_type
+--------------------------------
+
+.. doxygenenum:: rocsparse_diag_type
+   :project: rocSPARSE
+
+rocsparse_operation
+--------------------------------
+
+.. doxygenenum:: rocsparse_operation
+   :project: rocSPARSE
+
+rocsparse_pointer_mode
+--------------------------------
+
+.. doxygenenum:: rocsparse_pointer_mode
+   :project: rocSPARSE
+
+rocsparse_analysis_policy
+--------------------------------
+
+.. doxygenenum:: rocsparse_analysis_policy
+   :project: rocSPARSE
+
+rocsparse_solve_policy
+--------------------------------
+
+.. doxygenenum:: rocsparse_solve_policy
+   :project: rocSPARSE
+
+rocsparse_layer_mode
+--------------------------------
+
+.. doxygenenum:: rocsparse_layer_mode
+   :project: rocSPARSE
+
+rocsparse_status
+--------------------------------
+
+.. doxygenenum:: rocsparse_status
+   :project: rocSPARSE
