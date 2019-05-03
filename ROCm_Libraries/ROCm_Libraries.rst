@@ -4079,3 +4079,52 @@ rocsparse_destroy_mat_info()
    :project: rocSPARSE
 
 
+
+Preconditioner Functions
+##########################
+
+This module holds all sparse preconditioners.
+
+The sparse preconditioners describe manipulations on a matrix in sparse format to obtain a sparse preconditioner matrix.
+
+rocsparse_csrilu0_zero_pivot()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_csrilu0_zero_pivot
+   :project: rocSPARSE
+
+rocsparse_csrilu0_buffer_size()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_scsrilu0_buffer_size
+   :project: rocSPARSE
+   :outline:
+
+.. doxygenfunction:: rocsparse_dcsrilu0_buffer_size
+   :project: rocSPARSE
+
+rocsparse_csrilu0_analysis()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_scsrilu0_analysis
+   :project: rocSPARSE
+   :outline:
+
+.. doxygenfunction:: rocsparse_dcsrilu0_analysis
+   :project: rocSPARSE
+
+rocsparse_csrilu0()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_scsrilu0
+   :project: rocSPARSE
+   :outline:
+
+.. doxygenfunction:: rocsparse_dcsrilu0
+   :project: rocSPARSE
+
+rocsparse_csrilu0_clear()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_csrilu0_clear
+   :project: rocSPARSE
