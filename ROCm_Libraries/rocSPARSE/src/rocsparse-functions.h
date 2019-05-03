@@ -1669,26 +1669,6 @@ rocsparse_status rocsparse_dhybmv(rocsparse_handle handle,
  *    C := \alpha \cdot op(A) \cdot op(B) + \beta \cdot C,
  *  \f]
  *  with
- *  \f[
- *    op(A) = \left\{
- *    \begin{array}{ll}
- *        A,   & \text{if trans_A == rocsparse_operation_none} \\
- *        A^T, & \text{if trans_A == rocsparse_operation_transpose} \\
- *        A^H, & \text{if trans_A == rocsparse_operation_conjugate_transpose}
- *    \end{array}
- *    \right.
- *  \f]
- *  and
- *  \f[
- *    op(B) = \left\{
- *    \begin{array}{ll}
- *        B,   & \text{if trans_B == rocsparse_operation_none} \\
- *        B^T, & \text{if trans_B == rocsparse_operation_transpose} \\
- *        B^H, & \text{if trans_B == rocsparse_operation_conjugate_transpose}
- *    \end{array}
- *    \right.
- *  \f]
- *
  *  \code{.c}
  *      for(i = 0; i < ldc; ++i)
  *      {
