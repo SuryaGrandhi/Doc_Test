@@ -4330,3 +4330,9 @@ rocsparse_csr2coo()
 
 .. doxygenfunction:: rocsparse_csr2coo
    :project: rocSPARSE
+
+rocsparse_coo2csr()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_coo2csr
+   :project: rocSPARSE
