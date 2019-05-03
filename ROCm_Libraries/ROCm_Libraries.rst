@@ -3928,3 +3928,154 @@ rocsparse_status
 
 .. doxygenenum:: rocsparse_status
    :project: rocSPARSE
+
+Sparse Auxiliary Functions
+###########################
+
+This module holds all sparse auxiliary functions.
+
+The functions that are contained in the auxiliary module describe all available helper functions that are required for subsequent library calls.
+
+
+rocsparse_create_handle()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_create_handle
+   :project: rocSPARSE
+
+
+rocsparse_destroy_handle()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_destroy_handle
+   :project: rocSPARSE
+
+
+rocsparse_set_stream()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_set_stream
+   :project: rocSPARSE
+
+rocsparse_get_stream()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_get_stream
+   :project: rocSPARSE
+
+rocsparse_set_pointer_mode()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_set_pointer_mode
+   :project: rocSPARSE
+
+rocsparse_get_pointer_mode()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_get_pointer_mode
+   :project: rocSPARSE
+
+rocsparse_get_version()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_get_version
+   :project: rocSPARSE
+
+rocsparse_get_git_rev()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_get_git_rev
+   :project: rocSPARSE
+
+rocsparse_create_mat_descr()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_create_mat_descr
+   :project: rocSPARSE
+
+rocsparse_destroy_mat_descr()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_destroy_mat_descr
+   :project: rocSPARSE
+
+rocsparse_copy_mat_descr()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_copy_mat_descr
+   :project: rocSPARSE
+
+rocsparse_set_mat_index_base()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_set_mat_index_base
+   :project: rocSPARSE
+
+rocsparse_get_mat_index_base()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_get_mat_index_base
+   :project: rocSPARSE
+
+rocsparse_set_mat_type()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_set_mat_type
+   :project: rocSPARSE
+
+rocsparse_get_mat_type()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_get_mat_type
+   :project: rocSPARSE
+
+rocsparse_set_mat_fill_mode()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_set_mat_fill_mode
+   :project: rocSPARSE
+
+rocsparse_get_mat_fill_mode()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_get_mat_fill_mode
+   :project: rocSPARSE
+
+rocsparse_set_mat_diag_type()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_set_mat_diag_type
+   :project: rocSPARSE
+
+rocsparse_get_mat_diag_type()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_get_mat_diag_type
+   :project: rocSPARSE
+
+rocsparse_create_hyb_mat()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_create_hyb_mat
+   :project: rocSPARSE
+
+rocsparse_destroy_hyb_mat()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_destroy_hyb_mat
+   :project: rocSPARSE
+
+rocsparse_create_mat_info()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_create_mat_info
+   :project: rocSPARSE
+
+
+rocsparse_destroy_mat_info()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_destroy_mat_info
+   :project: rocSPARSE
+
+
