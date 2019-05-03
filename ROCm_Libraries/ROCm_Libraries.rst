@@ -4318,4 +4318,15 @@ rocsparse_csrilu0_clear()
 .. doxygenfunction:: rocsparse_csrilu0_clear
    :project: rocSPARSE
 
+Sparse Conversion Functions
+#############################
 
+This module holds all sparse conversion routines.
+
+The sparse conversion routines describe operations on a matrix in sparse format to obtain a matrix in a different sparse format.
+
+rocsparse_csr2coo()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_csr2coo
+   :project: rocSPARSE
