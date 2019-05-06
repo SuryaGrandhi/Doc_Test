@@ -3855,14 +3855,6 @@ Consider the following :math:`3 \times 5` matrix and the corresponding CSR struc
 
 where
 
-.. math::
-
-  \begin{array}{ll}
-    \text{csr_val}[8] & = \{1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0\} \\
-    \text{csr_row_ptr}[4] & = \{1, 4, 6, 9\} \\
-    \text{csr_col_ind}[8] & = \{1, 2, 4, 2, 3, 1, 4, 5\}
-  \end{array}
-
 ELL storage format
 -----------------------
 The Ellpack-Itpack (ELL) storage format represents a :math:`m \times n` matrix by
