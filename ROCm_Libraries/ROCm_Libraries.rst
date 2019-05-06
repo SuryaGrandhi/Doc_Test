@@ -3829,8 +3829,42 @@ Common build problems
 Storage Formats
 #####################
 
+CSR storage format
+---------------------
+The Compressed Sparse Row (CSR) storage format represents a :math:`m \times n` matrix by
+
+=========== =========================================================================
+m           number of rows (integer).
+n           number of columns (integer).
+nnz         number of non-zero elements (integer).
+csr_val     array of ``nnz`` elements containing the data (floating point).
+csr_row_ptr array of ``m+1`` elements that point to the start of every row (integer).
+csr_col_ind array of ``nnz`` elements containing the column indices (integer).
+=========== =========================================================================
+
+The CSR matrix is expected to be sorted by column indices within each row. Furthermore, each pair of indices should appear only once.
+Consider the following :math:`3 \times 5` matrix and the corresponding CSR structures, with :math:`m = 3, n = 5` and :math:`\text{nnz} = 8` using one based indexing:
+
+.. math::
+
+  A = \begin{pmatrix}
+        1.0 & 2.0 & 0.0 & 3.0 & 0.0 \\
+        0.0 & 4.0 & 5.0 & 0.0 & 0.0 \\
+        6.0 & 0.0 & 0.0 & 7.0 & 8.0 \\
+      \end{pmatrix}
+
+where
+
+.. math::
+
+  \begin{array}{ll}
+    \text{csr_val}[8] & = \{1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0\} \\
+    \text{csr_row_ptr}[4] & = \{1, 4, 6, 9\} \\
+    \text{csr_col_ind}[8] & = \{1, 2, 4, 2, 3, 1, 4, 5\}
+  \end{array}
+
 ELL storage format
-*******************
+-----------------------
 The Ellpack-Itpack (ELL) storage format represents a :math:`m \times n` matrix by
 
 =========== ================================================================================
@@ -3864,7 +3898,7 @@ where
 .. _HYB storage format:
 
 HYB storage format
-*******************
+-----------------------
 The Hybrid (HYB) storage format represents a :math:`m \times n` matrix by
 
 =========== =========================================================================================
