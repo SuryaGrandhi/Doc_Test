@@ -4373,5 +4373,50 @@ rocsparse_ell2csr()
 .. doxygenfunction:: rocsparse_csr2csc_buffer_size
    :project: rocSPARSE
 
+rocsparse_csr2hyb()
+----------------------------
+
+.. doxygenfunction:: rocsparse_scsr2hyb
+   :project: rocSPARSE
+   :outline:
+
+.. doxygenfunction:: rocsparse_dcsr2hyb
+   :project: rocSPARSE
+
+rocsparse_create_identity_permutation()
+--------------------------------------------
+
+.. doxygenfunction:: rocsparse_create_identity_permutation
+   :project: rocSPARSE
+
+rocsparse_csrsort_buffer_size()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_csrsort_buffer_size
+   :project: rocSPARSE
+
+rocsparse_csrsort()
+------------------------
+
+.. doxygenfunction:: rocsparse_csrsort
+   :project: rocSPARSE
+
+rocsparse_coosort_buffer_size()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_coosort_buffer_size
+   :project: rocSPARSE
+
+rocsparse_coosort_by_row()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_coosort_by_row
+   :project: rocSPARSE
+
+rocsparse_coosort_by_column()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_coosort_by_column
+   :project: rocSPARSE
 
 
