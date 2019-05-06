@@ -4343,3 +4343,14 @@ rocsparse_csr2csc_buffer_size()
 .. doxygenfunction:: rocsparse_csr2csc_buffer_size
    :project: rocSPARSE
 
+rocsparse_csr2csc()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_scsr2csc
+   :project: rocSPARSE
+   :outline:
+
+.. doxygenfunction:: rocsparse_dcsr2csc
+   :project: rocSPARSE
+
+
