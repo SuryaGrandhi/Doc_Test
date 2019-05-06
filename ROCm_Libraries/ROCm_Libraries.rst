@@ -3829,6 +3829,38 @@ Common build problems
 Storage Formats
 #####################
 
+ELL storage format
+*******************
+The Ellpack-Itpack (ELL) storage format represents a :math:`m \times n` matrix by
+
+=========== ================================================================================
+m           number of rows (integer).
+n           number of columns (integer).
+ell_width   maximum number of non-zero elements per row (integer)
+ell_val     array of ``m times ell_width`` elements containing the data (floating point).
+ell_col_ind array of ``m times ell_width`` elements containing the column indices (integer).
+=========== ================================================================================
+
+The ELL matrix is assumed to be stored in column-major format. Rows with less than ``ell_width`` non-zero elements are padded with zeros (``ell_val``) and :math:`-1` (``ell_col_ind``).
+Consider the following :math:`3 \times 5` matrix and the corresponding ELL structures, with :math:`m = 3, n = 5` and :math:`\text{ell_width} = 3` using zero based indexing:
+
+.. math::
+
+  A = \begin{pmatrix}
+        1.0 & 2.0 & 0.0 & 3.0 & 0.0 \\
+        0.0 & 4.0 & 5.0 & 0.0 & 0.0 \\
+        6.0 & 0.0 & 0.0 & 7.0 & 8.0 \\
+      \end{pmatrix}
+
+where
+
+.. math::
+
+  \begin{array}{ll}
+    \text{ell_val}[9] & = \{1.0, 4.0, 6.0, 2.0, 5.0, 7.0, 3.0, 0.0, 8.0\} \\
+    \text{ell_col_ind}[9] & = \{0, 1, 0, 1, 2, 3, 3, -1, 4\}
+  \end{array}
+
 .. _HYB storage format:
 
 HYB storage format
