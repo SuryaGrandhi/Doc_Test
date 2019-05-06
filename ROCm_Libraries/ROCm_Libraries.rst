@@ -3881,6 +3881,14 @@ Consider the following :math:`3 \times 5` matrix and the corresponding CSR struc
 
 where
 
+.. math::
+
+  \begin{array}{ll}
+    csr\_val[8] & = \{1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0\} \\
+    csr\_row\_ptr[4] & = \{1, 4, 6, 9\} \\
+    csr\_col\_ind[8] & = \{1, 2, 4, 2, 3, 1, 4, 5\}
+  \end{array}
+
 ELL storage format
 -----------------------
 The Ellpack-Itpack (ELL) storage format represents a :math:`m \times n` matrix by
@@ -3910,7 +3918,7 @@ where
 
   \begin{array}{ll}
     ell\_val[9] & = \{1.0, 4.0, 6.0, 2.0, 5.0, 7.0, 3.0, 0.0, 8.0\} \\
-    ell\_col_ind[9] & = \{0, 1, 0, 1, 2, 3, 3, -1, 4\}
+    ell\_col\_ind[9] & = \{0, 1, 0, 1, 2, 3, 3, -1, 4\}
   \end{array}
 
 .. _HYB storage format:
