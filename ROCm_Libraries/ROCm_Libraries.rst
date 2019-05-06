@@ -3826,6 +3826,30 @@ Common build problems
 
    **Solution:** Install `ROCm cmake modules <https://github.com/RadeonOpenCompute/rocm-cmake>`_
 
+Storage Formats
+#####################
+
+.. _HYB storage format:
+
+HYB storage format
+*******************
+The Hybrid (HYB) storage format represents a :math:`m \times n` matrix by
+
+=========== =========================================================================================
+m           number of rows (integer).
+n           number of columns (integer).
+nnz         number of non-zero elements of the COO part (integer)
+ell_width   maximum number of non-zero elements per row of the ELL part (integer)
+ell_val     array of ``m times ell_width`` elements containing the ELL part data (floating point).
+ell_col_ind array of ``m times ell_width`` elements containing the ELL part column indices (integer).
+coo_val     array of ``nnz`` elements containing the COO part data (floating point).
+coo_row_ind array of ``nnz`` elements containing the COO part row indices (integer).
+coo_col_ind array of ``nnz`` elements containing the COO part column indices (integer).
+=========== =========================================================================================
+
+The HYB format is a combination of the ELL and COO sparse matrix formats. Typically, the regular part of the matrix is stored in ELL storage format, and the irregular part of the matrix is stored in COO storage format. Three different partitioning schemes can be applied when converting a CSR matrix to a matrix in HYB storage format. For further details on the partitioning schemes, see :ref:`rocsparse_hyb_partition_`.
+
+
 Types
 ##########
 
