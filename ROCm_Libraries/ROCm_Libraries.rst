@@ -4353,4 +4353,10 @@ rocsparse_csr2csc()
 .. doxygenfunction:: rocsparse_dcsr2csc
    :project: rocSPARSE
 
+rocsparse_csr2ell_width()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_csr2ell_width
+   :project: rocSPARSE
+
 
