@@ -4367,4 +4367,11 @@ rocsparse_ell2csr_nnz()
 .. doxygenfunction:: rocsparse_ell2csr_nnz
    :project: rocSPARSE
 
+rocsparse_ell2csr()
+----------------------------
+
+.. doxygenfunction:: rocsparse_csr2csc_buffer_size
+   :project: rocSPARSE
+
+
 
