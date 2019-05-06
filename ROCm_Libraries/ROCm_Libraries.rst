@@ -3829,6 +3829,32 @@ Common build problems
 Storage Formats
 #####################
 
+COO storage format
+----------------------
+The Coordinate (COO) storage format represents a :math:`m \times n` matrix by
+
+=========== ==================================================================
+m           number of rows (integer).
+n           number of columns (integer).
+nnz         number of non-zero elements (integer).
+coo_val     array of ``nnz`` elements containing the data (floating point).
+coo_row_ind array of ``nnz`` elements containing the row indices (integer).
+coo_col_ind array of ``nnz`` elements containing the column indices (integer).
+=========== ==================================================================
+
+The COO matrix is expected to be sorted by row indices and column indices per row. Furthermore, each pair of indices should appear only once.
+Consider the following :math:`3 \times 5` matrix and the corresponding COO structures, with :math:`m = 3, n = 5` and :math:`\text{nnz} = 8` using zero based indexing:
+
+.. math::
+
+  A = \begin{pmatrix}
+        1.0 & 2.0 & 0.0 & 3.0 & 0.0 \\
+        0.0 & 4.0 & 5.0 & 0.0 & 0.0 \\
+        6.0 & 0.0 & 0.0 & 7.0 & 8.0 \\
+      \end{pmatrix}
+
+where
+
 CSR storage format
 ---------------------
 The Compressed Sparse Row (CSR) storage format represents a :math:`m \times n` matrix by
