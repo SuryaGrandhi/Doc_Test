@@ -4361,6 +4361,23 @@ rocsparse_csr2ell_width()
 
 
 
+
+rocsparse_csr2ell()
+--------------------------------
+
+.. doxygenfunction:: rocsparse_scsr2ell
+   :project: rocSPARSE
+   :outline:
+
+.. doxygenfunction:: rocsparse_dcsr2ell
+   :project: rocSPARSE
+
+
+
+
+
+
+
 rocsparse_ell2csr_nnz()
 --------------------------------
 

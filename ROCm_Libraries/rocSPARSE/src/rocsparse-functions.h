@@ -2739,7 +2739,7 @@ rocsparse_status rocsparse_csr2ell_width(rocsparse_handle handle,
  *  \p rocsparse_csr2ell converts a CSR matrix into an ELL matrix. It is assumed,
  *  that \p ell_val and \p ell_col_ind are allocated. Allocation size is computed by the
  *  number of rows times the number of ELL non-zero elements per row, such that
- *  \f$\text{nnz}_{\text{ELL}} = m \cdot \text{ell_width}\f$. The number of ELL
+ *  \f$\text{nnz} \textsubscript{ELL} = m \cdot \text{ell_width}\f$. The number of ELL
  *  non-zero elements per row is obtained by rocsparse_csr2ell_width().
  *
  *  \note
