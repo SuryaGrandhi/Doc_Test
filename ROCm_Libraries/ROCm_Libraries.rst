@@ -4359,12 +4359,6 @@ rocsparse_csr2ell_width()
 .. doxygenfunction:: rocsparse_csr2ell_width
    :project: rocSPARSE
 
-
-
-
-
-
-
 rocsparse_csr2ell()
 --------------------------------
 
@@ -4375,30 +4369,4 @@ rocsparse_csr2ell()
 .. doxygenfunction:: rocsparse_dcsr2ell
    :project: rocSPARSE
 
-rocsparse_ell2csr_nnz()
---------------------------------
 
-.. doxygenfunction:: rocsparse_ell2csr_nnz
-   :project: rocSPARSE
-
-rocsparse_ell2csr()
-----------------------------
-
-.. doxygenfunction:: rocsparse_csr2csc_buffer_size
-   :project: rocSPARSE
-
-rocsparse_csr2hyb()
-----------------------------
-
-.. doxygenfunction:: rocsparse_scsr2hyb
-   :project: rocSPARSE
-   :outline:
-
-.. doxygenfunction:: rocsparse_dcsr2hyb
-   :project: rocSPARSE
-
-rocsparse_create_identity_permutation()
---------------------------------------------
-
-.. doxygenfunction:: rocsparse_create_identity_permutation
-   :project: rocSPARSE
