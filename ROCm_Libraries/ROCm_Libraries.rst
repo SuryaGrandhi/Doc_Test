@@ -3855,6 +3855,14 @@ Consider the following :math:`3 \times 5` matrix and the corresponding COO struc
 
 where
 
+.. math::
+
+  \begin{array}{ll}
+    coo\_val[8] & = \{1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0\} \\
+    coo\_row\_ind[8] & = \{0, 0, 0, 1, 1, 2, 2, 2\} \\
+    coo\_col\_ind[8] & = \{0, 1, 3, 1, 2, 0, 3, 4\}
+  \end{array}
+
 CSR storage format
 ---------------------
 The Compressed Sparse Row (CSR) storage format represents a :math:`m \times n` matrix by
