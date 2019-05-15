@@ -2024,9 +2024,9 @@ Overview for creating a custom TensileLib backend library for your application:
 
 	2_BenchmarkData: has the raw performance results.
 
-    3_LibraryLogic: has optimal kernel configurations yaml file and Winner*.csv. Usually rocBLAS takes the yaml files from this folder.
+	3_LibraryLogic: has optimal kernel configurations yaml file and Winner*.csv. Usually rocBLAS takes the yaml files from this folder.
 
-    4_LibraryClient: has a client exe, so you can launch from a library viewpoint.
+	4_LibraryClient: has a client exe, so you can launch from a library viewpoint.
 
 4. Add the `Tensile library`_ to your application's CMake target. The Tensile library will be written, compiled and linked to your application at application-compile-time.
 
@@ -2042,31 +2042,38 @@ Overview for creating a custom TensileLib backend library for your application:
 .. _kernels: https://rocm-documentation.readthedocs.io/en/latest/ROCm_Libraries/ROCm_Libraries.html#kernel-parameters
 .. _APIs: https://rocm-documentation.readthedocs.io/en/latest/ROCm_Libraries/ROCm_Libraries.html#tensile-lib
 
-**Quick Example:**
-****************
+**Quick Example(Ubuntu):**
+***************************
 
 ::
 
   sudo apt-get install python-yaml
   mkdir Tensile
   cd Tensile
-  git clone https://github.com/RadeonOpenCompute/Tensile.git repo
+  git clone https://github.com/ROCmSoftwarePlatform/Tensile repo
+  cd repo
+  git checkout master
   mkdir build
   cd build
-  python ../repo/Tensile/Tensile.py ../repo/Tensile/Configs/sgemm_5760.yaml ./
+  python ../Tensile/Tensile.py ../Tensile/Configs/test_sgemm.yaml ./
 
-After a while of benchmarking, Tensile will print out the path to the client you can run.
+After about 10 minutes of benchmarking, Tensile will print out the path to the client you can run.
 
 ::
 
   ./4_LibraryClient/build/client -h
-  ./4_LibraryClient/build/client --sizes 5760 5760 5760
+  ./4_LibraryClient/build/client --sizes 5760 5760 1 5760
 
 
-Benchmark Config
-####################
+Benchmark Config example
+##########################
 
-Example Benchmark config.yaml
+Tensile uses an incremental and "programmable" `benchmarking protocol`_.
+
+.. _benchmarking protocol: https://rocm-documentation.readthedocs.io/en/latest/ROCm_Libraries/ROCm_Libraries.html#benchmark-protocol
+
+Example Benchmark config.yaml as input file to Tensile
+-------------------------------------------------------
 
 :: 
 
@@ -2096,13 +2103,13 @@ Example Benchmark config.yaml
         TransposeA: False
         TransposeB: False
         UseBeta: True
-        Batched: False
+        Batched: True
 
       - # BenchmarkProblemSizeGroup
         InitialSolutionParameters:
         BenchmarkCommonParameters:
           - ProblemSizes:
-            - Range: [ [5760], 0, 0 ]
+            - Range: [ [5760], 0, [1], 0 ]
           - LoopDoWhile: [False]
           - NumLoadsCoalescedA: [-1]
           - NumLoadsCoalescedB: [1]
@@ -2125,71 +2132,80 @@ Example Benchmark config.yaml
         BenchmarkJoinParameters:
         BenchmarkFinalParameters:
           - ProblemSizes:
-            - Range: [ [5760], 0, 0 ]
+            - Range: [ [5760], 0, [1], 0 ]
 
   LibraryLogic:
 
   LibraryClient:
 
 
-**Structure of config.yaml**
+Structure of config.yaml
+-----------------------------
 
+Top level data structure whose keys are **Parameters, BenchmarkProblems, LibraryLogic** and **LibraryClient**.
 
-Top level data structure whose keys are Parameters, BenchmarkProblems, LibraryLogic and LibraryClient.
+ * **Parameters** contains a dictionary storing global parameters used for all parts of the benchmarking.
+ * **BenchmarkProblems** contains a list of dictionaries representing the benchmarks to conduct; each element, i.e. dictionary, in the list is for benchmarking a single **ProblemType**. The keys for these dictionaries are **ProblemType, InitialSolutionParameters, 	     	BenchmarkCommonParameters, ForkParameters, BenchmarkForkParameters, JoinParameters, BenchmarkJoinParameters** and 		     	**BenchmarkFinalParameters**. See `Benchmark Protocol`_ for more information on these steps.
+ * **LibraryLogic** contains a dictionary storing parameters for analyzing the benchmark data and designing how the backend library will select which Solution for certain ProblemSizes.
+ * **LibraryClient** contains a dictionary storing parameters for actually creating the library and creating a client which calls into the library.
 
- * Parameters contains a dictionary storing global parameters used for all parts of the benchmarking.
- * BenchmarkProblems contains a list of dictionaries representing the benchmarks to conduct; each element, i.e. dictionary, in the list is for benchmarking a single ProblemType. The keys for these dictionaries are ProblemType, InitialSolutionParameters, 	     	BenchmarkCommonParameters, ForkParameters, BenchmarkForkParameters, JoinParameters, BenchmarkJoinParameters and 		     	BenchmarkFinalParameters. See Benchmark Protocol for more information on these steps.
- * LibraryLogic contains a dictionary storing parameters for analyzing the benchmark data and designing how the backend library will select which Solution for certain ProblemSizes.
- * LibraryClient contains a dictionary storing parameters for actually creating the library and creating a client which calls into the library.
+.. _Benchmark Protocol: https://rocm-documentation.readthedocs.io/en/latest/ROCm_Libraries/ROCm_Libraries.html#benchmark-protocol
 
-**Global Parameters**
+Global Parameters
+-------------------
 
-
-* **Name**: Prefix to add to API function names; typically name of device.
+* **Name:** Prefix to add to API function names; typically name of device.
 * **MinimumRequiredVersion:** Which version of Tensile is required to interpret this yaml file
-* RuntimeLanguage: Use HIP or OpenCL runtime.
-* KernelLanguage: For OpenCL runtime, kernel language must be set to OpenCL. For HIP runtime, kernel language can be set to HIP or assembly (gfx803, gfx900).
-* PrintLevel: 0=Tensile prints nothing, 1=prints some, 2=prints a lot.
-* ForceRedoBenchmarkProblems: False means don't redo a benchmark phase if results for it already exist.
-* ForceRedoLibraryLogic: False means don't re-generate library logic if it already exist.
-* ForceRedoLibraryClient: False means don't re-generate library client if it already exist.
-* CMakeBuildType: Release or Debug
-* EnqueuesPerSync: Num enqueues before syncing the queue.
-* SyncsPerBenchmark: Num queue syncs for each problem size.
-* LibraryPrintDebug: True means Tensile solutions will print kernel enqueue info to stdout
-* NumElementsToValidate: Number of elements to validate; 0 means no validation.
-* ValidationMaxToPrint: How many invalid results to print.
-* ValidationPrintValids: True means print validation comparisons that are valid, not just invalids.
-* ShortNames: Convert long kernel, solution and files names to short serial ids.
-* MergeFiles: False means write each solution and kernel to its own file.
-* PlatformIdx: OpenCL platform id.
-* DeviceIdx: OpenCL or HIP device id.
-* DataInitType[AB,C]: Initialize validation data with 0=0's, 1=1's, 2=serial, 3=random.
-* KernelTime: Use kernel time reported from runtime rather than api times from cpu clocks to compare kernel performance.
+* **RuntimeLanguage:** Use HIP or OpenCL runtime.
+* **KernelLanguage:** For OpenCL runtime, kernel language must be set to OpenCL. For HIP runtime, kernel language can be set to HIP or assembly (gfx803, gfx900).
+* **PrintLevel:** 0=Tensile prints nothing, 1=prints some, 2=prints a lot.
+* **ForceRedoBenchmarkProblems:** False means don't redo a benchmark phase if results for it already exist.
+* **ForceRedoLibraryLogic:** False means don't re-generate library logic if it already exist.
+* **ForceRedoLibraryClient:** False means don't re-generate library client if it already exist.
+* **CMakeBuildType:** Release or Debug
+* **EnqueuesPerSync:** Num enqueues before syncing the queue.
+* **SyncsPerBenchmark:** Num queue syncs for each problem size.
+* **LibraryPrintDebug:** True means Tensile solutions will print kernel enqueue info to stdout
+* **NumElementsToValidate:** Number of elements to validate; 0 means no validation.
+* **ValidationMaxToPrint:** How many invalid results to print.
+* **ValidationPrintValids:** True means print validation comparisons that are valid, not just invalids.
+* **ShortNames:** Convert long kernel, solution and files names to short serial ids.
+* **MergeFiles:** False means write each solution and kernel to its own file.
+* **PlatformIdx:** OpenCL platform id.
+* **DeviceIdx:** OpenCL or HIP device id.
+* **DataInitType[AB,C]:** Initialize validation data with 0=0's, 1=1's, 2=serial, 3=random.
+* **KernelTime:** Use kernel time reported from runtime rather than api times from cpu clocks to compare kernel performance.
 
 The exhaustive list of global parameters and their defaults is stored in Common.py.
 
-**Problem Type Parameters**
+Problem Type Parameters
+--------------------------
 
-* OperationType: GEMM or TensorContraction.
-* DataType: s, d, c, z, h
-* UseBeta: False means library/solutions/kernel won't accept a beta parameter; thus beta=0.
-* UseInitialStrides: False means data is contiguous in memory.
-* HighPrecisionAccumulate: For tmpC += a*b, use twice the precision for tmpC as for DataType. Not yet implemented.
-* ComplexConjugateA: True or False; ignored for real precision.
-* ComplexConjugateB: True or False; ignored for real precision.
+* **OperationType**: GEMM or TensorContraction.
+* **DataType:** s, d, c, z, h
+* **UseBeta:** False means library/solutions/kernel won't accept a beta parameter; thus beta=0.
+* **UseInitialStrides:** False means data is contiguous in memory.
+* **HighPrecisionAccumulate:** For tmpC += a*b, use twice the precision for tmpC as for DataType. Not yet implemented.
+* **ComplexConjugateA:** True or False; ignored for real precision.
+* **ComplexConjugateB:** True or False; ignored for real precision.
 
 For OperationType=GEMM only:
-* TransposeA: True or False.
-* TransposeB: True or False.
-* Batched: True or False.
+* **TransposeA:** True or False.
+* **TransposeB:** True or False.
+* **Batched:** True (False has been deprecated). For OperationType=TensorContraction only (showing batched gemm NT: C[ijk] = Sum[l] A[ilk] * B[jlk])
+* **IndexAssignmentsA:** [0, 3, 2]
+* **IndexAssignmentsB:** [1, 3, 2]
+* **NumDimensionsC:** 3.
 
-For OperationType=TensorContraction only (showing batched gemm NT: C[ijk] = Sum[l] A[ilk] * B[jlk])
-* IndexAssignmentsA: [0, 3, 2]
-* IndexAssignmentsB: [1, 3, 2]
-* NumDimensionsC: 3.
+Solution / Kernel Parameters
+------------------------------
 
-**Defaults**
+See: `Kernel Parameters`_.
+
+.. _Kernel Parameters: https://rocm-documentation.readthedocs.io/en/latest/ROCm_Libraries/ROCm_Libraries.html#kernel-parameters
+
+Defaults
+----------
 
 Because of the flexibility / complexity of the benchmarking process and, therefore, of the config.yaml files; Tensile has a default value for every parameter. If you neglect to put LoopUnroll anywhere in your benchmark, rather than crashing or complaining, Tensile will put the default LoopUnroll options into the default phase (common, fork, join...). This guarantees ease of use and more importantly backward compatibility; every time we add a new possible solution parameter, you don't necessarily need to update your configs; we'll have a default figured out for you.
 
@@ -2200,20 +2216,18 @@ Therefore, it is safest to specify all parameters in your config.yaml files; tha
 Benchmark Protocol
 ###############################
 
-**Old Benchmark Architecture was Intractable**
+Old Benchmark Architecture was Intractable
+----------------------------------------------
 
-The benchmarking strategy from version 1 was vanilla flavored brute force: 
- | ``(8 WorkGroups)* (12 ThreadTiles)* (4 NumLoadsCoalescedAs)*``
- | ``(4 NumLoadsCoalescedBs)* (3 LoopUnrolls)* (5 BranchTypes)* ...*(1024 ProblemSizes)=23,592,960`` is a multiplicative series 
-which grows very quickly.Adding one more boolean parameter doubles the number of kernel enqueues of the benchmark.
+The benchmarking strategy from version 1 was vanilla flavored brute force: (8 WorkGroups)* (12 ThreadTiles)* (4 NumLoadsCoalescedAs)* (4 NumLoadsCoalescedBs)* (3 LoopUnrolls)* (5 BranchTypes)* ...*(1024 ProblemSizes)=23,592,960 is a multiplicative series which grows very quickly. Adding one more boolean parameter doubles the number of kernel enqueues of the benchmark.
 
-**Incremental Benchmark is Faster**
+Incremental Benchmark is Faster
+----------------------------------
 
-Tensile version 2 allows the user to manually interrupt the multiplicative series with "additions" instead of "multiplies", i.e., 
- | ``(8 WorkGroups)* (12 ThreadTiles)+ (4 NumLoadsCoalescedAs)*``
- | ``(4 NumLoadsCoalescedBs)*(3 LoopUnrolls)+ (5 BranchTypes)* ...+(1024 ProblemSizes)=1,151``  is a dramatically smaller number of enqueues.Now, adding one more boolean parameter may only add on 2 more enqueues.
+Tensile version 2 allows the user to manually interrupt the multiplicative series with "additions" instead of "multiplies", i.e., (8 WorkGroups)* (12 ThreadTiles)+ (4 NumLoadsCoalescedAs)* (4 NumLoadsCoalescedBs)* (3 LoopUnrolls)+ (5 BranchTypes)* ...+(1024 ProblemSizes)=1,151 is a dramatically smaller number of enqueues. Now, adding one more boolean parameter may only add on 2 more enqueues.
 
-**Phases of Benchmark**
+Phases of Benchmark
+----------------------
 
 To make the Tensile's programability more manageable for the user and developer, the benchmarking protocol has been split up into several steps encoded in a config.yaml file. The below sections reference the following config.yaml. Note that this config.yaml has been created to be a simple illustration and doesn't not represent an actual good benchmark protocol. See the configs included in the repository (/Tensile/Configs) for examples of good benchmarking configs.
 
@@ -2223,6 +2237,7 @@ To make the Tensile's programability more manageable for the user and developer,
    - # sgemm
      - # Problem Type
        OperationType: GEMM
+       Batched: True
      - # Benchmark Size-Group
       InitialSolutionParameters:
         - WorkGroup: [ [ 16, 16, 1 ] ]
@@ -2232,7 +2247,7 @@ To make the Tensile's programability more manageable for the user and developer,
 
       BenchmarkCommonParameters:
         - ProblemSizes:
-          - Range: [ [512], [512], [512] ]
+          - Range: [ [512], [512], [1], [512] ]
         - EdgeType: ["Branch", "ShiftPtr"]
           PrefetchGlobalRead: [False, True]
 
@@ -2242,7 +2257,7 @@ To make the Tensile's programability more manageable for the user and developer,
 
       BenchmarkForkParameters:
         - ProblemSizes:
-          - Exact: [ 2880, 2880, 2880 ]
+          - Exact: [ 2880, 2880, 1, 2880 ]
         - NumLoadsCoalescedA: [ 1, 2, 4, 8 ]
         - NumLoadsCoalescedB: [ 1, 2, 4, 8 ]
 
@@ -2254,125 +2269,157 @@ To make the Tensile's programability more manageable for the user and developer,
 
       BenchmarkFinalParameters:
         - ProblemSizes:
-          - Range: [ [16, 128], [16, 128], [256] ]
+          - Range: [ [16, 128], [16, 128], [1], [256] ]
 
 
-**Initial Solution Parameters**
+Initial Solution Parameters
+------------------------------
 
 A Solution is comprised of ~20 parameters, and all are needed to create a kernel. Therefore, during the first benchmark which determines which WorkGroupShape is fastest, what are the other 19 solution parameters which are used to describe the kernels that we benchmark? That's what InitialSolutionParameters are for. The solution used for benchmarking WorkGroupShape will use the parameters from InitialSolutionParameters. The user must choose good default solution parameters in order to correctly identify subsequent optimal parameters.
 
-**Problem Sizes**
+Problem Sizes
+----------------
 
 Each step of the benchmark can override what problem sizes will be benchmarked. A ProblemSizes entry of type Range is a list whose length is the number of indices in the ProblemType. A GEMM ProblemSizes must have 3 elements while a batched-GEMM ProblemSizes must have 4 elements. So, for a ProblemType of C[ij] = Sum[k] A[ik]*B[jk], the ProblemSizes elements represent [SizeI, SizeJ, SizeK]. For each index, there are 5 ways of specifying the sizes of that index:
 
- 1.[1968]
+ 1. [1968]
   * Benchmark only size 1968; n = 1.
   
- 2.[16, 1920]
+ 2. [16, 1920]
   * Benchmark sizes 16 to 1968 using the default step size (=16); n = 123.
  
- 3.[16, 32, 1968]
+ 3. [16, 32, 1968]
   * Benchmark sizes 16 to 1968 using a step size of 32; n = 61.
  
- 4.[64, 32, 16, 1968]
+ 4. [64, 32, 16, 1968]
   * Benchmark sizes from 64 to 1968 with a step size of 32. Also, increase the step size by 16 each iteration.
   * This causes fewer sizes to be benchmarked when the sizes are large, and more benchmarks where the sizes are small; this is 	      	typically desired behavior.
-  * n = 16 (64, 96, 144, 208, 288, 384, 496, 624, 768, 928, 1104, 1296, 1504, 1728, 1968). The stride at the beginning is 32, but     	the stride at the end is 256.
+  * n = 16 (64, 96, 144, 208, 288, 384, 496, 624, 768, 928, 1104, 1296, 1504, 1728, 1968). The stride at the beginning is 32, but the stride at the end is 256.
  
- 5.[0]
+ 5. 0
   * The size of this index is just whatever size index 0 is. For a 3-dimensional ProblemType, this allows benchmarking only a 2- 	      	dimensional or 1-dimensional slice of problem sizes.
 
 Here are a few examples of valid ProblemSizes for 3D GEMMs:
 
-Range: [ [16, 128], [16, 128], [16, 128] ] # n = 512
-Range: [ [16, 128], 0, 0] # n = 8
-Range: [ [16, 16, 16, 5760], 0, [1024, 1024, 4096] ] # n = 108
+::
+
+  Range: [ [16, 128], [16, 128], [16, 128] ] # n = 512
+  Range: [ [16, 128], 0, 0] # n = 8
+  Range: [ [16, 16, 16, 5760], 0, [1024, 1024, 4096] ] # n = 108
+
 
 Benchmark Common Parameters
-**************************************
+-------------------------------
+
 During this first phase of benchmarking, we examine parameters which will be the same for all solutions for this ProblemType. During each step of benchmarking, there is only 1 winner. In the above example we are benchmarking the dictionary {EdgeType: [ Branch, ShiftPtr], PrefetchGlobalRead: [False, True]}.; therefore, this benchmark step generates 4 solution candidates, and the winner will be the fastest EdgeType/PrefetchGlobalRead combination. Assuming the winner is ET=SP and PGR=T, then all solutions for this ProblemType will have ET=SP and PGR=T. Also, once a parameter has been determined, all subsequent benchmarking steps will use this determined parameter rather than pulling values from InitialSolutionParameters. Because the common parameters will apply to all kernels, they are typically the parameters which are compiler-dependent or hardware-dependent rather than being tile-dependent.
 
-**Fork Parameters**
-****************************
+Fork Parameters
+-------------------
+
 If we continued to determine every parameter in the above manner, we'd end up with a single fastest solution for the specified ProblemSizes; we usually desire multiple different solutions with varying parameters which may be fastest for different groups of ProblemSizes. One simple example of this is small tiles sizes are fastest for small problem sizes, and large tiles are fastest for large tile sizes.
 
 Therefore, we allow "forking" parameters; this means keeping multiple winners after each benchmark steps. In the above example we fork {WorkGroup: [...], ThreadTile: [...]}. This means that in subsequent benchmarking steps, rather than having one winning parameter, we'll have one winning parameter per fork permutation; we'll have 9 winners.
 
-**Benchmark Fork Parameters**
+Benchmark Fork Parameters
+-----------------------------
 
 When we benchmark the fork parameters, we retain one winner per permutation. Therefore, we first determine the fastest NumLoadsCoalescedA for each of the WG,TT permutations, then we determine the fastest NumLoadsCoalescedB for each permutation.
 
 Join Parameters
-*******************
+-------------------
+
 After determining fastest parameters for all the forked solution permutations, we have the option of reducing the number of winning solutions. When a parameter is listed in the JoinParameters section, that means that of the kept winning solutions, each will have a different value for that parameter. Listing more parameters to join results in more winners being kept, while having a JoinParameters section with no parameters listed results on only 1 fastest solution.
 
 In our example we join over the MacroTile (work-group x thread-tile). After forking tiles, there were 9 solutions that we kept. After joining MacroTile, we'll only keep six: 16x256, 32x128, 64x64, 128x32 and 256x16. The solutions that are kept are based on their performance during the last BenchmarkForkParameters benchmark, or, if there weren't any, JoinParameters will conduct a benchmark of all solution candidates then choose the fastest.
 
-**Benchmark Join Parameters**
+Benchmark Join Parameters
+---------------------------
 
 After narrowing the list of fastest solutions through joining, you can continue to benchmark parameters, keeping one winning parameter per solution permutation.
 
 Benchmark Final Parameters
-********************************
-After all the parameter benchmarking has been completed and the final list of fastest solution has been assembled, we can benchmark all the solution over a large set of ProblemSizes. This benchmark represent the final output of benchmarking; it outputs a .csv file where the rows are all the problem sizes and the columns are all the solutions. This is the information which gets analysed to produce the library logic.
+------------------------------
 
+After all the parameter benchmarking has been completed and the final list of fastest solution has been assembled, we can benchmark all the solution over a large set of ProblemSizes. This benchmark represent the final output of benchmarking; it outputs a .csv file where the rows are all the problem sizes and the columns are all the solutions. This is the information which gets analysed to produce the `library logic`_.
+
+.. _library logic: https://rocm-documentation.readthedocs.io/en/latest/ROCm_Libraries/ROCm_Libraries.html#library-logic
+
+Contributing
+##############
+
+
+
+We'd love your help, but...
+
+    #. Never check in a tab (\t); use 4 spaces.
+    #. Follow the coding style of the file you're editing.
+    #. Make pull requests against develop branch.
+    #. Rebase your develop branch against ROCmSoftwarePlatform::Tensile::develop branch right before pull-requesting.
+    #. In your pull request, state what you tested (which OS, what drivers, what devices, which config.yaml's) so we can ensure that your changes haven't broken anything.
 
 
 Dependencies
 ##################
 
-**CMake**
+CMake
+-------
 
   * CMake 2.8
 
-**Python**
+Python
+---------
 
-   * Python 2.7
-   * PyYAML (Can be installed via apt, apt-get, yum, pip...; module is typically named python-yaml, pyyaml or PyYAML.)
+(One time only)
 
-**Compilers**
+   * Ubuntu: sudo apt install python2.7 python-yaml
+   * CentOS: sudo yum install python PyYAML
+   * Fedora: sudo dnf install python PyYAML
 
- * For Tensile_BACKEND = OpenCL1.2
+
+Compilers
+--------------
+
+ * For Tensile_BACKEND = OpenCL1.2 *(untested)*
       * Visual Studio 14 (2015). (VS 2012 may also be supported; c++11 should no longer be required by Tensile. Need to verify.)
-      * GCC 4.8
+      * GCC 4.8 and above
  * For Tensile_BACKEND = HIP
-      * ROCM 2.0
+      * Public ROCm
 
-**Installation**
 
+Installation
+##############
 
 Tensile can be installed via:
 
-1. Install directly from repo using pip:
+
+1. Download repo and don't install; install PyYAML dependency manually and call python scripts manually:
+
+::
+ 
+  git clone https://github.com/ROCmSoftwarePlatform/Tensile.git
+  python Tensile/Tensile/Tensile.py your_custom_config.yaml your_benchmark_path
+
+2. Install develop branch directly from repo using pip:
 
 ::
 
-   pip install git+https://github.com/RadeonOpenCompute/Tensile.git@develop
-   tensile config.yaml benchmark_path
+  pip install git+https://github.com/ROCmSoftwarePlatform/Tensile.git@develop
+  tensile your_custom_config.yaml your_benchmark_path
 
-
-2. Download repo and install manually:
+3. Download repo and install manually: (deprecated)
 
 ::
 
-  git clone https://github.com/RadeonOpenCompute/Tensile.git
+  git clone https://github.com/ROCmSoftwarePlatform/Tensile.git
   cd Tensile
   sudo python setup.py install
-  tensile config.yaml benchmark_path
-
-3. Download repo and don't install; install PyYAML dependency manually and call python scripts manually:
-
-::
-
-   git clone https://github.com/RadeonOpenCompute/Tensile.git 
-   python Tensile/Tensile/Tensile.py config.yaml benchmark_path
-
+  tensile your_custom_config.yaml your_benchmark_path
 
 Kernel Parameters
 #####################
 
 Solution / Kernel Parameters
-*********************************
+--------------------------------
 
 * LoopDoWhile: True=DoWhile loop, False=While or For loop
 * LoopTail: Additional loop with LoopUnroll=1.
