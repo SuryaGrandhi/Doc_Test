@@ -2379,10 +2379,13 @@ Python
 Compilers
 --------------
 
- * For Tensile_BACKEND = OpenCL1.2 *(untested)*
+  * For Tensile_BACKEND = OpenCL1.2 *(untested)*
+      
       * Visual Studio 14 (2015). (VS 2012 may also be supported; c++11 should no longer be required by Tensile. Need to verify.)
       * GCC 4.8 and above
- * For Tensile_BACKEND = HIP
+
+  * For Tensile_BACKEND = HIP
+      
       * Public ROCm
 
 
@@ -2421,27 +2424,30 @@ Kernel Parameters
 Solution / Kernel Parameters
 --------------------------------
 
-* LoopDoWhile: True=DoWhile loop, False=While or For loop
-* LoopTail: Additional loop with LoopUnroll=1.
-* EdgeType: Branch, ShiftPtr or None
-* WorkGroup: [dim0, dim1, LocalSplitU]
-* ThreadTile: [dim0, dim1]
-* GlobalSplitU: Split up summation among work-groups to create more concurrency. This option launches a kernel to handle the beta     	scaling, then a second kernel where the writes to global memory are atomic.
-* PrefetchGlobalRead: True means outer loop should prefetch global data one iteration ahead.
-* PrefetchLocalRead: True means inner loop should prefetch lds data one iteration ahead.
-* WorkGroupMapping: In what order will work-groups compute C; affects cacheing.
-* LoopUnroll: How many iterations to unroll inner loop; helps loading coalesced memory.
-* MacroTile: Derrived from WorkGroup*ThreadTile.
-* DepthU: Derrived from LoopUnroll*SplitU.
-* NumLoadsCoalescedA,B: Number of loads from A in coalesced dimension.
-* GlobalReadCoalesceGroupA,B: True means adjacent threads map to adjacent global read elements (but, if transposing data then write   	to lds is scattered).
-* GlobalReadCoalesceVectorA,B: True means vector components map to adjacent global read elements (but, if transposing data then write 	to lds is scattered).
-* VectorWidth: Thread tile elements are contiguous for faster memory accesses. For example VW=4 means a thread will read a float4     	 from memory rather than 4 non-contiguous floats.
+* **LoopDoWhile:** True=DoWhile loop, False=While or For loop
+* **LoopTail:** Additional loop with LoopUnroll=1.
+* **EdgeType:** Branch, ShiftPtr or None
+* **WorkGroup:** [dim0, dim1, LocalSplitU]
+* **ThreadTile:** [dim0, dim1]
+* **GlobalSplitU:** Split up summation among work-groups to create more concurrency. This option launches a kernel to handle the beta scaling, then a second kernel where the writes to global memory are atomic.
+* **PrefetchGlobalRead:** True means outer loop should prefetch global data one iteration ahead.
+* **PrefetchLocalRead:** True means inner loop should prefetch lds data one iteration ahead.
+* **WorkGroupMapping:** In what order will work-groups compute C; affects cacheing.
+* **LoopUnroll:** How many iterations to unroll inner loop; helps loading coalesced memory.
+* **MacroTile:** Derrived from WorkGroup*ThreadTile.
+* **DepthU:** Derrived from LoopUnroll*SplitU.
+* **NumLoadsCoalescedA,B:** Number of loads from A in coalesced dimension.
+* **GlobalReadCoalesceGroupA,B:** True means adjacent threads map to adjacent global read elements (but, if transposing data then write to lds is scattered).
+* **GlobalReadCoalesceVectorA,B:** True means vector components map to adjacent global read elements (but, if transposing data then write to lds is scattered).
+* **VectorWidth:** Thread tile elements are contiguous for faster memory accesses. For example VW=4 means a thread will read a float4 from memory rather than 4 non-contiguous floats.
+* **KernelLanguage:** Whether kernels should be written in source code (HIP, OpenCL) or assembly (gfx803, gfx900, ...).
+
 
 The exhaustive list of solution parameters and their defaults is stored in Common.py.
 
 Kernel Parameters Affect Performance
-****************************************
+---------------------------------------
+
 The kernel parameters affect many aspects of performance. Changing a parameter may help address one performance bottleneck but worsen another. That is why searching through the parameter space is vital to discovering the fastest kernel for a given problem.
 
 
@@ -2449,11 +2455,13 @@ The kernel parameters affect many aspects of performance. Changing a parameter m
  .. image:: img1.png
      :align: center
    
-**How N-Dimensional Tensor Contractions Are Mapped to Finite-Dimensional GPU Kernels**
+How N-Dimensional Tensor Contractions Are Mapped to Finite-Dimensional GPU Kernels
+--------------------------------------------------------------------------------------
 
 For a traditional GEMM, the 2-dimensional output, C[i,j], is mapped to launching a 2-dimensional grid of work groups, each of which has a 2-dimensional grid of work items; one dimension belongs to i and one dimension belongs to j. The 1-dimensional summation is represented by a single loop within the kernel body.
 
-**Special Dimensions: D0, D1 and DU**
+Special Dimensions: D0, D1 and DU
+------------------------------------
 
 To handle arbitrary dimensionality, Tensile begins by determining 3 special dimensions: D0, D1 and DU.
 
@@ -2462,22 +2470,26 @@ D0 and D1 are the free indices of A and B (one belongs to A and one to B) which 
 DU represents the summation index with the shortest combined stride (stride in A + stride in B); it becomes the inner most loop which gets "U"nrolled. This assignment is also mean't to assure fast reading in the inner-most summation loop. There can be multiple summation indices (i.e. embedded loops) and DU will be iterated over in the inner most loop.
 
 GPU Kernel Dimension
-************************
+-----------------------
+
 OpenCL allows for 3-dimensional grid of work-groups, and each work-group can be a 3-dimensional grid of work-items. Tensile assigns D0 to be dimension-0 of the work-group and work-item grid; it assigns D1 to be dimension-1 of the work-group and work-item grids. All other free or batch dimensions are flattened down into the final dimension-2 of the work-group and work-item grids. Withing the GPU kernel, dimensions-2 is reconstituted back into whatever dimensions it represents.
 
 
 Languages
 ##################
 
-**Tensile Benchmarking is Python**
+Tensile Benchmarking is Python
+----------------------------------
 
 The benchmarking module, Tensile.py, is written in python. The python scripts write solution, kernels, cmake files and all other C/C++ files used for benchmarking.
 
-**Tensile Library**
+Tensile Library
+-----------------
 
 The Tensile API, Tensile.h, is confined to C89 so that it will be usable by most software. The code behind the API is allowed to be c++11.
 
-**Device Languages**
+Device Languages
+------------------
 
 The device languages Tensile supports for the gpu kernels is
 
@@ -2487,28 +2499,35 @@ The device languages Tensile supports for the gpu kernels is
    * gfx803 
    * gfx900
 
-**Library Logic**
+Library Logic
+###############
 
-Running the LibraryLogic phase of benchmarking analyses the benchmark data and encodes a mapping for each problem type. For each problem type, it maps problem sizes to best solution (i.e. kernel).
+Running the ``LibraryLogic`` phase of benchmarking analyses the benchmark data and encodes a mapping for each problem type. For each problem type, it maps problem sizes to best solution (i.e. kernel).
 
-When you build Tensile.lib, you point the TensileCreateLibrary function to a directory where your library logic yaml files are.
+When you build Tensile.lib, you point the ``TensileCreateLibrary`` function to a directory where your library logic yaml files are.
 
 Problem Nomenclature
 ########################
 
-**Example Problems**
+Example Problems
+---------------------
 
+   * Standard GEMM has 4 variants (2 free indices (i, j) and 1 summation index l)
 
-* C[i,j] = Sum[k] A[i,k] * B[k,j] (GEMM; 2 free indices and 1 summation index)
-* C[i,j,k] = Sum[l] A[i,l,k] * B[l,j,k] (batched-GEMM; 2 free indices, 1 batched index and 1 summation index)
-* C[i,j] = Sum[k,l] A[i,k,l] * B[j,l,k] (2D summation)
-* C[i,j,k,l,m] = Sum[n] A[i,k,m,l,n] * B[j,k,l,n,m] (GEMM with 3 batched indices)
-* C[i,j,k,l,m] = Sum[n,o] A[i,k,m,o,n] * B[j,m,l,n,o] (4 free indices, 2 summation indices and 1 batched index)
-* C[i,j,k,l] = Sum[m,n] A[i,j,m,n,l] * B[m,n,k,j,l] (batched image convolution mapped to 7D tensor contraction)
-* and even crazier
+    	#. N(N:nontranspose)N: C[i,j] = Sum[l] A[i,l] * B[l,j]
+    	#. NT(T:transpose): C[i,j] = Sum[l] A[i,l] * B[j, l]
+    	#. TN: C[i,j] = Sum[l] A[l, i] * B[l,j]
+	#. TT: C[i,j] = Sum[l] A[l, i] * B[j, l]
 
-**Nomenclature**
+    * C[i,j,k] = Sum[l] A[i,l,k] * B[l,j,k] (batched-GEMM; 2 free indices, 1 batched index k and 1 summation index l)
+    * C[i,j] = Sum[k,l] A[i,k,l] * B[j,l,k] (2D summation)
+    * C[i,j,k,l,m] = Sum[n] A[i,k,m,l,n] * B[j,k,l,n,m] (GEMM with 3 batched indices)
+    * C[i,j,k,l,m] = Sum[n,o] A[i,k,m,o,n] * B[j,m,l,n,o] (4 free indices, 2 summation indices and 1 batched index)
+    * C[i,j,k,l] = Sum[m,n] A[i,j,m,n,l] * B[m,n,k,j,l] (batched image convolution mapped to 7D tensor contraction)
+    * and even crazier
 
+Nomenclature
+----------------
 
 The indices describe the dimensionality of the problem being solved. A GEMM operation takes 2 2-dimensional matrices as input (totaling 4 input dimensions) and contracts them along one dimension (which cancels out 2 of the dimensions), resulting in a 2-dimensional result.
 
@@ -2528,7 +2547,8 @@ Batch indices are the indices of tensor C which shows up in both tensor A and te
 
 The final type of indices are called bound indices or summation indices. These indices do not show up in tensor C; they show up in the summation symbol (Sum[k]) and in tensors A and B. It is along these indices that we perform the inner products (pairwise multiply then sum).
 
-**Limitations**
+Limitations
+------------
 
 Problem supported by Tensile must meet the following conditions:
 
@@ -2537,7 +2557,7 @@ There must be at least one pair of free indices.
 Tensile.lib
 ########################
 
-After running the benchmark and generating library config files, you're ready to add Tensile.lib to your project. Tensile provides a TensileCreateLibrary function, which can be called:
+After running the `benchmark`_ and generating `library config files`_, you're ready to add Tensile.lib to your project. Tensile provides a ``TensileCreateLibrary`` function, which can be called:
 
 ::
 
@@ -2559,15 +2579,19 @@ After running the benchmark and generating library config files, you're ready to
     )
   target_link_libraries( TARGET Tensile )
 
+TODO: Where is the Tensile include directory?	
 
-**Versioning**
+.. _benchmark: https://rocm-documentation.readthedocs.io/en/latest/ROCm_Libraries/ROCm_Libraries.html#benchmark-protocol
+.. _library config files: https://rocm-documentation.readthedocs.io/en/latest/ROCm_Libraries/ROCm_Libraries.html#library-logic
 
+Versioning
+###########
 
 Tensile follows semantic versioning practices, i.e. Major.Minor.Patch, in BenchmarkConfig.yaml files, LibraryConfig.yaml files and in cmake find_package. Tensile is compatible with a "MinimumRequiredVersion" if Tensile.Major==MRV.Major and Tensile.Minor.Patch >= MRV.Minor.Patch.
 
-* Major: Tensile increments the major version if the public API changes, or if either the benchmark.yaml or library-config.yaml files 	change format in a non-backwards-compatible manner.
-* Minor: Tensile increments the minor version when new kernel, solution or benchmarking features are introduced in a backwards-	      	compatible manner.
-* Patch: Bug fixes or minor improvements.
+* **Major:** Tensile increments the major version if the public API changes, or if either the benchmark.yaml or library-config.yaml files change format in a non-backwards-compatible manner.
+* **Minor:** Tensile increments the minor version when new kernel, solution or benchmarking features are introduced in a backwards-compatible manner.
+* **Patch:** Bug fixes or minor improvements.
 
 ***************
 rocALUTION
