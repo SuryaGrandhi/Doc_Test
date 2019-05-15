@@ -2016,13 +2016,13 @@ Tensile is a **tool** for creating a benchmark-driven backend library for GEMMs,
 
 Overview for creating a custom TensileLib backend library for your application:
 
-1. Install the `PyYAML and cmake dependency`_ (mandatory),``git clone and cd Tensile`` 
+1. Install the `PyYAML and cmake dependency`_ (mandatory), ``git clone and cd Tensile`` 
 2. Create a `benchmark config.yaml`_ file in ``./Tensile/Configs/``
 3. `Run the benchmark`_. After the benchmark is finished. Tensile will dump 4 directories: 1 & 2 is about benchmarking. 3 & 4 is the summarized results from your library (like rocBLAS) viewpoints.
 
-    1_BenchmarkProblems: has all the problems descriptions and executables generated during benchmarking, where you can re-launch exe to reproduce results.
+	1_BenchmarkProblems: has all the problems descriptions and executables generated during benchmarking, where you can re-launch exe to reproduce results.
 
-    2_BenchmarkData: has the raw performance results.
+	2_BenchmarkData: has the raw performance results.
 
     3_LibraryLogic: has optimal kernel configurations yaml file and Winner*.csv. Usually rocBLAS takes the yaml files from this folder.
 
