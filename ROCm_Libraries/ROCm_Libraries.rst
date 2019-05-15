@@ -2012,18 +2012,35 @@ This sections enumerates the list of tested combinations of Hardware and system 
 Tensile
 *****************
 
-A tool for creating a benchmark-driven backend library for GEMMs, GEMM-like problems (such as batched GEMM), N-dimensional tensor contractions, and anything else that multiplies two multi-dimensional objects together on a GPU.
+Tensile is a **tool** for creating a benchmark-driven backend library for GEMMs, GEMM-like problems (such as batched GEMM), N-dimensional tensor contractions, and anything else that multiplies two multi-dimensional objects together on a AMD GPU.
 
 Overview for creating a custom TensileLib backend library for your application:
 
-1. Install Tensile (optional), or at least install the PyYAML dependency (mandatory).
-2. Create a benchmark config.yaml file.
-3. Run the benchmark to produce a library logic.yaml file.
-4. Add the Tensile library to your application's CMake target. The Tensile library will be written, compiled and linked to your application at application-compile-time.
+1. Install the `PyYAML and cmake dependency`_ (mandatory),``git clone and cd Tensile`` 
+2. Create a `benchmark config.yaml`_ file in ``./Tensile/Configs/``
+3. `Run the benchmark`_. After the benchmark is finished. Tensile will dump 4 directories: 1 & 2 is about benchmarking. 3 & 4 is the summarized results from your library (like rocBLAS) viewpoints.
 
-    * GPU kernels, written in HIP or OpenCL.
-    * Solution classes which enqueue the kernels.
-    * APIs which call the fastest solution for a problem.
+    1_BenchmarkProblems: has all the problems descriptions and executables generated during benchmarking, where you can re-launch exe to reproduce results.
+
+    2_BenchmarkData: has the raw performance results.
+
+    3_LibraryLogic: has optimal kernel configurations yaml file and Winner*.csv. Usually rocBLAS takes the yaml files from this folder.
+
+    4_LibraryClient: has a client exe, so you can launch from a library viewpoint.
+
+4. Add the `Tensile library`_ to your application's CMake target. The Tensile library will be written, compiled and linked to your application at application-compile-time.
+
+    * GPU kernels, written in `HIP, OpenCL, or AMD GCN assembly`_.
+    * Solution classes which enqueue the `kernels`_.
+    * `APIs`_ which call the fastest solution for a problem.
+
+.. _PyYAML and cmake dependency: https://rocm-documentation.readthedocs.io/en/latest/ROCm_Libraries/ROCm_Libraries.html#dependencies
+.. _benchmark config.yaml: https://rocm-documentation.readthedocs.io/en/latest/ROCm_Libraries/ROCm_Libraries.html#benchmark-config
+.. _Run the benchmark: https://rocm-documentation.readthedocs.io/en/latest/ROCm_Libraries/ROCm_Libraries.html#benchmark-protocol
+.. _Tensile library: https://rocm-documentation.readthedocs.io/en/latest/ROCm_Libraries/ROCm_Libraries.html#tensile-lib
+.. _HIP, OpenCL, or AMD GCN assembly: https://rocm-documentation.readthedocs.io/en/latest/ROCm_Libraries/ROCm_Libraries.html#languages
+.. _kernels: https://rocm-documentation.readthedocs.io/en/latest/ROCm_Libraries/ROCm_Libraries.html#kernel-parameters
+.. _APIs: https://rocm-documentation.readthedocs.io/en/latest/ROCm_Libraries/ROCm_Libraries.html#tensile-lib
 
 **Quick Example:**
 ****************
@@ -2128,8 +2145,8 @@ Top level data structure whose keys are Parameters, BenchmarkProblems, LibraryLo
 **Global Parameters**
 
 
-* Name: Prefix to add to API function names; typically name of device.
-* MinimumRequiredVersion: Which version of Tensile is required to interpret this yaml file
+* **Name**: Prefix to add to API function names; typically name of device.
+* **MinimumRequiredVersion:** Which version of Tensile is required to interpret this yaml file
 * RuntimeLanguage: Use HIP or OpenCL runtime.
 * KernelLanguage: For OpenCL runtime, kernel language must be set to OpenCL. For HIP runtime, kernel language can be set to HIP or assembly (gfx803, gfx900).
 * PrintLevel: 0=Tensile prints nothing, 1=prints some, 2=prints a lot.
