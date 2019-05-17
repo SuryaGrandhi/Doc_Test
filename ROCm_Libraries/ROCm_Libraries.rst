@@ -754,6 +754,56 @@ hipBLAS GEMM can process matrices in batches with regular strides. There are sev
 hipBLAS assumes matrices A and vectors x, y are allocated in GPU memory space filled with data. Users are responsible for copying data from/to the host and device memory.
 
 
+Exported Functions
+####################
+
+**Exported BLAS functions**
+
+hipBLAS includes the following auxiliary functions
+----------------------------------------------------------
+
+| Function name |
+| --- |
+| hipblasCreate |
+| hipblasDestroy |
+| hipblasSetStream |
+| hipblasGetStream |
+| hipblasSetPointerMode |
+| hipblasGetPointerMode |
+| hipblasSetVector |
+| hipblasGetVector |
+| hipblasSetMatrix |
+| hipblasGetMatrix |
+
+hipBLAS includes the following Level 1, 2, and 3 functions
+-----------------------------------------------------------------
+
+**Level 1**
+| Function | single | double | single complex | double complex | half |
+| --- | --- | --- | --- | --- | --- |
+| hipblasXscal | x | x | | | |
+| hipblasXcopy | x | x | | | |
+| hipblasXdot |  x | x | | | |
+| hipblasXaxpy | x | x | | | x |
+| hipblasXasum | x | x | | | |
+| hipblasiXamax | x | x | | | |
+
+**Level 2**
+| Function | single | double | single complex | double complex | half |
+| --- | --- | --- | --- | --- | --- |
+| hipblasXgemv | x | x | | | |
+| hipblasXger | x | x | | | |
+
+**Level 3**
+| Function | single | double | single complex | double complex | half |
+| --- | --- | --- | --- | --- | --- |
+| hipblasXgemm | x | x | | | |
+| hipblasXgemmStridedBatched | x | x | | | |
+
+**Blas like functions**
+| Function | single | double | single complex | double complex | half |
+| --- | --- | --- | --- | --- | --- |
+| hipblasXgeam | x | x | | | |
 
 
 
@@ -2012,6 +2062,9 @@ This sections enumerates the list of tested combinations of Hardware and system 
 Tensile
 *****************
 
+Introduction
+##############
+
 Tensile is a **tool** for creating a benchmark-driven backend library for GEMMs, GEMM-like problems (such as batched GEMM), N-dimensional tensor contractions, and anything else that multiplies two multi-dimensional objects together on a AMD GPU.
 
 Overview for creating a custom TensileLib backend library for your application:
@@ -2042,8 +2095,8 @@ Overview for creating a custom TensileLib backend library for your application:
 .. _kernels: https://rocm-documentation.readthedocs.io/en/latest/ROCm_Libraries/ROCm_Libraries.html#kernel-parameters
 .. _APIs: https://rocm-documentation.readthedocs.io/en/latest/ROCm_Libraries/ROCm_Libraries.html#tensile-lib
 
-**Quick Example(Ubuntu):**
-***************************
+Quick Example (Ubuntu):
+--------------------------
 
 ::
 
@@ -2190,6 +2243,7 @@ Problem Type Parameters
 * **ComplexConjugateB:** True or False; ignored for real precision.
 
 For OperationType=GEMM only:
+
 * **TransposeA:** True or False.
 * **TransposeB:** True or False.
 * **Batched:** True (False has been deprecated). For OperationType=TensorContraction only (showing batched gemm NT: C[ijk] = Sum[l] A[ilk] * B[jlk])
@@ -2496,8 +2550,9 @@ The device languages Tensile supports for the gpu kernels is
 * OpenCL 1.2
 * HIP
 * Assembly
-   * gfx803 
-   * gfx900
+
+	* gfx803 
+	* gfx900
 
 Library Logic
 ###############
