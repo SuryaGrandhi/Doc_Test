@@ -28,11 +28,6 @@ And finally, install TensorFlow itself (via the Python Package Index):
    pip3 install --user tensorflow-rocm
 Now that Tensorflow v1.12 is installed!
 
-Tensorflow More Resources
-*************************
-Tensorflow docker images are also publicly available, more details can be found here: https://hub.docker.com/r/rocm/tensorflow/
-
-Please connect with us for any questions, our official github repository is here: https://github.com/ROCmSoftwarePlatform/tensorflow-upstream
 
 *******
 MIOpen
